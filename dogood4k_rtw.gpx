@@ -9,26 +9,31 @@
         <ele>61.900000</ele>
         <name>Track 001 000</name>
         <sym>Flag, Blue</sym>
+        <speed>4.23</speed>
     </wpt>
     <wpt lon="-123.119795" lat="49.283578">
         <ele>71.900000</ele>
         <name>Track 001 001</name>
         <sym>Flag, Blue</sym>
+        <speed>4.23</speed>
     </wpt>
     <wpt lon="-123.120040" lat="49.283736">
         <ele>81.900000</ele>
         <name>Track 001 002</name>
         <sym>Flag, Blue</sym>
+        <speed>4.23</speed>
     </wpt>
     <wpt lon="-123.120285" lat="49.283894">
         <ele>91.900000</ele>
         <name>Track 001 003</name>
         <sym>Flag, Blue</sym>
+        <speed>4.23</speed>
     </wpt>
     <wpt lon="-123.120530" lat="49.284052">
         <ele>71.900000</ele>
         <name>Track 001 004</name>
         <sym>Flag, Blue</sym>
+        <speed>4.23</speed>
     </wpt>
     <wpt lon="-123.120775" lat="49.284211">
         <ele>71.900000</ele>

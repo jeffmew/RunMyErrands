@@ -39,14 +39,11 @@
         _locationManager.delegate = self;
         [_locationManager requestAlwaysAuthorization];
         //NSLog(@"new location Manager in startLocationManager");
-        
     }
     
     [_locationManager startUpdatingLocation];
-    
     //NSLog(@"Start Regular Location Manager");
 }
-
 
 
 - (void)startLocationManager{
@@ -64,7 +61,6 @@
             
             [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             }]];
-            
             //      [self presentViewController:alertController animated:YES completion:nil];
             
         }
@@ -116,8 +112,7 @@
     //        MKCoordinateRegion adjustedRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, zoominMapArea, zoominMapArea);
     //
     //        // [_mapView setRegion:adjustedRegion animated:YES];
-    //
-    //
+
 }
 
 
@@ -136,7 +131,7 @@
 
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
-    //NSLog(@"didEnterRegion");
+    NSLog(@"didEnterRegion %@",region.identifier);
     
     [self inLocationNotificationForRegion:region];
 }
@@ -150,7 +145,7 @@
     //NSLog(@"didDetermineState %li",(long)state);
     
     if (state == 1) {
-        [self inLocationNotificationForRegion:region];
+     //   [self inLocationNotificationForRegion:region];
     }
 }
 
@@ -162,18 +157,15 @@
 
 
 -(void)inLocationNotificationForRegion:(CLRegion *)region {
-    
+        
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-    //localNotification.regionTriggersOnce = NO;
-    localNotification.region = region;
-    localNotification.alertTitle = @"alert";
+    localNotification.regionTriggersOnce = YES;
+    localNotification.alertTitle = @"You are in the Area";
+    localNotification.fireDate = [NSDate date];
     localNotification.alertBody = [NSString stringWithFormat:@" %@", region.identifier];
     localNotification.soundName = UILocalNotificationDefaultSoundName;
     localNotification.applicationIconBadgeNumber = 1;
-    //[[UIApplication sharedApplication] cancelAllLocalNotifications];
-    [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
-
-
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }
 
 

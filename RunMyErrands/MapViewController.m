@@ -30,7 +30,7 @@
     [self.locationManager startLocationManager];
     self.mapView.showsUserLocation = true;
     
-    //////Temp for testing
+    //////Temp for testing////////////////
     CLLocationCoordinate2D task01center = CLLocationCoordinate2DMake(49.282360025041143,-123.12892218823735);
     Task *task01 = [[Task alloc]initWithCoordinate:task01center andTitle:@"Park" andSubtitle:@"Pick up from whole foods"];
     
@@ -56,8 +56,8 @@
     [self.taskArray addObject:task04];
     [self.taskArray addObject:task05];
     
-    //    task01Region.notifyOnEntry = YES;
-    //    task01Region.notifyOnExit = YES;
+    ////////Temp for Teasting////////////
+
 }
 
 
@@ -82,6 +82,7 @@
         [self.taskArray addObject:touchTask];
         [self.delegate addTasksArray:self.taskArray];
         
+               
         [self.mapView addAnnotation:touchTask];
     }
 }
