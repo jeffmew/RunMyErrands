@@ -20,5 +20,6 @@
 
 @property (nonatomic)NSMutableArray *taskArray;
 @property (nonatomic, strong) id <AddTasksDelegate> delegate;
+@property (nonatomic, strong) Task *task;
 
 @end

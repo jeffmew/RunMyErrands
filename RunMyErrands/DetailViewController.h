@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface DetailViewController : UIViewController
-
+@property (nonatomic) NSArray *taskArray;
 @end

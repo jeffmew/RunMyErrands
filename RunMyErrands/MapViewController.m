@@ -8,6 +8,7 @@
 
 #import "MapViewController.h"
 #import "GeoManager.h"
+#import <Parse/Parse.h>
 
 @interface MapViewController () <MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -29,21 +30,21 @@
     
     //////Temp for testing
     CLLocationCoordinate2D task01center = CLLocationCoordinate2DMake(37.331820,-122.032180);
-    Task *task01 = [[Task alloc]initWithCoordinate:task01center andTitle:@"Banannas" andSubtitle:@"Pick up from whole foods"];
+ //   Task *task01 = [[Task alloc]initWithCoordinate:task01center andTitle:@"Banannas" andSubtitle:@"Pick up from whole foods"];
     
     CLLocationCoordinate2D task02center = CLLocationCoordinate2DMake(37.331820,-122.031080);
-    Task *task02 = [[Task alloc]initWithCoordinate:task02center andTitle:@"Motor Oil" andSubtitle:@"Pick up from Canadian Tire"];
+   // Task *task02 = [[Task alloc]initWithCoordinate:task02center andTitle:@"Motor Oil" andSubtitle:@"Pick up from Canadian Tire"];
 
     CLLocationCoordinate2D task03center = CLLocationCoordinate2DMake(37.331820,-122.031180);
-    Task *task03 = [[Task alloc]initWithCoordinate:task03center andTitle:@"TV" andSubtitle:@"Pick up from Best Buy"];
+    //Task *task03 = [[Task alloc]initWithCoordinate:task03center andTitle:@"TV" andSubtitle:@"Pick up from Best Buy"];
 
     if (!self.taskArray) {
         self.taskArray = [NSMutableArray array];
     }
    
-    [self.taskArray addObject:task01];
-    [self.taskArray addObject:task02];
-    [self.taskArray addObject:task03];
+ //   [self.taskArray addObject:task01];
+  //  [self.taskArray addObject:task02];
+   // [self.taskArray addObject:task03];
     
     //    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(37.331820,-122.031180);
     //    CLRegion *task01Region = [[CLCircularRegion alloc]initWithCenter:center radius:1000.0 identifier:@"task01"];
@@ -72,17 +73,17 @@
         CGPoint touchPoint = [sender locationInView:self.mapView];
         CLLocationCoordinate2D touchMapCoordinate =
         [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
+        self.task.coordinate = touchMapCoordinate;
+        //Task *touchTask = [[Task alloc]initWithCoordinate:touchMapCoordinate andTitle:@"picker" andSubtitle:@""];
         
-        Task *touchTask = [[Task alloc]initWithCoordinate:touchMapCoordinate andTitle:@"picker" andSubtitle:@""];
+      //  if (!self.taskArray) {
+        //    self.taskArray = [NSMutableArray new];
+        //}
         
-        if (!self.taskArray) {
-            self.taskArray = [NSMutableArray new];
-        }
+  //      [self.taskArray addObject:touchTask];
+   //     [self.delegate addTasksArray:self.taskArray];
         
-        [self.taskArray addObject:touchTask];
-        [self.delegate addTasksArray:self.taskArray];
-        
-        [self.mapView addAnnotation:touchTask];
+        [self.mapView addAnnotation:self.task];
     }
 }
 

@@ -8,18 +8,20 @@
 
 #import "AddNewTaskViewController.h"
 #import <Parse/Parse.h>
+#import "Task.h"
 
 @interface AddNewTaskViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *taskNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
 @property (weak, nonatomic) IBOutlet UITextField *addressTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *categoryPickerView;
-@property (nonatomic) double longititude;
-@property (nonatomic) double lattitude;
+//@property (nonatomic) double longititude;
+//@property (nonatomic) double lattitude;
 @property (nonatomic) NSArray *pickerData;
 @property (nonatomic) NSInteger *categoryChoice;
 @property (nonatomic) NSString *teamKey;
 @property (nonatomic) NSMutableArray *taskArray;
+@property (nonatomic) Task* task;
 @end
 
 @implementation AddNewTaskViewController
@@ -28,7 +30,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.pickerData = @[@"General",@"Entertainment",@"Business",@"Food"];
-    
+    self.task = [Task object];
+    self.task.isComplete = @NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,24 +49,23 @@
         alertControllerTitle = @"Enter a Name";
         alertControllerMessage = @"Please Enter a Task Name";
         [self presentAlertController:alertControllerTitle aMessage:alertControllerMessage];
-    } else if (self.addressTextField.text.length == 0) {
+    } else if (self.addressTextField.text.length == 0 && !self.task.longitude) {
         alertControllerTitle = @"Enter an Address";
         alertControllerMessage = @"Please Enter an Address or Choose it on the Map";
         [self presentAlertController:alertControllerTitle aMessage:alertControllerMessage];
+
     } else {
-        PFObject *newTask = [PFObject objectWithClassName:@"Task"];
-        newTask[@"name"] = self.taskNameTextField.text;
-        newTask[@"description"] = self.descriptionTextField.text;
+       
+        self.task.title = self.taskNameTextField.text;
+        self.task.taskDescription = self.descriptionTextField.text;
+        
         if (self.addressTextField.text != 0) {
-            newTask[@"address"] = self.addressTextField.text;
-        } else {
-            newTask[@"lattitude"] = @(self.lattitude);
-            newTask[@"longititude"] = @(self.longititude);
+            self.task.address = self.addressTextField.text;
         }
         
-        newTask[@"isComplete"] = @NO;
+        self.task.category = @([self.categoryPickerView selectedRowInComponent:0]);
         
-        [newTask saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [self.task saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
                 // The object has been saved.
                 PFQuery *teams = [PFQuery queryWithClassName:@"Team"];
@@ -72,7 +74,7 @@
                 [teams getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
                     
                     NSArray *tasks = object[@"tasks"];
-                    tasks = [tasks arrayByAddingObjectsFromArray:@[newTask.objectId]];
+                    tasks = [tasks arrayByAddingObjectsFromArray:@[self.task.objectId]];
                     
                     object[@"tasks"] = tasks;
                     [object saveInBackground];
@@ -129,10 +131,6 @@
     return self.pickerData[row];
 }
 
--(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    self.categoryChoice = &(row);
-}
-
 #pragma - AddTaskDelegate Function
 
 -(void)addTasksArray:(NSMutableArray*)array {
@@ -147,7 +145,7 @@
         MapViewController *mapVC = (MapViewController*)[segue destinationViewController];
         mapVC.delegate = self;
         mapVC.taskArray = self.taskArray;
-
+        mapVC.task = self.task;
     }
 }
 

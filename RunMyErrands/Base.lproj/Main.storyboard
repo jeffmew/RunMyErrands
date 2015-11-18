@@ -43,7 +43,7 @@
                                     <outlet property="delegate" destination="wuR-bt-sUM" id="FeS-7S-eNB"/>
                                 </connections>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add New Task" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1H3-gM-RKV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Add New Task" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1H3-gM-RKV">
                                 <rect key="frame" x="241" y="28" width="121" height="23"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -59,7 +59,7 @@
                                 <rect key="frame" x="205" y="323" width="191" height="30"/>
                                 <state key="normal" title="Or Choose Location on Map"/>
                                 <connections>
-                                    <segue destination="JJb-YA-mfc" kind="show" id="tYw-sa-6ad"/>
+                                    <segue destination="JJb-YA-mfc" kind="show" identifier="mapSegue" id="tYw-sa-6ad"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78l-7J-xwZ">
@@ -85,13 +85,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2E-sV-MNU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Location Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2E-sV-MNU">
                                 <rect key="frame" x="84" y="193" width="114" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the place where the task takes place" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hVo-yc-WHm">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the place where the task takes place" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hVo-yc-WHm">
                                 <rect key="frame" x="82" y="222" width="429" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -108,15 +108,30 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="TLz-4g-6go" firstAttribute="leading" secondItem="hF4-4c-sar" secondAttribute="leading" id="30W-3b-FkB"/>
+                            <constraint firstItem="hVo-yc-WHm" firstAttribute="leading" secondItem="hF4-4c-sar" secondAttribute="leading" id="5b6-Dx-BsS"/>
+                            <constraint firstItem="1H3-gM-RKV" firstAttribute="centerX" secondItem="Xsr-oa-Tsh" secondAttribute="centerX" id="6mw-bT-g7z"/>
+                            <constraint firstItem="TLz-4g-6go" firstAttribute="top" secondItem="Xsr-oa-Tsh" secondAttribute="bottom" constant="8" id="8lw-sR-1yn"/>
                             <constraint firstItem="VLv-gb-mWq" firstAttribute="top" secondItem="A1R-df-kJy" secondAttribute="bottom" constant="38" id="91A-EG-aRv"/>
+                            <constraint firstItem="opO-kI-rIc" firstAttribute="top" secondItem="TLz-4g-6go" secondAttribute="bottom" constant="8" id="91z-ql-IW9"/>
                             <constraint firstItem="opO-kI-rIc" firstAttribute="leading" secondItem="hF4-4c-sar" secondAttribute="leading" id="Fsc-si-sPB"/>
+                            <constraint firstItem="TLz-4g-6go" firstAttribute="leading" secondItem="hF4-4c-sar" secondAttribute="leading" id="KBM-Tk-EhY"/>
+                            <constraint firstItem="hVo-yc-WHm" firstAttribute="top" secondItem="A2E-sV-MNU" secondAttribute="bottom" constant="8" id="OC6-cF-JoI"/>
+                            <constraint firstItem="A2E-sV-MNU" firstAttribute="top" secondItem="opO-kI-rIc" secondAttribute="bottom" constant="8" id="Qet-yh-Su8"/>
                             <constraint firstItem="78l-7J-xwZ" firstAttribute="leading" secondItem="qoO-2q-BlZ" secondAttribute="leadingMargin" constant="38" id="S19-sN-Y5C"/>
                             <constraint firstAttribute="trailingMargin" secondItem="A1R-df-kJy" secondAttribute="trailing" constant="38" id="UF8-O7-Cce"/>
+                            <constraint firstItem="A2E-sV-MNU" firstAttribute="leading" secondItem="hF4-4c-sar" secondAttribute="leading" id="YSc-5q-Wmw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="A1R-df-kJy" secondAttribute="trailing" constant="138" id="hk0-fo-kVM"/>
+                            <constraint firstItem="uPw-Wn-b6H" firstAttribute="top" secondItem="hVo-yc-WHm" secondAttribute="bottom" constant="8" id="lUL-cD-dal"/>
                             <constraint firstItem="uPw-Wn-b6H" firstAttribute="leading" secondItem="hF4-4c-sar" secondAttribute="leading" id="mPe-t3-kdN"/>
+                            <constraint firstItem="opO-kI-rIc" firstAttribute="leading" secondItem="hF4-4c-sar" secondAttribute="leading" id="mcn-z1-hhf"/>
+                            <constraint firstItem="Xsr-oa-Tsh" firstAttribute="top" secondItem="hF4-4c-sar" secondAttribute="bottom" constant="8" id="mwa-JS-Pfp"/>
                             <constraint firstItem="VLv-gb-mWq" firstAttribute="top" secondItem="78l-7J-xwZ" secondAttribute="bottom" constant="38" id="nIz-aa-qrL"/>
+                            <constraint firstItem="uPw-Wn-b6H" firstAttribute="leading" secondItem="hF4-4c-sar" secondAttribute="leading" id="nL8-yg-XKX"/>
+                            <constraint firstItem="Xsr-oa-Tsh" firstAttribute="leading" secondItem="hF4-4c-sar" secondAttribute="leading" id="qm5-4Q-DVo"/>
                             <constraint firstItem="Xsr-oa-Tsh" firstAttribute="leading" secondItem="hF4-4c-sar" secondAttribute="leading" id="rHx-VJ-rSE"/>
+                            <constraint firstItem="4VH-fo-ZwM" firstAttribute="leading" secondItem="hF4-4c-sar" secondAttribute="leading" id="xQe-xZ-ZAH"/>
                             <constraint firstItem="4VH-fo-ZwM" firstAttribute="leading" secondItem="hF4-4c-sar" secondAttribute="leading" id="xsB-NW-EHl"/>
+                            <constraint firstItem="4VH-fo-ZwM" firstAttribute="top" secondItem="uPw-Wn-b6H" secondAttribute="bottom" constant="8" id="yhm-6w-3nG"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -235,6 +250,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="540" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="2iD-bb-EcH" kind="show" identifier="showDetail" id="Ond-hl-eUr"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -272,7 +290,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableview" destination="9kQ-A6-Oc3" id="HLU-d3-MFT"/>
-                        <segue destination="2iD-bb-EcH" kind="show" identifier="showDetail" id="wAk-Ps-eKQ"/>
                         <segue destination="wuR-bt-sUM" kind="presentation" identifier="addNewTask" id="dWu-V7-HSF"/>
                     </connections>
                 </viewController>
@@ -291,6 +308,24 @@
                     <view key="view" contentMode="scaleToFill" id="emo-jb-WYZ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TtP-Ta-U3S">
+                                <rect key="frame" x="279" y="118" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRA-II-JkY">
+                                <rect key="frame" x="279" y="177" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ar-Ft-ruj">
+                                <rect key="frame" x="254" y="513" width="96" height="30"/>
+                                <state key="normal" title="Show On Map"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>

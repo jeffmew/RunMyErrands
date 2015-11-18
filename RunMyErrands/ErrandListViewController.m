@@ -8,12 +8,14 @@
 
 #import "ErrandListViewController.h"
 #import "AddNewTaskViewController.h"
+#import "DetailViewController.h"
 #import <Parse/Parse.h>
+#import "Task.h"
 
 @interface ErrandListViewController () <UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
-@property (nonatomic) NSArray *tasks;
+@property (nonatomic) NSArray *taskArray;
 @end
 
 
@@ -30,11 +32,12 @@
     [PFUser logInWithUsernameInBackground:@"jeff" password:@"jeff" block:^(PFUser *user, NSError *error) {
         if (error) {
         } else {
+          //  [self createNewTeam];
             [self loadTaskObjects];
         }
     }];
     
-    //[self createNewTeam];
+    
     
 }
 
@@ -54,21 +57,21 @@
 //    }];	
 //}
 
-//- (void) createNewTeam {
-//    PFObject *newTeam = [PFObject objectWithClassName:@"Team"];
-//    newTeam[@"name"] = @"Team RME";
-//    newTeam[@"teamLead"] = [PFUser currentUser].objectId;
-//    newTeam[@"team"] = @[[PFUser currentUser].objectId];
-//    newTeam[@"tasks"] = @[];
-//
-//    [newTeam saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//        if (succeeded) {
-//            // The object has been saved.
-//        } else {
-//            // There was a problem, check error.description            
-//        }
-//    }];
-//}
+- (void) createNewTeam {
+    PFObject *newTeam = [PFObject objectWithClassName:@"Team"];
+    newTeam[@"name"] = @"Team RME";
+    newTeam[@"teamLead"] = [PFUser currentUser].objectId;
+    newTeam[@"team"] = @[[PFUser currentUser].objectId];
+    newTeam[@"tasks"] = @[];
+
+    [newTeam saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            // The object has been saved.
+        } else {
+            // There was a problem, check error.description            
+        }
+    }];
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
@@ -97,7 +100,15 @@
                     if (error) {
                         NSLog(@"Error: %@ %@", error, [error userInfo]);
                     } else {
-                        self.tasks = objects;
+                        self.taskArray = objects;
+                        
+                        for (Task *taskFromArray in self.taskArray) {
+                            //
+                            [taskFromArray updateCoordinate];
+                        }
+                        
+                        Task *atask = self.taskArray.lastObject;
+                        NSLog(@"%f", atask.coordinate.longitude);
                         [self.tableview reloadData];
                     }
                 }];
@@ -122,7 +133,7 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.tasks.count;
+    return self.taskArray.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -137,42 +148,10 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [self.tableview dequeueReusableCellWithIdentifier:@"tasklistCell" forIndexPath:indexPath];
+
+    Task *taskAtCell = self.taskArray[indexPath.section];
     
-    
-    /*
-     you can't set distance between cells directly, but you can set the height for header in section to achieve the same result.
-     
-     1.set the numbers of cell you need as sections:
-     
-     - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-     {
-     return 3; // in your case, there are 3 cells
-     }
-     2.return only 1 cell for each section
-     
-     - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-     {
-     return 1;
-     }
-     3.set the height for header in section to set space between cells
-     
-     - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-     {
-     return 10.; // you can have your own choice, of course
-     }
-     4.set the header's background color to clear color, so it won't look weird
-     
-     - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-     {
-     UIView *headerView = [[UIView alloc] init];
-     headerView.backgroundColor = [UIColor clearColor];
-     return headerView;
-     }
-    
-    */
-    
-    PFObject *task = [self.tasks objectAtIndex:indexPath.section];
-    cell.textLabel.text = [task objectForKey:@"name"];
+    cell.textLabel.text = taskAtCell.title;
     cell.layer.cornerRadius = 6;
     
     return cell;
@@ -190,6 +169,9 @@
     if ([[segue identifier] isEqualToString:@"addNewTask"]) {
        // AddNewTaskViewController *addNewTaskVC = (AddNewTaskViewController *)[segue destinationViewController];
 
+    } else if ([[segue identifier] isEqualToString:@"showDetail"]) {
+        DetailViewController *detailVC = (DetailViewController*)[segue destinationViewController];
+        detailVC.taskArray = self.taskArray;
     }
 }
 
