@@ -24,6 +24,10 @@
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
+    //allow persmission for local notifications
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    
     return YES;
 }
 

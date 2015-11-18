@@ -69,6 +69,7 @@
             
         }
     }
+    NSLog(@"monitoring available %D",[CLLocationManager isMonitoringAvailableForClass:[GeoManager class]]);
 }
 
 -(void)stopLocationManager{
@@ -104,9 +105,6 @@
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"locationUpdated" object:nil];
     }
-    
-    
-    
 }
 
 - (void) initiateMap {
@@ -127,6 +125,7 @@
 - (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region {
     //NSLog(@"didStartMonitoringForRegion for %@", region);
     [_locationManager requestStateForRegion:region];
+    NSLog(@"Number of Geo Regions %ld",(long)self.locationManager.monitoredRegions.count);
 }
 
 
@@ -168,7 +167,7 @@
     //localNotification.regionTriggersOnce = NO;
     localNotification.region = region;
     localNotification.alertTitle = @"alert";
-    localNotification.alertBody = [NSString stringWithFormat:@"Please %@", region.identifier];
+    localNotification.alertBody = [NSString stringWithFormat:@" %@", region.identifier];
     localNotification.soundName = UILocalNotificationDefaultSoundName;
     localNotification.applicationIconBadgeNumber = 1;
     //[[UIApplication sharedApplication] cancelAllLocalNotifications];
