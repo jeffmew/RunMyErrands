@@ -11,6 +11,6 @@
 #import "MapViewController.h"
 #import "Task.h"
 
-@interface AddNewTaskViewController : UIViewController <AddTasksDelegate>
-
+@interface AddNewTaskViewController : UIViewController
+@property (nonatomic) NSArray *taskArray;
 @end

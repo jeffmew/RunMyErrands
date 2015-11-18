@@ -9,13 +9,28 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
+#import <Parse/Parse.h>
+#import <Parse/PFObject+Subclass.h>
 
-@interface Task : NSObject <MKAnnotation>
+@interface Task : PFObject <MKAnnotation,PFSubclassing> {
+    CLLocationCoordinate2D coordinate;
+}
 
-@property  (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *subtitle;
+@property (nonatomic) NSString *taskDescription;
+@property (nonatomic) NSString *address;
+@property (nonatomic) NSString *locationName;
+@property (nonatomic) NSNumber *longitude;
+@property (nonatomic) NSNumber *lattitude;
+@property (nonatomic) NSNumber *isComplete;
+@property (nonatomic) NSNumber *category;
 
-- (id)initWithCoordinate:(CLLocationCoordinate2D)aCoordinate andTitle:(NSString *)aTitle andSubtitle:(NSString *)aSubtitle;
+//- (id)initWithCoordinate:(CLLocationCoordinate2D)aCoordinate andTitle:(NSString *)aTitle andSubtitle:(NSString *)aSubtitle;
++ (NSString*)parseClassName;
++ (void)load;
+-(CLLocationCoordinate2D) getCoordinate;
+-(void) setCoordinate:(CLLocationCoordinate2D)newCoordinate;
+-(void) updateCoordinate;
 
 @end

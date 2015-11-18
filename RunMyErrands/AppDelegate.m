@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 #import "API_key.h"
+#import "Task.h"
 
 @interface AppDelegate ()
 
@@ -19,6 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [Task registerSubclass];
     [Parse setApplicationId:PARSE_APP_ID
                   clientKey:PARSE_CLIENT_KEY];
     

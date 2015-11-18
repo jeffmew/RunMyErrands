@@ -61,7 +61,9 @@
             
             [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             }]];
+
             //      [self presentViewController:alertController animated:YES completion:nil];
+
             
         }
     }

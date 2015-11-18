@@ -10,15 +10,10 @@
 #import <MapKit/MapKit.h>
 #import "Task.h"
 
-@protocol AddTasksDelegate <NSObject>
-
--(void)addTasksArray:(NSMutableArray*)array;
-
-@end
-
 @interface MapViewController : UIViewController
 
-@property (nonatomic)NSMutableArray *taskArray;
-@property (nonatomic, strong) id <AddTasksDelegate> delegate;
+@property (nonatomic)NSArray *taskArray;
+
+@property (nonatomic, strong) Task *task;
 
 @end

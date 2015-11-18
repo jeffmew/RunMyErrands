@@ -11,18 +11,39 @@
 
 @implementation Task
 
+@dynamic title;
+@dynamic subtitle;
+@dynamic taskDescription;
+@dynamic address;
+@dynamic locationName;
+@dynamic lattitude;
+@dynamic longitude;
+@dynamic coordinate;
+@dynamic isComplete;
+@dynamic category;
 
-- (instancetype)initWithCoordinate:(CLLocationCoordinate2D)aCoordinate andTitle:(NSString *)aTitle andSubtitle:(NSString *)aSubtitle;
-{
-    self = [super init];
-    if (self) {
-        _coordinate = aCoordinate;
-        _title = aTitle;
-        _subtitle = aSubtitle;
-    }
-    return self;
++ (void)load {
+    [self registerSubclass];
 }
 
++ (NSString*)parseClassName {
+    return @"Task";
+}
+
+-(CLLocationCoordinate2D) getCoordinate {
+    CLLocationCoordinate2D newCoordinate = CLLocationCoordinate2DMake([self.lattitude doubleValue], [self.longitude doubleValue]);
+    return newCoordinate;
+}
+
+-(void) updateCoordinate {
+    self.coordinate = CLLocationCoordinate2DMake([self.lattitude doubleValue], [self.longitude doubleValue]);
+}
+
+-(void) setCoordinate:(CLLocationCoordinate2D)newCoordinate {
+    self.lattitude = @(newCoordinate.latitude);
+    self.longitude = @(newCoordinate.longitude);
+    coordinate = newCoordinate;
+}
 
 //-(void)getTaskLocation {
 //
