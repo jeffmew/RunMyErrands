@@ -51,19 +51,28 @@
 
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
     
-    UIAlertController * alert=   [UIAlertController
-                                  alertControllerWithTitle:@"You are in the Area"
-                                  message:[NSString stringWithFormat:@"%@",notification.alertBody]
-                                  preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController * alert=   [UIAlertController
+                                      alertControllerWithTitle:@"You are in the Area"
+                                      message:[NSString stringWithFormat:@"%@",notification.alertBody]
+                                      preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * action) {
+                                                           [alert dismissViewControllerAnimated:YES completion:nil];
+                                                       }];
+        
+        [alert addAction:cancel];
+        
+        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+        
     
-    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
-                                                   handler:^(UIAlertAction * action) {
-                                                       [alert dismissViewControllerAnimated:YES completion:nil];
-                                                   }];
     
-    [alert addAction:cancel];
+    //    UINavigationController *navVC = (UINavigationController*) self.window.rootViewController;
     
-    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    //    [navVC.topViewController presentViewController:alert animated:YES completion:nil];
+    
+    //[navVC.topViewController presentViewController:alert animated:YES completion:nil];
+    //    [navVC pushViewController:alert animated:YES];
 }
 
 @end

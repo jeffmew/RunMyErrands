@@ -12,6 +12,7 @@
 @interface MapViewController () <MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic) GeoManager *locationManager;
+@property (nonatomic) BOOL didLoadLocations;
 
 
 @end
@@ -21,7 +22,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self allowNotifications];
+    
     self.mapView.delegate = self;
+    
+    self.didLoadLocations = NO;
     
     self.locationManager = [GeoManager sharedManager];
     [self.locationManager startLocationManager];
@@ -31,32 +36,22 @@
     CLLocationCoordinate2D task01center = CLLocationCoordinate2DMake(37.331820,-122.032180);
     Task *task01 = [[Task alloc]initWithCoordinate:task01center andTitle:@"Banannas" andSubtitle:@"Pick up from whole foods"];
     
-    CLLocationCoordinate2D task02center = CLLocationCoordinate2DMake(37.331820,-122.031080);
-    Task *task02 = [[Task alloc]initWithCoordinate:task02center andTitle:@"Motor Oil" andSubtitle:@"Pick up from Canadian Tire"];
-
+    CLLocationCoordinate2D task02center = CLLocationCoordinate2DMake(49.281894626184886,-123.10850102985563);
+    Task *task02 = [[Task alloc]initWithCoordinate:task02center andTitle:@"Study" andSubtitle:@"Lighthouse Labs"];
+    
     CLLocationCoordinate2D task03center = CLLocationCoordinate2DMake(37.331820,-122.031180);
     Task *task03 = [[Task alloc]initWithCoordinate:task03center andTitle:@"TV" andSubtitle:@"Pick up from Best Buy"];
-
+    
     if (!self.taskArray) {
         self.taskArray = [NSMutableArray array];
     }
-   
+    
     [self.taskArray addObject:task01];
     [self.taskArray addObject:task02];
-    [self.taskArray addObject:task03];
+    //    [self.taskArray addObject:task03];
     
-    //    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(37.331820,-122.031180);
-    //    CLRegion *task01Region = [[CLCircularRegion alloc]initWithCenter:center radius:1000.0 identifier:@"task01"];
-    //
     //    task01Region.notifyOnEntry = YES;
     //    task01Region.notifyOnExit = YES;
-    //
-    //    Task * testTask = [[Task alloc]initWithCoordinate:center andTitle:@"Test" andSubtitle:@""];
-    //
-    //
-    //    [self.mapView addAnnotation:testTask];
-    //
-    //    [self.locationManager addTaskLocation:task01Region];
     
 }
 
@@ -86,31 +81,51 @@
     }
 }
 
-
--(void)mapViewDidFinishLoadingMap:(nonnull MKMapView *)mapView{
+-(void)mapViewDidFinishRenderingMap:(MKMapView *)mapView fullyRendered:(BOOL)fullyRendered {
     
-    for (Task *task in self.taskArray) {
+    
+    
+    if (!self.didLoadLocations) {
         
-        CLLocationCoordinate2D center = task.coordinate;
-        CLRegion *taskRegion = [[CLCircularRegion alloc]initWithCenter:center radius:1000.0 identifier:task.title];
-        
-        [self.mapView addAnnotation:task];
-        
-        [self.locationManager addTaskLocation:taskRegion];
+        self.didLoadLocations = YES;
+        for (Task *task in self.taskArray) {
+            
+            CLLocationCoordinate2D center = task.coordinate;
+            CLRegion *taskRegion = [[CLCircularRegion alloc]initWithCenter:center radius:500.0 identifier:task.title];
+            
+            [self.mapView addAnnotation:task];
+            
+            [self.locationManager addTaskLocation:taskRegion];
+        }
     }
     
 }
+
+
+-(void)mapViewDidFinishLoadingMap:(nonnull MKMapView *)mapView{
+    
+    
+}
+
+
 - (IBAction)closeMap:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    MKCoordinateRegion mapRegion;
-    mapRegion.center = mapView.userLocation.coordinate;
-    mapRegion.span.latitudeDelta = 0.2;
-    mapRegion.span.longitudeDelta = 0.2;
-    [mapView setRegion:mapRegion animated: YES];
+//    MKCoordinateRegion mapRegion;
+//    mapRegion.center = mapView.userLocation.coordinate;
+//    mapRegion.span.latitudeDelta = 0.2;
+//    mapRegion.span.longitudeDelta = 0.2;
+//    [mapView setRegion:mapRegion animated: YES];
+}
+
+
+-(void)allowNotifications {
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    
 }
 
 
