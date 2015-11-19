@@ -186,28 +186,45 @@
     
     if (sender.direction == UISwipeGestureRecognizerDirectionRight) {
 //        //record original position
+        NSString *title = @"Confirm!";
+        NSString *message = @"Are you sure you want to mark task as complete?";
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title
+                                                                                 message:message
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * action) {
+                                                       //
+                                                       CGPoint currPoint = [sender locationInView:self.tableview];
+                                                       long index = [[self.tableview indexPathForRowAtPoint:currPoint] row];
+                                                       
+                                                       Task *swipedTask = self.taskArray[index];
+                                                       swipedTask.isComplete = @(YES);
+                                                       
+                                                       PFQuery *query = [PFQuery queryWithClassName:@"Task"];
+                                                       
+                                                       [query getObjectInBackgroundWithId:swipedTask.objectId block:^(PFObject * _Nullable object, NSError * _Nullable error) {
+                                                           if (error) {
+                                                               NSLog(@"Error: %@ %@", error, [error userInfo]);
+                                                           } else {
+                                                               Task *task = (Task*)object;
+                                                               task.isComplete = @(YES);
+                                                               [task saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                                                                   if (succeeded) {
+                                                                       [self loadTaskObjects];
+                                                                   }
+                                                               }];
+                                                           }
+                                                       }];
+                                                   }];
         
-        CGPoint currPoint = [sender locationInView:self.tableview];
-        long index = [[self.tableview indexPathForRowAtPoint:currPoint] row];
-        
-        Task *swipedTask = self.taskArray[index];
-        swipedTask.isComplete = @(YES);
-        
-        PFQuery *query = [PFQuery queryWithClassName:@"Task"];
-        
-        [query getObjectInBackgroundWithId:swipedTask.objectId block:^(PFObject * _Nullable object, NSError * _Nullable error) {
-            if (error) {
-                NSLog(@"Error: %@ %@", error, [error userInfo]);
-            } else {
-                Task *task = (Task*)object;
-                task.isComplete = @(YES);
-                [task saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                    if (succeeded) {
-                        [self loadTaskObjects];
-                    }
-                }];
-            }
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"CANCEL" style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * _Nonnull action) {
+            //
         }];
+        
+        [alertController addAction:ok];
+        [alertController addAction:cancel];
+        [self presentViewController:alertController animated:YES completion:nil];
     }
 }
 
