@@ -7,6 +7,7 @@
 //
 
 #import "ErrandListViewController.h"
+#import "RunMyErrands-Swift.h"
 #import "AddNewTaskViewController.h"
 #import "DetailViewController.h"
 #import <Parse/Parse.h>
@@ -15,11 +16,12 @@
 
 @interface ErrandListViewController () <UITableViewDataSource,UITableViewDelegate>
 
+@property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeGesture;
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (nonatomic) NSArray *taskArray;
 @property (nonatomic) GeoManager *locationManager;
-@end
 
+@end
 
 
 @implementation ErrandListViewController
@@ -32,34 +34,33 @@
     
     self.tableview.backgroundColor = [UIColor clearColor];
     
-    
-    [PFUser logInWithUsernameInBackground:@"jeff" password:@"jeff" block:^(PFUser *user, NSError *error) {
+    [PFUser logInWithUsernameInBackground:@"jay" password:@"jay" block:^(PFUser *user, NSError *error) {
         if (error) {
         } else {
-            //  [self createNewTeam];
+            //[self addNewTeamMember]
             [self loadTaskObjects];
         }
     }];
     
-    
-    
+    [self.view addGestureRecognizer:self.swipeGesture];
 }
 
-//-(void) addNewTeamMember {
-//    PFQuery *query = [PFQuery queryWithClassName:@"Team"];
-//
-//    [query getObjectInBackgroundWithId:@"IluX14keVf" block:^(PFObject * _Nullable team, NSError * _Nullable error) {
-//        if (error) {
-//            NSLog(@"Error: %@ %@", error, [error userInfo]);
-//        } else {
-//            //messages found
-//            NSArray *updatedTeam = team[@"team"];
-//            updatedTeam = [updatedTeam arrayByAddingObjectsFromArray:@[[PFUser currentUser].objectId]];
-//            team[@"team"] = updatedTeam;
-//            [team saveInBackground];
-//        }
-//    }];
-//}
+-(void) addNewTeamMember {
+    PFQuery *query = [PFQuery queryWithClassName:@"Team"];
+    
+    [query getObjectInBackgroundWithId:@"KXHjYWYANj" block:^(PFObject * _Nullable team, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        } else {
+            //messages found
+            NSArray *updatedTeam = team[@"team"];
+            updatedTeam = [updatedTeam arrayByAddingObjectsFromArray:@[[PFUser currentUser].objectId]];
+            team[@"team"] = updatedTeam;
+            [team saveInBackground];
+        }
+    }];	
+}
+
 
 - (void) createNewTeam {
     PFObject *newTeam = [PFObject objectWithClassName:@"Team"];
@@ -99,6 +100,7 @@
                 
                 PFQuery *taskQuery = [PFQuery queryWithClassName:@"Task"];
                 [taskQuery whereKey:@"objectId" containedIn:tasks];
+                [taskQuery addAscendingOrder:@"isComplete"];
                 [taskQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
                     
                     if (error) {
@@ -107,7 +109,6 @@
                         self.taskArray = objects;
                         
                         for (Task *taskFromArray in self.taskArray) {
-                            //
                             [taskFromArray updateCoordinate];
                         }
                         
@@ -150,16 +151,87 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [self.tableview dequeueReusableCellWithIdentifier:@"tasklistCell" forIndexPath:indexPath];
+    ErrandsListTableViewCell *cell =(ErrandsListTableViewCell*)[self.tableview dequeueReusableCellWithIdentifier:@"tasklistCell" forIndexPath:indexPath];
+    
+    cell.titleLabel.text = nil;
+    cell.subtitleLabel.text = nil;
+    cell.titleLabel.attributedText = nil;
+    cell.subtitleLabel.attributedText = nil;
     
     Task *taskAtCell = self.taskArray[indexPath.section];
     
-    cell.textLabel.text = taskAtCell.title;
-    cell.layer.cornerRadius = 6;
+    if ([taskAtCell.isComplete boolValue]) {
+    
+        if (taskAtCell.title) {
+            NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:[taskAtCell.title capitalizedString]];
+            [title addAttribute:NSStrikethroughStyleAttributeName value:@1 range:NSMakeRange(0, [title length])];
+            cell.titleLabel.attributedText = title;
+        }
+        
+        if (taskAtCell.subtitle) {
+            NSMutableAttributedString *subtitle = [[NSMutableAttributedString alloc] initWithString:[taskAtCell.subtitle capitalizedString]];
+            [subtitle addAttribute:NSStrikethroughStyleAttributeName value:@1 range:NSMakeRange(0, [subtitle length])];
+            cell.subtitleLabel.attributedText = subtitle;
+        }
+        
+    } else {
+        
+        cell.titleLabel.text = [taskAtCell.title capitalizedString];
+        cell.subtitleLabel.text = [taskAtCell.subtitle capitalizedString];
+        cell.layer.cornerRadius = 6;
+        
+    }
     
     return cell;
 }
 
+#pragma mark - UIGestureRecognizer
+
+- (IBAction)swipeStrike:(UISwipeGestureRecognizer *)sender {
+    
+    if (sender.direction == UISwipeGestureRecognizerDirectionRight) {
+//        //record original position
+        NSString *title = @"Confirm!";
+        NSString *message = @"Are you sure you want to mark task as complete?";
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title
+                                                                                 message:message
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * action) {
+                                                       //
+                                                       CGPoint currPoint = [sender locationInView:self.tableview];
+                                                       long index = [[self.tableview indexPathForRowAtPoint:currPoint] row];
+                                                       
+                                                       Task *swipedTask = self.taskArray[index];
+                                                       swipedTask.isComplete = @(YES);
+                                                       
+                                                       PFQuery *query = [PFQuery queryWithClassName:@"Task"];
+                                                       
+                                                       [query getObjectInBackgroundWithId:swipedTask.objectId block:^(PFObject * _Nullable object, NSError * _Nullable error) {
+                                                           if (error) {
+                                                               NSLog(@"Error: %@ %@", error, [error userInfo]);
+                                                           } else {
+                                                               Task *task = (Task*)object;
+                                                               task.isComplete = @(YES);
+                                                               [task saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                                                                   if (succeeded) {
+                                                                       [self loadTaskObjects];
+                                                                   }
+                                                               }];
+                                                           }
+                                                       }];
+                                                   }];
+        
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"CANCEL" style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * _Nonnull action) {
+            //
+        }];
+        
+        [alertController addAction:ok];
+        [alertController addAction:cancel];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+}
 
 
 #pragma mark - Navigation
@@ -168,7 +240,6 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    
     if ([[segue identifier] isEqualToString:@"addNewTask"]) {
         AddNewTaskViewController *addNewTaskVC = (AddNewTaskViewController *)[segue destinationViewController];
         addNewTaskVC.taskArray = self.taskArray;

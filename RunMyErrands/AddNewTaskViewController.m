@@ -16,8 +16,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *addressTextField;
 @property (weak, nonatomic) IBOutlet UITextField *locationName;
 @property (weak, nonatomic) IBOutlet UIPickerView *categoryPickerView;
-//@property (nonatomic) double longititude;
-//@property (nonatomic) double lattitude;
 @property (nonatomic) NSArray *pickerData;
 @property (nonatomic) NSInteger *categoryChoice;
 @property (nonatomic) NSString *teamKey;
@@ -54,9 +52,7 @@
         alertControllerTitle = @"Enter an Address";
         alertControllerMessage = @"Please Enter an Address or Choose it on the Map";
         [self presentAlertController:alertControllerTitle aMessage:alertControllerMessage];
-        
     } else {
-        
         self.task.title = self.taskNameTextField.text;
         self.task.taskDescription = self.descriptionTextField.text;
         self.task.subtitle = self.locationName.text;
@@ -121,7 +117,6 @@
 #pragma - UITapGestureRecognizer Delegate Functions
 
 - (IBAction)tapDetected:(UITapGestureRecognizer *)sender {
-    //tap to hide keyboard
     [self.view endEditing:YES];
 }
 

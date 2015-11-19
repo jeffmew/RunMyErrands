@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -243,15 +244,57 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tasklistCell" id="vyY-Jc-jhE">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tasklistCell" id="vyY-Jc-jhE" customClass="ErrandsListTableViewCell" customModule="RunMyErrands" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="65" width="540" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vyY-Jc-jhE" id="9HX-YL-F1V">
                                             <rect key="frame" x="0.0" y="0.0" width="540" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FAj-yC-svL">
+                                                    <rect key="frame" x="8" y="8" width="53" height="53"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="FAj-yC-svL" secondAttribute="height" multiplier="1:1" id="Gue-9F-G6d"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k0Y-AZ-ycT">
+                                                    <rect key="frame" x="81" y="43" width="431" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NnP-Vx-7Re">
+                                                    <rect key="frame" x="81" y="18" width="431" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstItem="FAj-yC-svL" firstAttribute="bottom" secondItem="9HX-YL-F1V" secondAttribute="bottomMargin" id="0v7-PS-zTg"/>
+                                                <constraint firstItem="FAj-yC-svL" firstAttribute="leading" secondItem="9HX-YL-F1V" secondAttribute="leadingMargin" id="7o1-US-ZXs"/>
+                                                <constraint firstItem="FAj-yC-svL" firstAttribute="top" secondItem="9HX-YL-F1V" secondAttribute="topMargin" id="LJv-qx-mQK"/>
+                                                <constraint firstItem="k0Y-AZ-ycT" firstAttribute="bottom" secondItem="9HX-YL-F1V" secondAttribute="bottomMargin" id="RrV-Ye-65G"/>
+                                                <constraint firstItem="NnP-Vx-7Re" firstAttribute="top" secondItem="FAj-yC-svL" secondAttribute="top" constant="10" id="Z6c-9a-CJ2"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="NnP-Vx-7Re" secondAttribute="trailing" constant="20" id="ctb-Ru-TBe"/>
+                                                <constraint firstItem="NnP-Vx-7Re" firstAttribute="leading" secondItem="FAj-yC-svL" secondAttribute="trailing" constant="20" id="fDb-m7-1w9"/>
+                                                <constraint firstItem="NnP-Vx-7Re" firstAttribute="leading" secondItem="FAj-yC-svL" secondAttribute="trailing" constant="20" id="igH-5R-Nwt"/>
+                                                <constraint firstItem="k0Y-AZ-ycT" firstAttribute="leading" secondItem="NnP-Vx-7Re" secondAttribute="leading" id="mWt-cd-h62"/>
+                                                <constraint firstItem="k0Y-AZ-ycT" firstAttribute="bottom" secondItem="FAj-yC-svL" secondAttribute="bottom" id="nhS-m0-6ir"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="k0Y-AZ-ycT" secondAttribute="trailing" constant="20" id="zXB-GA-Y4u"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="igH-5R-Nwt"/>
+                                                    <exclude reference="RrV-Ye-65G"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="categoryImage" destination="FAj-yC-svL" id="5Fy-Nq-IBp"/>
+                                            <outlet property="subtitleLabel" destination="k0Y-AZ-ycT" id="puA-K8-BNV"/>
+                                            <outlet property="titleLabel" destination="NnP-Vx-7Re" id="Uxh-3e-wNH"/>
                                             <segue destination="2iD-bb-EcH" kind="show" identifier="showDetail" id="Ond-hl-eUr"/>
                                         </connections>
                                     </tableViewCell>
@@ -291,12 +334,19 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="swipeGesture" destination="o86-4y-KMV" id="ObS-cZ-4LE"/>
                         <outlet property="tableview" destination="9kQ-A6-Oc3" id="HLU-d3-MFT"/>
                         <segue destination="2iD-bb-EcH" kind="show" identifier="showDetail" id="wAk-Ps-eKQ"/>
                         <segue destination="wuR-bt-sUM" kind="show" identifier="addNewTask" id="dWu-V7-HSF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="o86-4y-KMV">
+                    <connections>
+                        <action selector="swipeStrike:" destination="BYZ-38-t0r" id="BQQ-AG-fnF"/>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="tuG-5e-c2S"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1117" y="387"/>
         </scene>
