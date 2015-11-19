@@ -23,6 +23,7 @@
 		5298904F1BFBDBE500B82D76 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5298904E1BFBDBE500B82D76 /* MapKit.framework */; };
 		52AA1A091BFD8F7D000FF2F0 /* ErrandsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AA1A081BFD8F7D000FF2F0 /* ErrandsListTableViewCell.swift */; };
 		52D6CD6E1BF96CE600CBBBAD /* AddNewTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D6CD6D1BF96CE600CBBBAD /* AddNewTaskViewController.m */; };
+		52DEDEE21BFE85E2003ED1F3 /* MainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52DEDEE11BFE85E2003ED1F3 /* MainMapViewController.m */; };
 		603AB53B5149F09692D9B583 /* libPods-RunMyErrands.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 504342781871F1A0EFAE0716 /* libPods-RunMyErrands.a */; };
 		DA216A381BFD7FD300797C24 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA216A371BFD7FD300797C24 /* CustomAnnotation.swift */; };
 /* End PBXBuildFile section */
@@ -77,6 +78,8 @@
 		52AA1A081BFD8F7D000FF2F0 /* ErrandsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrandsListTableViewCell.swift; sourceTree = "<group>"; };
 		52D6CD6C1BF96CE600CBBBAD /* AddNewTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewTaskViewController.h; sourceTree = "<group>"; };
 		52D6CD6D1BF96CE600CBBBAD /* AddNewTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewTaskViewController.m; sourceTree = "<group>"; };
+		52DEDEE11BFE85E2003ED1F3 /* MainMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMapViewController.m; sourceTree = "<group>"; };
+		52DEDEE31BFE85F3003ED1F3 /* MainMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMapViewController.h; sourceTree = "<group>"; };
 		85757A77437764711EB09EC4 /* Pods-RunMyErrands.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunMyErrands.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RunMyErrands/Pods-RunMyErrands.debug.xcconfig"; sourceTree = "<group>"; };
 		DA216A361BFD7FD200797C24 /* RunMyErrands-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RunMyErrands-Bridging-Header.h"; sourceTree = "<group>"; };
 		DA216A371BFD7FD300797C24 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
@@ -147,6 +150,8 @@
 				DA216A371BFD7FD300797C24 /* CustomAnnotation.swift */,
 				529890431BFBD97C00B82D76 /* GeoManager.h */,
 				529890441BFBD97C00B82D76 /* GeoManager.m */,
+				52DEDEE31BFE85F3003ED1F3 /* MainMapViewController.h */,
+				52DEDEE11BFE85E2003ED1F3 /* MainMapViewController.m */,
 				529890451BFBD97C00B82D76 /* MapViewController.h */,
 				529890461BFBD97C00B82D76 /* MapViewController.m */,
 				529890471BFBD97C00B82D76 /* Task.h */,
@@ -389,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				523E41021BF843D300AFBEB7 /* DetailViewController.m in Sources */,
+				52DEDEE21BFE85E2003ED1F3 /* MainMapViewController.m in Sources */,
 				52D6CD6E1BF96CE600CBBBAD /* AddNewTaskViewController.m in Sources */,
 				DA216A381BFD7FD300797C24 /* CustomAnnotation.swift in Sources */,
 				5257FBC21BF809CE005CC88D /* AppDelegate.m in Sources */,

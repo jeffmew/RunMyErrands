@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface DetailViewController : UIViewController
-@property (nonatomic) NSArray *taskArray;
+
+@property (weak, nonatomic) IBOutlet UILabel *taskNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *taskDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *locationNameLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+
+
 @end

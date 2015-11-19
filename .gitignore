@@ -6,3 +6,7 @@
 ehthumbs.db
 Thumbs.db
 RunMyErrands/API*
+Pods
+Podfile.lock
+*.xcworkspace
+RunMyerrands/*.xcworkspace

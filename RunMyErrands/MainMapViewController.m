@@ -1,0 +1,81 @@
+//
+//  MapViewController.m
+//  RunMyErrandsMaps
+//
+//  Created by Steele on 2015-11-16.
+//  Copyright © 2015 Steele. All rights reserved.
+//
+
+#import "MainMapViewController.h"
+#import "GeoManager.h"
+#import <Parse/Parse.h>
+
+@interface MainMapViewController () <MKMapViewDelegate>
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (nonatomic) GeoManager *locationManager;
+@property (nonatomic) BOOL didLoadLocations;
+
+
+@end
+
+@implementation MainMapViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.mapView.delegate = self;
+    
+    self.didLoadLocations = NO;
+    
+    self.locationManager = [GeoManager sharedManager];
+    [self.locationManager startLocationManager];
+    self.mapView.showsUserLocation = true;
+    
+}
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)dropPinGesture:(UILongPressGestureRecognizer *)sender {
+    
+    if ([sender state] == UIGestureRecognizerStateBegan) {
+        CGPoint touchPoint = [sender locationInView:self.mapView];
+        CLLocationCoordinate2D touchMapCoordinate =
+        [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
+        self.task.coordinate = touchMapCoordinate;
+        
+        [self.mapView addAnnotation:self.task];
+    }
+}
+
+-(void)mapViewDidFinishRenderingMap:(MKMapView *)mapView fullyRendered:(BOOL)fullyRendered {
+    
+    for (Task *task in self.taskArray) {
+        //Determine if to track the task location.
+        if (![task.isComplete boolValue]) {
+            [self.mapView addAnnotation:task];
+        }
+    }
+}
+
+-(void)mapViewDidFinishLoadingMap:(nonnull MKMapView *)mapView{
+    
+}
+
+-(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+    if (!self.didLoadLocations) {
+        self.didLoadLocations = YES;
+        MKCoordinateRegion mapRegion;
+        mapRegion.center = mapView.userLocation.coordinate;
+        mapRegion.span.latitudeDelta = 0.05;
+        mapRegion.span.longitudeDelta = 0.05;
+        [mapView setRegion:mapRegion animated: YES];
+    }
+}
+
+
+@end
