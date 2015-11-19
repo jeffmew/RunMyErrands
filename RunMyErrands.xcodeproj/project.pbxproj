@@ -23,6 +23,7 @@
 		5298904F1BFBDBE500B82D76 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5298904E1BFBDBE500B82D76 /* MapKit.framework */; };
 		52D6CD6E1BF96CE600CBBBAD /* AddNewTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D6CD6D1BF96CE600CBBBAD /* AddNewTaskViewController.m */; };
 		603AB53B5149F09692D9B583 /* libPods-RunMyErrands.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 504342781871F1A0EFAE0716 /* libPods-RunMyErrands.a */; };
+		DA216A381BFD7FD300797C24 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA216A371BFD7FD300797C24 /* CustomAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,8 @@
 		52D6CD6C1BF96CE600CBBBAD /* AddNewTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewTaskViewController.h; sourceTree = "<group>"; };
 		52D6CD6D1BF96CE600CBBBAD /* AddNewTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewTaskViewController.m; sourceTree = "<group>"; };
 		85757A77437764711EB09EC4 /* Pods-RunMyErrands.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunMyErrands.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RunMyErrands/Pods-RunMyErrands.debug.xcconfig"; sourceTree = "<group>"; };
+		DA216A361BFD7FD200797C24 /* RunMyErrands-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RunMyErrands-Bridging-Header.h"; sourceTree = "<group>"; };
+		DA216A371BFD7FD300797C24 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +142,7 @@
 				5257FBBD1BF809CE005CC88D /* Supporting Files */,
 				523E40FD1BF843A900AFBEB7 /* ErrandListViewController.h */,
 				523E40FE1BF843A900AFBEB7 /* ErrandListViewController.m */,
+				DA216A371BFD7FD300797C24 /* CustomAnnotation.swift */,
 				529890431BFBD97C00B82D76 /* GeoManager.h */,
 				529890441BFBD97C00B82D76 /* GeoManager.m */,
 				529890451BFBD97C00B82D76 /* MapViewController.h */,
@@ -150,6 +154,7 @@
 				52D6CD6C1BF96CE600CBBBAD /* AddNewTaskViewController.h */,
 				52D6CD6D1BF96CE600CBBBAD /* AddNewTaskViewController.m */,
 				529890421BFBD7C000B82D76 /* API_key.h */,
+				DA216A361BFD7FD200797C24 /* RunMyErrands-Bridging-Header.h */,
 			);
 			path = RunMyErrands;
 			sourceTree = "<group>";
@@ -382,6 +387,7 @@
 			files = (
 				523E41021BF843D300AFBEB7 /* DetailViewController.m in Sources */,
 				52D6CD6E1BF96CE600CBBBAD /* AddNewTaskViewController.m in Sources */,
+				DA216A381BFD7FD300797C24 /* CustomAnnotation.swift in Sources */,
 				5257FBC21BF809CE005CC88D /* AppDelegate.m in Sources */,
 				529890491BFBD97C00B82D76 /* GeoManager.m in Sources */,
 				5298904B1BFBD97C00B82D76 /* Task.m in Sources */,
@@ -529,10 +535,13 @@
 			baseConfigurationReference = 85757A77437764711EB09EC4 /* Pods-RunMyErrands.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = RunMyErrands/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mew.jeff.RunMyErrands;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RunMyErrands/RunMyErrands-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -541,10 +550,12 @@
 			baseConfigurationReference = 14251E798FFF8903EFF6AB4D /* Pods-RunMyErrands.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = RunMyErrands/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mew.jeff.RunMyErrands;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RunMyErrands/RunMyErrands-Bridging-Header.h";
 			};
 			name = Release;
 		};

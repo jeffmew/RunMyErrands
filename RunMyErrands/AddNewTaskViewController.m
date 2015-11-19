@@ -62,7 +62,7 @@
         self.task.subtitle = self.locationName.text;
         self.task.category = @([self.categoryPickerView selectedRowInComponent:0]);
         
-        if (self.addressTextField.text != 0) {
+        if (self.addressTextField.text.length != 0) {
             self.task.address = self.addressTextField.text;
             [self geoCodeAddress:self.task.address];
         }else if (self.task.coordinate.latitude) {

@@ -184,9 +184,10 @@
 
 -(void)trackGeoRegions {
     
+    [self.locationManager removeAllTaskLocation];
     for (Task *task in self.taskArray) {
         CLLocationCoordinate2D center = task.coordinate;
-        CLRegion *taskRegion = [[CLCircularRegion alloc]initWithCenter:center radius:200.0 identifier:task.title];
+        CLRegion *taskRegion = [[CLCircularRegion alloc]initWithCenter:center radius:200.0 identifier:[NSString stringWithFormat:@"%@\n%@",task.title,task.subtitle]];
         taskRegion.notifyOnEntry = YES;
         
         //Determine if to track the task location.

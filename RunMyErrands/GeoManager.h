@@ -26,6 +26,6 @@
 -(void)addTaskLocation:(CLRegion*)region;
 -(void)removeTaskLocation:(CLRegion*)region;
 -(void)geoCodeAddress;
-
+-(void)removeAllTaskLocation;
 
 @end

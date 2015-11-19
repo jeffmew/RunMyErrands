@@ -162,6 +162,14 @@
 }
 
 
+-(void)removeAllTaskLocation {
+    
+    for (CLRegion *region in self.locationManager.monitoredRegions) {
+        [self.locationManager stopMonitoringForRegion:region];
+    }
+}
+
+
 -(void)inLocationNotificationForRegion:(CLRegion *)region {
     
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
@@ -173,14 +181,6 @@
     localNotification.applicationIconBadgeNumber = 1;
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }
-
-
-
-
-
-
-
-
 
 
 
