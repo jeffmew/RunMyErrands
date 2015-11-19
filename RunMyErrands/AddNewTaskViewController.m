@@ -54,42 +54,50 @@
         alertControllerTitle = @"Enter an Address";
         alertControllerMessage = @"Please Enter an Address or Choose it on the Map";
         [self presentAlertController:alertControllerTitle aMessage:alertControllerMessage];
-
+        
     } else {
-       
+        
         self.task.title = self.taskNameTextField.text;
         self.task.taskDescription = self.descriptionTextField.text;
         self.task.subtitle = self.locationName.text;
-        if (self.addressTextField.text != 0) {
-            self.task.address = self.addressTextField.text;
-        }
-        
         self.task.category = @([self.categoryPickerView selectedRowInComponent:0]);
         
-        [self.task saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (succeeded) {
-                // The object has been saved.
-                PFQuery *teams = [PFQuery queryWithClassName:@"Team"];
-                [teams whereKey:@"team" equalTo:[[PFUser currentUser] objectId]];
-                
-                [teams getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
-                    
-                    NSArray *tasks = object[@"tasks"];
-                    tasks = [tasks arrayByAddingObjectsFromArray:@[self.task.objectId]];
-                    
-                    object[@"tasks"] = tasks;
-                    [object saveInBackground];
-                    [self.navigationController popViewControllerAnimated:YES];
-                }];                                
-            } else {
-                // There was a problem, check error.description
-                alertControllerTitle = @"Error";
-                alertControllerMessage = @"Oops There Was a Problem in Adding The Task";
-                [self presentAlertController:alertControllerTitle aMessage:alertControllerMessage];
-            }
-        }];
+        if (self.addressTextField.text != 0) {
+            self.task.address = self.addressTextField.text;
+            [self geoCodeAddress:self.task.address];
+        }else if (self.task.coordinate.latitude) {
+            [self saveTask];
+        }
     }
 }
+
+
+-(void)saveTask {
+    
+    [self.task saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            // The object has been saved.
+            PFQuery *teams = [PFQuery queryWithClassName:@"Team"];
+            [teams whereKey:@"team" equalTo:[[PFUser currentUser] objectId]];
+            
+            [teams getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+                
+                NSArray *tasks = object[@"tasks"];
+                tasks = [tasks arrayByAddingObjectsFromArray:@[self.task.objectId]];
+                
+                object[@"tasks"] = tasks;
+                [object saveInBackground];
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+        } else {
+            // There was a problem, check error.description
+            NSString *alertControllerTitle = @"Error";
+            NSString *alertControllerMessage = @"Oops There Was a Problem in Adding The Task";
+            [self presentAlertController:alertControllerTitle aMessage:alertControllerMessage];
+        }
+    }];
+}
+
 
 -(void) presentAlertController:(NSString *)title aMessage:(NSString*)message {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title
@@ -149,5 +157,28 @@
     }
 }
 
+
+#pragma mark - Geo
+
+-(void)geoCodeAddress:(NSString*)address {
+    
+    CLGeocoder *geoCoder = [[CLGeocoder alloc]init];
+    [geoCoder geocodeAddressString:address completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        
+        if([placemarks count]) {
+            CLPlacemark *placemark = [placemarks objectAtIndex:0];
+            CLLocation *location = placemark.location;
+            CLLocationCoordinate2D coordinate = location.coordinate;
+            
+            self.task.coordinate = coordinate;
+            [self saveTask];
+            
+            NSLog(@"%f,%f", coordinate.latitude, coordinate.longitude);
+        } else {
+            NSLog(@"location error");
+            return;
+        }
+    }];
+}
 
 @end

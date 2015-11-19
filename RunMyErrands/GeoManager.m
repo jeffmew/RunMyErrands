@@ -43,6 +43,8 @@
     
     [_locationManager startUpdatingLocation];
     //NSLog(@"Start Regular Location Manager");
+    
+    //[_locationManager stopMonitoringForRegion:region];
 }
 
 
@@ -61,13 +63,11 @@
             
             [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             }]];
-
+            
             //      [self presentViewController:alertController animated:YES completion:nil];
-
             
         }
     }
-    NSLog(@"monitoring available %D",[CLLocationManager isMonitoringAvailableForClass:[GeoManager class]]);
 }
 
 -(void)stopLocationManager{
@@ -114,7 +114,7 @@
     //        MKCoordinateRegion adjustedRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, zoominMapArea, zoominMapArea);
     //
     //        // [_mapView setRegion:adjustedRegion animated:YES];
-
+    
 }
 
 
@@ -147,7 +147,7 @@
     //NSLog(@"didDetermineState %li",(long)state);
     
     if (state == 1) {
-     //   [self inLocationNotificationForRegion:region];
+        //   [self inLocationNotificationForRegion:region];
     }
 }
 
@@ -156,10 +156,14 @@
     [_locationManager startMonitoringForRegion:region];
 }
 
+-(void)removeTaskLocation:(CLRegion*)region {
+    
+    [_locationManager stopMonitoringForRegion:region];
+}
 
 
 -(void)inLocationNotificationForRegion:(CLRegion *)region {
-        
+    
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
     localNotification.regionTriggersOnce = YES;
     localNotification.alertTitle = @"You are in the Area";
@@ -169,6 +173,15 @@
     localNotification.applicationIconBadgeNumber = 1;
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }
+
+
+
+
+
+
+
+
+
 
 
 @end

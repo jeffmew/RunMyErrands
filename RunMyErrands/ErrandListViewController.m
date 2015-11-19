@@ -11,11 +11,13 @@
 #import "DetailViewController.h"
 #import <Parse/Parse.h>
 #import "Task.h"
+#import "GeoManager.h"
 
 @interface ErrandListViewController () <UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (nonatomic) NSArray *taskArray;
+@property (nonatomic) GeoManager *locationManager;
 @end
 
 
@@ -25,6 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.locationManager = [GeoManager sharedManager];
+    [self.locationManager startLocationManager];
     
     self.tableview.backgroundColor = [UIColor clearColor];
     
@@ -32,7 +36,7 @@
     [PFUser logInWithUsernameInBackground:@"jeff" password:@"jeff" block:^(PFUser *user, NSError *error) {
         if (error) {
         } else {
-          //  [self createNewTeam];
+            //  [self createNewTeam];
             [self loadTaskObjects];
         }
     }];
@@ -43,7 +47,7 @@
 
 //-(void) addNewTeamMember {
 //    PFQuery *query = [PFQuery queryWithClassName:@"Team"];
-//    
+//
 //    [query getObjectInBackgroundWithId:@"IluX14keVf" block:^(PFObject * _Nullable team, NSError * _Nullable error) {
 //        if (error) {
 //            NSLog(@"Error: %@ %@", error, [error userInfo]);
@@ -54,7 +58,7 @@
 //            team[@"team"] = updatedTeam;
 //            [team saveInBackground];
 //        }
-//    }];	
+//    }];
 //}
 
 - (void) createNewTeam {
@@ -63,12 +67,12 @@
     newTeam[@"teamLead"] = [PFUser currentUser].objectId;
     newTeam[@"team"] = @[[PFUser currentUser].objectId];
     newTeam[@"tasks"] = @[];
-
+    
     [newTeam saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             // The object has been saved.
         } else {
-            // There was a problem, check error.description            
+            // There was a problem, check error.description
         }
     }];
 }
@@ -76,6 +80,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     [self loadTaskObjects];
+    
 }
 
 -(void) loadTaskObjects {
@@ -107,6 +112,7 @@
                         }
                         
                         [self.tableview reloadData];
+                        [self trackGeoRegions];
                     }
                 }];
             }
@@ -145,7 +151,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [self.tableview dequeueReusableCellWithIdentifier:@"tasklistCell" forIndexPath:indexPath];
-
+    
     Task *taskAtCell = self.taskArray[indexPath.section];
     
     cell.textLabel.text = taskAtCell.title;
@@ -166,12 +172,30 @@
     if ([[segue identifier] isEqualToString:@"addNewTask"]) {
         AddNewTaskViewController *addNewTaskVC = (AddNewTaskViewController *)[segue destinationViewController];
         addNewTaskVC.taskArray = self.taskArray;
-
+        
     } else if ([[segue identifier] isEqualToString:@"showDetail"]) {
         DetailViewController *detailVC = (DetailViewController*)[segue destinationViewController];
         detailVC.taskArray = self.taskArray;
     }
 }
 
+
+#pragma mark - Geo
+
+-(void)trackGeoRegions {
+    
+    for (Task *task in self.taskArray) {
+        CLLocationCoordinate2D center = task.coordinate;
+        CLRegion *taskRegion = [[CLCircularRegion alloc]initWithCenter:center radius:200.0 identifier:task.title];
+        taskRegion.notifyOnEntry = YES;
+        
+        //Determine if to track the task location.
+        if (![task.isComplete boolValue]) {
+            [self.locationManager addTaskLocation:taskRegion];
+        }else {
+            [self.locationManager removeTaskLocation:taskRegion];
+        }
+    }
+}
 
 @end
