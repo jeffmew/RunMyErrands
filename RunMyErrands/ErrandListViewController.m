@@ -278,7 +278,7 @@
         
     } else if ([[segue identifier] isEqualToString:@"showDetail"]) {
         DetailViewController *detailVC = (DetailViewController*)[segue destinationViewController];
-        detailVC.taskArray = self.taskArray;
+        //detailVC.taskArray = self.taskArray;
     }
 }
 
