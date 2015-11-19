@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic) GeoManager *locationManager;
 @property (nonatomic) BOOL didLoadLocations;
+//@property (nonatomic) MKAnnotationView *annotationView;
 
 
 @end
@@ -77,5 +78,29 @@
     }
 }
 
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    
+    if (![annotation isKindOfClass:[Task class]]) {
+        return nil;
+    }
+    
+    Task *task = (Task *) annotation;
+    
+    MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomAnno"];
+    
+    if (!annotationView) {
+        annotationView = task.annoView;
+    }else {
+        annotationView.annotation = annotation;
+    }
+    return annotationView;
+}
+
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    [self performSegueWithIdentifier:@"showDetail" sender:self];
+}
 
 @end
