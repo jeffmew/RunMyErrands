@@ -45,11 +45,18 @@
     coordinate = newCoordinate;
 }
 
-//-(void)getTaskLocation {
-//
-//CLLocationCoordinate2D center = CLLocationCoordinate2DMake(42.280597,-83.751891);
-//CLRegion *task01Region = [[CLCircularRegion alloc]initWithCenter:center radius:100.0 identifier:@"task01"];
-//
-//    
-//}
+
+-(MKAnnotationView*)annoView {
+    
+    MKPinAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:self reuseIdentifier:@"CustomAnno"];
+    
+    annotationView.enabled = YES;
+    annotationView.canShowCallout = YES;
+    annotationView.animatesDrop = YES;
+    annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    
+    return annotationView;
+
+}
+
 @end
