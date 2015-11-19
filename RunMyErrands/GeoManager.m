@@ -11,7 +11,6 @@
 
 @implementation GeoManager
 
-
 + (instancetype)sharedManager {
     static GeoManager *sharedLocationManager = nil;
     static dispatch_once_t onceToken;

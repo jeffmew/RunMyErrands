@@ -304,21 +304,43 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="dP8-EL-O0l"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, User!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CtP-Ms-Dwg">
+                                <rect key="frame" x="30" y="104" width="134" height="33"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Errands are listed below:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wR3-Ci-Kwu">
+                                <rect key="frame" x="30" y="164" width="343" height="33"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.83599668560606055" green="0.83599668560606055" blue="0.83599668560606055" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9kQ-A6-Oc3" secondAttribute="bottom" constant="10" id="6Iz-8T-gEL"/>
+                            <constraint firstItem="9kQ-A6-Oc3" firstAttribute="leading" secondItem="wR3-Ci-Kwu" secondAttribute="leading" id="6ME-M9-SQh"/>
+                            <constraint firstItem="wR3-Ci-Kwu" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.6" id="E6X-dz-M1p"/>
                             <constraint firstAttribute="trailing" secondItem="9kQ-A6-Oc3" secondAttribute="trailing" constant="30" id="GaJ-cK-uWq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9kQ-A6-Oc3" secondAttribute="trailing" constant="10" id="K7b-hf-Nkb"/>
+                            <constraint firstItem="CtP-Ms-Dwg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="LTZ-rl-FPP"/>
+                            <constraint firstItem="CtP-Ms-Dwg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Mnn-sg-QbD"/>
                             <constraint firstItem="9kQ-A6-Oc3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="OGz-RA-Ncx"/>
+                            <constraint firstItem="wR3-Ci-Kwu" firstAttribute="top" secondItem="CtP-Ms-Dwg" secondAttribute="bottom" constant="20" id="ON1-1k-APx"/>
                             <constraint firstItem="9kQ-A6-Oc3" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" multiplier="1.5" id="aFh-7F-vWj"/>
                             <constraint firstItem="9kQ-A6-Oc3" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.75" id="b2W-tw-eFK"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9kQ-A6-Oc3" secondAttribute="bottom" constant="30" id="eyt-hc-yDA"/>
+                            <constraint firstItem="wR3-Ci-Kwu" firstAttribute="leading" secondItem="CtP-Ms-Dwg" secondAttribute="leading" id="iIx-Rp-ggL"/>
                             <constraint firstItem="9kQ-A6-Oc3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="jub-LJ-gia"/>
+                            <constraint firstItem="CtP-Ms-Dwg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.4" id="w3r-dr-tSx"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="LTZ-rl-FPP"/>
+                                <exclude reference="Mnn-sg-QbD"/>
+                                <exclude reference="ON1-1k-APx"/>
                                 <exclude reference="K7b-hf-Nkb"/>
                                 <exclude reference="aFh-7F-vWj"/>
                                 <exclude reference="jub-LJ-gia"/>
@@ -334,8 +356,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="helloUserLabel" destination="CtP-Ms-Dwg" id="nSx-id-wDU"/>
                         <outlet property="swipeGesture" destination="o86-4y-KMV" id="ObS-cZ-4LE"/>
                         <outlet property="tableview" destination="9kQ-A6-Oc3" id="HLU-d3-MFT"/>
+                        <outlet property="youHaveTasksLabel" destination="wR3-Ci-Kwu" id="JVD-RR-Qzd"/>
                         <segue destination="2iD-bb-EcH" kind="show" identifier="showDetail" id="wAk-Ps-eKQ"/>
                         <segue destination="wuR-bt-sUM" kind="show" identifier="addNewTask" id="dWu-V7-HSF"/>
                     </connections>

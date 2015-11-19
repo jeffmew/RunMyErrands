@@ -18,6 +18,8 @@
 
 @property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeGesture;
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
+@property (weak, nonatomic) IBOutlet UILabel *helloUserLabel;
+@property (weak, nonatomic) IBOutlet UILabel *youHaveTasksLabel;
 @property (nonatomic) NSArray *taskArray;
 @property (nonatomic) GeoManager *locationManager;
 
@@ -38,11 +40,41 @@
         if (error) {
         } else {
             //[self addNewTeamMember]
+            self.helloUserLabel.text = [[NSString stringWithFormat:@"%@, %@!", [self randHello], user.username] capitalizedString];
             [self loadTaskObjects];
         }
     }];
     
     [self.view addGestureRecognizer:self.swipeGesture];
+}
+
+-(NSString*) randHello {
+    int rand = arc4random() % 5;
+    switch (rand) {
+        case 0:
+            return @"Hello";
+            break;
+        
+        case 1:
+            return @"Salutations";
+            break;
+            
+        case 2:
+            return @"Bonjour";
+            break;
+            
+        case 3:
+            return @"Greetings";
+            break;
+        
+        case 4:
+            return @"Hi";
+            break;
+            
+        default:
+            return @"Hello";
+            break;
+    }
 }
 
 -(void) addNewTeamMember {
