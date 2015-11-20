@@ -16,7 +16,6 @@
 
 @interface ErrandListViewController () <UITableViewDataSource,UITableViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeGesture;
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (weak, nonatomic) IBOutlet UILabel *helloUserLabel;
 @property (weak, nonatomic) IBOutlet UILabel *youHaveTasksLabel;
@@ -45,8 +44,6 @@
             [self loadTaskObjects];
         }
     }];
-    
-    [self.view addGestureRecognizer:self.swipeGesture];
 }
 
 -(NSString*) randHello {
@@ -144,7 +141,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     [self loadTaskObjects];
-    
 }
 
 -(void) loadTaskObjects {
@@ -332,7 +328,9 @@
         
     } else if ([[segue identifier] isEqualToString:@"showDetail"]) {
         DetailViewController *detailVC = (DetailViewController*)[segue destinationViewController];
-        //detailVC.taskArray = self.taskArray;
+        NSIndexPath *indexPath = [self.tableview indexPathForSelectedRow];
+        Task *selectedTask = self.taskArray[indexPath.section];
+        detailVC.task = selectedTask;
     }
 }
 

@@ -32,10 +32,10 @@
                                 </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RunMyErrands" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckp-b4-sSJ">
-                                <rect key="frame" x="245" y="382" width="111" height="21"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
+                                <rect key="frame" x="159" y="382" width="283" height="48"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="40"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skateboard" translatesAutoresizingMaskIntoConstraints="NO" id="Dnt-qC-ynY">
                                 <rect key="frame" x="260" y="116" width="80" height="80"/>
@@ -60,7 +60,7 @@
                             </imageView>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.010408363272748305" green="0.22929926983466867" blue="0.41199100378787878" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="PKt-0c-9HD" firstAttribute="centerX" secondItem="Dnt-qC-ynY" secondAttribute="centerX" id="1uu-JK-AMB"/>
                             <constraint firstItem="ckp-b4-sSJ" firstAttribute="centerX" secondItem="PKt-0c-9HD" secondAttribute="centerX" id="7aZ-NX-iow"/>

@@ -19,6 +19,8 @@
 @property (nonatomic) NSArray *pickerData;
 @property (nonatomic) NSInteger *categoryChoice;
 @property (nonatomic) NSString *teamKey;
+@property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
+
 
 @property (nonatomic) Task* task;
 @end
@@ -29,16 +31,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.pickerData = @[@"General",@"Entertainment",@"Business",@"Food"];
+    self.categoryPickerView.layer.cornerRadius = 6;
     self.task = [Task object];
     self.task.isComplete = @NO;
+    NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:@"Category"];
+    [attributeString addAttribute:NSUnderlineStyleAttributeName
+                            value:[NSNumber numberWithInt:1]
+                            range:(NSRange){0,[attributeString length]}];
+    self.categoryLabel.attributedText = attributeString;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 - (IBAction)okButtonPressed:(UIButton *)sender {
     __block NSString *alertControllerTitle;
@@ -53,20 +59,20 @@
         alertControllerMessage = @"Please Enter an Address or Choose it on the Map";
         [self presentAlertController:alertControllerTitle aMessage:alertControllerMessage];
     } else {
-        self.task.title = self.taskNameTextField.text;
-        self.task.taskDescription = self.descriptionTextField.text;
-        self.task.subtitle = self.locationName.text;
+        self.task.title = [self.taskNameTextField.text capitalizedString];
+        self.task.taskDescription = [self.descriptionTextField.text capitalizedString];
+        self.task.subtitle = [self.locationName.text capitalizedString];
         self.task.category = @([self.categoryPickerView selectedRowInComponent:0]);
         
         if (self.addressTextField.text.length != 0) {
             self.task.address = self.addressTextField.text;
             [self geoCodeAddress:self.task.address];
         }else if (self.task.coordinate.latitude) {
+            self.task.address = @"";
             [self saveTask];
         }
     }
 }
-
 
 -(void)saveTask {
     
@@ -152,6 +158,22 @@
     }
 }
 
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
+{
+    UILabel* tView = (UILabel*)view;
+    if (!tView)
+    {
+        tView = [[UILabel alloc] init];
+        [tView setFont:[UIFont fontWithName:@"Helvetica Nue" size:17.0]];
+        [tView setTextColor:[UIColor whiteColor]];
+        tView.textAlignment = NSTextAlignmentCenter;
+        //[tView setTextAlignment:UITextAlignmentLeft];
+        tView.numberOfLines=3;
+    }
+    // Fill the label text here
+    tView.text = self.pickerData[row];
+    return tView;
+}
 
 #pragma mark - Geo
 
