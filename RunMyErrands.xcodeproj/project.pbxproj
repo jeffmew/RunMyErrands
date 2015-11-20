@@ -22,6 +22,7 @@
 		5298904D1BFBDBDE00B82D76 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5298904C1BFBDBDE00B82D76 /* CoreLocation.framework */; };
 		5298904F1BFBDBE500B82D76 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5298904E1BFBDBE500B82D76 /* MapKit.framework */; };
 		52AA1A091BFD8F7D000FF2F0 /* ErrandsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AA1A081BFD8F7D000FF2F0 /* ErrandsListTableViewCell.swift */; };
+		52CA6F0F1BFF963A003E3437 /* TeamListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CA6F0E1BFF963A003E3437 /* TeamListTableViewController.m */; };
 		52D6CD6E1BF96CE600CBBBAD /* AddNewTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D6CD6D1BF96CE600CBBBAD /* AddNewTaskViewController.m */; };
 		52DEDEE21BFE85E2003ED1F3 /* MainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52DEDEE11BFE85E2003ED1F3 /* MainMapViewController.m */; };
 		603AB53B5149F09692D9B583 /* libPods-RunMyErrands.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 504342781871F1A0EFAE0716 /* libPods-RunMyErrands.a */; };
@@ -80,6 +81,8 @@
 		5298904C1BFBDBDE00B82D76 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5298904E1BFBDBE500B82D76 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		52AA1A081BFD8F7D000FF2F0 /* ErrandsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrandsListTableViewCell.swift; sourceTree = "<group>"; };
+		52CA6F0D1BFF963A003E3437 /* TeamListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamListTableViewController.h; sourceTree = "<group>"; };
+		52CA6F0E1BFF963A003E3437 /* TeamListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamListTableViewController.m; sourceTree = "<group>"; };
 		52D6CD6C1BF96CE600CBBBAD /* AddNewTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewTaskViewController.h; sourceTree = "<group>"; };
 		52D6CD6D1BF96CE600CBBBAD /* AddNewTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewTaskViewController.m; sourceTree = "<group>"; };
 		52DEDEE11BFE85E2003ED1F3 /* MainMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMapViewController.m; sourceTree = "<group>"; };
@@ -171,6 +174,8 @@
 				529890421BFBD7C000B82D76 /* API_key.h */,
 				DA216A361BFD7FD200797C24 /* RunMyErrands-Bridging-Header.h */,
 				52AA1A081BFD8F7D000FF2F0 /* ErrandsListTableViewCell.swift */,
+				52CA6F0D1BFF963A003E3437 /* TeamListTableViewController.h */,
+				52CA6F0E1BFF963A003E3437 /* TeamListTableViewController.m */,
 			);
 			path = RunMyErrands;
 			sourceTree = "<group>";
@@ -427,6 +432,7 @@
 				5298904B1BFBD97C00B82D76 /* Task.m in Sources */,
 				523E40FF1BF843A900AFBEB7 /* ErrandListViewController.m in Sources */,
 				5257FBBF1BF809CE005CC88D /* main.m in Sources */,
+				52CA6F0F1BFF963A003E3437 /* TeamListTableViewController.m in Sources */,
 				5298904A1BFBD97C00B82D76 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
