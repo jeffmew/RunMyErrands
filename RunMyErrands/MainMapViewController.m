@@ -38,6 +38,7 @@
     [super viewWillAppear:YES];
     [self loadTaskObjects];
     
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -74,6 +75,7 @@
                         }
                         
                         [self trackGeoRegions];
+                        [self reloadAnnotations];
                     }
                 }];
             }
@@ -108,12 +110,6 @@
 
 -(void)mapViewDidFinishRenderingMap:(MKMapView *)mapView fullyRendered:(BOOL)fullyRendered {
     
-    for (Task *task in self.taskArray) {
-        //Determine if to track the task location.
-        if (![task.isComplete boolValue]) {
-            [self.mapView addAnnotation:task];
-        }
-    }
 }
 
 -(void)mapViewDidFinishLoadingMap:(nonnull MKMapView *)mapView{
@@ -154,6 +150,18 @@
 {
     if ([view.annotation isKindOfClass:[Task class]]) {
         [self performSegueWithIdentifier:@"showDetailFromMap" sender:(Task *) view.annotation];
+    }
+}
+
+-(void)reloadAnnotations {
+    [self.mapView removeAnnotations:self.mapView.annotations];
+    for (Task *task in self.taskArray) {
+        //Determine if to track the task location.
+        if (![task.isComplete boolValue]) {
+            [self.mapView addAnnotation:task];
+        }else {
+            [self.mapView removeAnnotation:task];
+        }
     }
 }
 
