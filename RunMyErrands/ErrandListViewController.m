@@ -21,7 +21,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *youHaveTasksLabel;
 @property (nonatomic) NSArray *taskArray;
 @property (nonatomic) GeoManager *locationManager;
-
 @end
 
 
@@ -36,14 +35,18 @@
     self.tableview.backgroundColor = [UIColor clearColor];
     self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    [PFUser logInWithUsernameInBackground:@"jeff" password:@"jeff" block:^(PFUser *user, NSError *error) {
-        if (error) {
-        } else {
-            //[self addNewTeamMember]
-            [self setGreeting];
-            [self loadTaskObjects];
-        }
-    }];
+    [PFUser logInWithUsername:@"jeff" password:@"jeff"];
+  //  [self setGreeting];
+    [self loadTaskObjects];
+    
+//    [PFUser logInWithUsernameInBackground:@"jeff" password:@"jeff" block:^(PFUser *user, NSError *error) {
+//        if (error) {
+//        } else {
+//            //[self addNewTeamMember]
+//            [self setGreeting];
+//            [self loadTaskObjects];
+//        }
+//    }];
 }
 
 -(void) setGreeting {
