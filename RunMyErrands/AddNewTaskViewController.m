@@ -19,7 +19,6 @@
 @property (nonatomic) NSArray *pickerData;
 @property (nonatomic) NSInteger *categoryChoice;
 @property (nonatomic) NSString *teamKey;
-
 @property (nonatomic) Task* task;
 @end
 
@@ -33,11 +32,11 @@
     self.task.isComplete = @NO;
 }
 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 
 - (IBAction)okButtonPressed:(UIButton *)sender {
@@ -167,8 +166,6 @@
             
             self.task.coordinate = coordinate;
             [self saveTask];
-            
-            NSLog(@"%f,%f", coordinate.latitude, coordinate.longitude);
         } else {
             NSLog(@"location error");
             return;

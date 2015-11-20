@@ -278,7 +278,12 @@
         
     } else if ([[segue identifier] isEqualToString:@"showDetail"]) {
         DetailViewController *detailVC = (DetailViewController*)[segue destinationViewController];
-        //detailVC.taskArray = self.taskArray;
+        
+        
+        NSIndexPath *indexPath = [self.tableview indexPathForSelectedRow];
+        Task *selectedTask = self.taskArray[indexPath.section];
+        detailVC.task = selectedTask;
+    
     }
 }
 

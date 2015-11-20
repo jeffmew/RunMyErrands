@@ -26,12 +26,12 @@
 @property (nonatomic) NSNumber *isComplete;
 @property (nonatomic) NSNumber *category;
 
-
 + (NSString*)parseClassName;
 + (void)load;
 -(CLLocationCoordinate2D) getCoordinate;
 -(void) setCoordinate:(CLLocationCoordinate2D)newCoordinate;
 -(void) updateCoordinate;
 -(MKAnnotationView*)annoView;
+-(MKAnnotationView*)annoDetailView;
 
 @end

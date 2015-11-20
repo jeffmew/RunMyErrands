@@ -8,15 +8,17 @@
 
 #import "DetailViewController.h"
 
-@interface DetailViewController ()
+@interface DetailViewController () <MKMapViewDelegate>
 
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @end
 
 @implementation DetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.mapView.delegate = self;
+    [self initiateMap];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +26,34 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+ #pragma mark - Geo
+- (void) initiateMap {
+ 
+        MKCoordinateRegion mapRegion;
+        mapRegion.center = self.task.coordinate;
+        mapRegion.span.latitudeDelta = 0.005;
+        mapRegion.span.longitudeDelta = 0.005;
+        [self.mapView setRegion:mapRegion animated: YES];
+        [self.mapView addAnnotation:self.task];
 }
-*/
 
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    
+    if (![annotation isKindOfClass:[Task class]]) {
+        return nil;
+    }
+    
+    Task *task = (Task *) annotation;
+    
+    MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomDAnno"];
+    
+    if (!annotationView) {
+        annotationView = task.annoView;
+    }else {
+        annotationView.annotation = annotation;
+    }
+    return annotationView;
+}
 @end
