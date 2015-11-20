@@ -40,7 +40,8 @@
         if (error) {
         } else {
             //[self addNewTeamMember]
-            self.helloUserLabel.text = [[NSString stringWithFormat:@"%@, %@!", [self randHello], user.username] capitalizedString];
+            self.helloUserLabel.text = [[NSString stringWithFormat:@"%@, %@...", [self randHello], user.username] capitalizedString];
+            self.youHaveTasksLabel.text = [NSString stringWithFormat:@"%@", [self randWelcomeMessage]];
             [self loadTaskObjects];
         }
     }];
@@ -76,6 +77,36 @@
             break;
     }
 }
+
+-(NSString*) randWelcomeMessage {
+    int rand = arc4random() % 5;
+    switch (rand) {
+        case 0:
+            return @"Get to work.";
+            break;
+            
+        case 1:
+            return @"Here are your tasks.";
+            break;
+            
+        case 2:
+            return @"Today is a good day to finish a task.";
+            break;
+            
+        case 3:
+            return @"Get it done.";
+            break;
+            
+        case 4:
+            return @"Yesterday you said tomorrow.";
+            break;
+            
+        default:
+            return @"Just do it.";
+            break;
+    }
+}
+
 
 -(void) addNewTeamMember {
     PFQuery *query = [PFQuery queryWithClassName:@"Team"];
@@ -189,8 +220,27 @@
     cell.subtitleLabel.text = nil;
     cell.titleLabel.attributedText = nil;
     cell.subtitleLabel.attributedText = nil;
+    cell.categoryImage.image = nil;
     
     Task *taskAtCell = self.taskArray[indexPath.section];
+    
+    NSString *imageName;
+    switch ([taskAtCell.category intValue]) {
+        case 0:
+            imageName = @"runmyerrands";
+            break;
+        case 1:
+            imageName = @"die";
+            break;
+        case 2:
+            imageName = @"briefcase";
+            break;
+        case 3:
+            imageName = @"cart";
+            break;
+        default:
+            break;
+    }
     
     if ([taskAtCell.isComplete boolValue]) {
     
@@ -206,13 +256,17 @@
             cell.subtitleLabel.attributedText = subtitle;
         }
         
+        imageName = [imageName stringByAppendingString:@"-grey"];
+        
     } else {
         
         cell.titleLabel.text = [taskAtCell.title capitalizedString];
         cell.subtitleLabel.text = [taskAtCell.subtitle capitalizedString];
-        cell.layer.cornerRadius = 6;
         
     }
+    
+    cell.layer.cornerRadius = 6;
+    cell.categoryImage.image = [UIImage imageNamed:imageName];
     
     return cell;
 }

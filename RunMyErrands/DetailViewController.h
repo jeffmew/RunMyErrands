@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <MapKit/MapKit.h>
 
 @interface DetailViewController : UIViewController
 
