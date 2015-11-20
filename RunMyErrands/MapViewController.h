@@ -13,7 +13,6 @@
 @interface MapViewController : UIViewController
 
 @property (nonatomic)NSArray *taskArray;
-
 @property (nonatomic, strong) Task *task;
 
 @end

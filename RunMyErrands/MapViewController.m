@@ -14,7 +14,6 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic) GeoManager *locationManager;
 @property (nonatomic) BOOL didLoadLocations;
-//@property (nonatomic) MKAnnotationView *annotationView;
 
 
 @end
@@ -31,7 +30,6 @@
     self.locationManager = [GeoManager sharedManager];
     [self.locationManager startLocationManager];
     self.mapView.showsUserLocation = true;
-    
 }
 
 
@@ -52,6 +50,7 @@
     }
 }
 
+
 -(void)mapViewDidFinishRenderingMap:(MKMapView *)mapView fullyRendered:(BOOL)fullyRendered {
     
     for (Task *task in self.taskArray) {
@@ -62,9 +61,6 @@
     }
 }
 
--(void)mapViewDidFinishLoadingMap:(nonnull MKMapView *)mapView{
-    
-}
 
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
@@ -86,8 +82,7 @@
     }
     
     Task *task = (Task *) annotation;
-    
-    MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomAnno"];
+    MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomDAnno"];
     
     if (!annotationView) {
         annotationView = task.annoView;

@@ -20,8 +20,6 @@
 @property (nonatomic) NSInteger *categoryChoice;
 @property (nonatomic) NSString *teamKey;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
-
-
 @property (nonatomic) Task* task;
 @end
 
@@ -41,10 +39,12 @@
     self.categoryLabel.attributedText = attributeString;
 }
 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 - (IBAction)okButtonPressed:(UIButton *)sender {
     __block NSString *alertControllerTitle;
@@ -189,8 +189,6 @@
             
             self.task.coordinate = coordinate;
             [self saveTask];
-            
-            NSLog(@"%f,%f", coordinate.latitude, coordinate.longitude);
         } else {
             NSLog(@"location error");
             return;
