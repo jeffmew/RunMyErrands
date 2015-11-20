@@ -35,7 +35,7 @@
     
     self.tableview.backgroundColor = [UIColor clearColor];
     
-    [PFUser logInWithUsernameInBackground:@"jay" password:@"jay" block:^(PFUser *user, NSError *error) {
+    [PFUser logInWithUsernameInBackground:@"jeff" password:@"jeff" block:^(PFUser *user, NSError *error) {
         if (error) {
         } else {
             //[self addNewTeamMember]
