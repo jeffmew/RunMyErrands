@@ -34,16 +34,24 @@
     [self.locationManager startLocationManager];
     
     self.tableview.backgroundColor = [UIColor clearColor];
+    self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [PFUser logInWithUsernameInBackground:@"jeff" password:@"jeff" block:^(PFUser *user, NSError *error) {
         if (error) {
         } else {
             //[self addNewTeamMember]
-            self.helloUserLabel.text = [[NSString stringWithFormat:@"%@, %@...", [self randHello], user.username] capitalizedString];
-            self.youHaveTasksLabel.text = [NSString stringWithFormat:@"%@", [self randWelcomeMessage]];
+            [self setGreeting];
             [self loadTaskObjects];
         }
     }];
+}
+
+-(void) setGreeting {
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser) {
+        self.helloUserLabel.text = [[NSString stringWithFormat:@"%@, %@...", [self randHello], currentUser.username] capitalizedString];
+        self.youHaveTasksLabel.text = [NSString stringWithFormat:@"%@", [self randWelcomeMessage]];
+    }
 }
 
 -(NSString*) randHello {
@@ -140,6 +148,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
+    [self setGreeting];
     [self loadTaskObjects];
 }
 
@@ -266,55 +275,6 @@
     
     return cell;
 }
-
-#pragma mark - UIGestureRecognizer
-
-- (IBAction)swipeStrike:(UISwipeGestureRecognizer *)sender {
-    
-    if (sender.direction == UISwipeGestureRecognizerDirectionRight) {
-//        //record original position
-        NSString *title = @"Confirm!";
-        NSString *message = @"Are you sure you want to mark task as complete?";
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title
-                                                                                 message:message
-                                                                          preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                   handler:^(UIAlertAction * action) {
-                                                       //
-                                                       CGPoint currPoint = [sender locationInView:self.tableview];
-                                                       long index = [[self.tableview indexPathForRowAtPoint:currPoint] row];
-                                                       
-                                                       Task *swipedTask = self.taskArray[index];
-                                                       swipedTask.isComplete = @(YES);
-                                                       
-                                                       PFQuery *query = [PFQuery queryWithClassName:@"Task"];
-                                                       
-                                                       [query getObjectInBackgroundWithId:swipedTask.objectId block:^(PFObject * _Nullable object, NSError * _Nullable error) {
-                                                           if (error) {
-                                                               NSLog(@"Error: %@ %@", error, [error userInfo]);
-                                                           } else {
-                                                               Task *task = (Task*)object;
-                                                               task.isComplete = @(YES);
-                                                               [task saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                                                                   if (succeeded) {
-                                                                       [self loadTaskObjects];
-                                                                   }
-                                                               }];
-                                                           }
-                                                       }];
-                                                   }];
-        
-        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"CANCEL" style:UIAlertActionStyleDefault
-                                                       handler:^(UIAlertAction * _Nonnull action) {
-            //
-        }];
-        
-        [alertController addAction:ok];
-        [alertController addAction:cancel];
-        [self presentViewController:alertController animated:YES completion:nil];
-    }
-}
-
 
 #pragma mark - Navigation
 

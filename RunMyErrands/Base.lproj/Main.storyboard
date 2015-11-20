@@ -9,7 +9,7 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Add New Task View Controller-->
+        <!--Add New Errand-->
         <scene sceneID="d5F-g4-0rV">
             <objects>
                 <viewController id="wuR-bt-sUM" customClass="AddNewTaskViewController" sceneMemberID="viewController">
@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="The name of the task" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xsr-oa-Tsh">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="The name of the errand" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xsr-oa-Tsh">
                                 <rect key="frame" x="60" y="100" width="480" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -69,7 +69,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description of task" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="opO-kI-rIc">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description of errand" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="opO-kI-rIc">
                                 <rect key="frame" x="60" y="167" width="480" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -82,7 +82,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the place where the task takes place" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hVo-yc-WHm">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the place where the errand takes place" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hVo-yc-WHm">
                                 <rect key="frame" x="60" y="234" width="480" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -183,6 +183,7 @@
                             <outletCollection property="gestureRecognizers" destination="IhZ-On-TiY" appends="YES" id="iGq-hX-fMV"/>
                         </connections>
                     </view>
+                    <navigationItem key="navigationItem" title="Add New Errand" id="CZR-Sh-G8w"/>
                     <connections>
                         <outlet property="addressTextField" destination="4VH-fo-ZwM" id="xCK-pl-NS5"/>
                         <outlet property="categoryLabel" destination="cOh-J5-Jrh" id="YgV-8i-T2F"/>
@@ -202,7 +203,7 @@
             </objects>
             <point key="canvasLocation" x="1828" y="-251"/>
         </scene>
-        <!--Map View Controller-->
+        <!--Pick a Location-->
         <scene sceneID="Azb-PP-5Vg">
             <objects>
                 <viewController id="JJb-YA-mfc" customClass="MapViewController" sceneMemberID="viewController">
@@ -232,7 +233,7 @@
                             <constraint firstItem="4A3-Cv-rKb" firstAttribute="top" secondItem="TZL-7k-776" secondAttribute="bottom" id="OdW-ZF-GHb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Nfd-BH-VgR"/>
+                    <navigationItem key="navigationItem" title="Pick a Location" id="Nfd-BH-VgR"/>
                     <connections>
                         <outlet property="mapView" destination="TZL-7k-776" id="BCO-7l-Ah1"/>
                     </connections>
@@ -244,9 +245,9 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2510" y="-284"/>
+            <point key="canvasLocation" x="2538" y="-251"/>
         </scene>
-        <!--Errand List View Controller-->
+        <!--Run My Errands-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ErrandListViewController" sceneMemberID="viewController">
@@ -369,7 +370,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="g2K-6x-y2d">
+                    <navigationItem key="navigationItem" title="Run My Errands" id="g2K-6x-y2d">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="iMk-IY-4mV">
                             <connections>
                                 <action selector="addButton:" destination="BYZ-38-t0r" id="HoT-yF-8Od"/>
@@ -387,7 +388,7 @@
             </objects>
             <point key="canvasLocation" x="1057" y="-284"/>
         </scene>
-        <!--Item-->
+        <!--Errand Detail-->
         <scene sceneID="bQf-K6-q94">
             <objects>
                 <viewController id="2iD-bb-EcH" customClass="DetailViewController" sceneMemberID="viewController">
@@ -501,6 +502,7 @@
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="kwV-EY-vPE"/>
+                    <navigationItem key="navigationItem" title="Errand Detail" id="HaC-K2-doA"/>
                     <connections>
                         <outlet property="addressLabel" destination="7qP-WW-aaU" id="L5V-Ey-qZQ"/>
                         <outlet property="imageView" destination="8ag-Jg-EHL" id="acD-dz-2du"/>
@@ -553,7 +555,7 @@
             </objects>
             <point key="canvasLocation" x="377" y="-284"/>
         </scene>
-        <!--Main Map View Controller-->
+        <!--Map-->
         <scene sceneID="Ra4-oD-nRo">
             <objects>
                 <viewController id="QaI-Zb-hUa" customClass="MainMapViewController" sceneMemberID="viewController">
@@ -581,7 +583,7 @@
                             <constraint firstItem="xLG-wC-drI" firstAttribute="top" secondItem="9eG-Av-mMC" secondAttribute="top" id="zCk-mR-Hue"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="pnG-nc-8cK"/>
+                    <navigationItem key="navigationItem" title="Map" id="pnG-nc-8cK"/>
                     <connections>
                         <outlet property="mapView" destination="xLG-wC-drI" id="obX-5M-aP5"/>
                         <segue destination="2iD-bb-EcH" kind="show" identifier="showDetailFromMap" id="2IR-W8-EJg"/>
@@ -670,6 +672,6 @@
         <image name="users" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ond-hl-eUr"/>
+        <segue reference="2IR-W8-EJg"/>
     </inferredMetricsTieBreakers>
 </document>

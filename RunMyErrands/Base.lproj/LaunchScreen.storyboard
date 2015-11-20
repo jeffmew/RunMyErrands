@@ -45,9 +45,9 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cart" translatesAutoresizingMaskIntoConstraints="NO" id="V9b-F4-WWb">
-                                <rect key="frame" x="404" y="260" width="64" height="80"/>
+                                <rect key="frame" x="404" y="260" width="80" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" priority="80" constant="80" id="93Y-uF-zoe"/>
+                                    <constraint firstAttribute="width" constant="80" id="93Y-uF-zoe"/>
                                     <constraint firstAttribute="height" constant="80" id="VvT-B1-N0S"/>
                                 </constraints>
                             </imageView>
