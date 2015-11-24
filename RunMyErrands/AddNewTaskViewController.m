@@ -164,7 +164,7 @@
     if (!tView)
     {
         tView = [[UILabel alloc] init];
-        [tView setFont:[UIFont fontWithName:@"Helvetica Nue" size:17.0]];
+        [tView setFont:[UIFont fontWithName:@"Helvetica Neue" size:17.0]];
         [tView setTextColor:[UIColor whiteColor]];
         tView.textAlignment = NSTextAlignmentCenter;
         //[tView setTextAlignment:UITextAlignmentLeft];
