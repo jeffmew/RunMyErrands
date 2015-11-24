@@ -35,18 +35,22 @@
     self.tableview.backgroundColor = [UIColor clearColor];
     self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    [PFUser logInWithUsername:@"jeff" password:@"jeff"];
+//    [PFUser logInWithUsername:@"jeff" password:@"jeff"];
   //  [self setGreeting];
-    [self loadTaskObjects];
     
-//    [PFUser logInWithUsernameInBackground:@"jeff" password:@"jeff" block:^(PFUser *user, NSError *error) {
-//        if (error) {
-//        } else {
-//            //[self addNewTeamMember]
-//            [self setGreeting];
-//            [self loadTaskObjects];
-//        }
-//    }];
+    //[self createNewTeam];
+//    [self loadTaskObjects];
+    
+    [PFUser logInWithUsernameInBackground:@"jeff" password:@"jeff" block:^(PFUser *user, NSError *error) {
+        if (error) {
+        } else {
+            //[self addNewTeamMember]
+            
+            
+            [self setGreeting];
+            [self loadTaskObjects];
+        }
+    }];
 }
 
 -(void) setGreeting {
@@ -54,6 +58,8 @@
     if (currentUser) {
         self.helloUserLabel.text = [[NSString stringWithFormat:@"%@, %@...", [self randHello], currentUser.username] capitalizedString];
         self.youHaveTasksLabel.text = [NSString stringWithFormat:@"%@", [self randWelcomeMessage]];
+    } else {
+    
     }
 }
 
@@ -88,6 +94,8 @@
 
 -(NSString*) randWelcomeMessage {
     int rand = arc4random() % 5;
+    
+    return @[@"1", @"2", @"3"][rand];
     switch (rand) {
         case 0:
             return @"Get to work.";
@@ -119,6 +127,7 @@
 -(void) addNewTeamMember {
     PFQuery *query = [PFQuery queryWithClassName:@"Team"];
     
+//    query.limit = 1;
     [query getObjectInBackgroundWithId:@"KXHjYWYANj" block:^(PFObject * _Nullable team, NSError * _Nullable error) {
         if (error) {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
@@ -311,9 +320,10 @@
         //Determine if to track the task location.
         if (![task.isComplete boolValue]) {
             [self.locationManager addTaskLocation:taskRegion];
-        }else {
-            [self.locationManager removeTaskLocation:taskRegion];
         }
+        //else {
+          //  [self.locationManager removeTaskLocation:taskRegion];
+        //}
     }
 }
 
