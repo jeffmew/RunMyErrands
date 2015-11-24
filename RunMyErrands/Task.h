@@ -13,7 +13,7 @@
 #import <Parse/PFObject+Subclass.h>
 
 @interface Task : PFObject <MKAnnotation,PFSubclassing> {
-    CLLocationCoordinate2D coordinate;
+//    CLLocationCoordinate2D coordinate;
 }
 
 @property (copy, nonatomic) NSString *title;
@@ -28,7 +28,7 @@
 
 + (NSString*)parseClassName;
 + (void)load;
--(CLLocationCoordinate2D) getCoordinate;
+-(CLLocationCoordinate2D) coordinate;
 -(void) setCoordinate:(CLLocationCoordinate2D)newCoordinate;
 -(void) updateCoordinate;
 -(MKAnnotationView*)annoView;

@@ -18,7 +18,7 @@
 @dynamic locationName;
 @dynamic lattitude;
 @dynamic longitude;
-@dynamic coordinate;
+//@dynamic coordinate;
 @dynamic isComplete;
 @dynamic category;
 
@@ -30,7 +30,7 @@
     return @"Task";
 }
 
--(CLLocationCoordinate2D) getCoordinate {
+-(CLLocationCoordinate2D) coordinate {
     CLLocationCoordinate2D newCoordinate = CLLocationCoordinate2DMake([self.lattitude doubleValue], [self.longitude doubleValue]);
     return newCoordinate;
 }
@@ -42,7 +42,7 @@
 -(void) setCoordinate:(CLLocationCoordinate2D)newCoordinate {
     self.lattitude = @(newCoordinate.latitude);
     self.longitude = @(newCoordinate.longitude);
-    coordinate = newCoordinate;
+//    coordinate = newCoordinate;
 }
 
 
