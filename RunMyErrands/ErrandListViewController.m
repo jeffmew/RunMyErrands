@@ -45,8 +45,7 @@
         if (error) {
         } else {
             //[self addNewTeamMember]
-            
-            
+                    
             [self setGreeting];
             [self loadTaskObjects];
         }
@@ -65,62 +64,23 @@
 
 -(NSString*) randHello {
     int rand = arc4random() % 5;
-    switch (rand) {
-        case 0:
-            return @"Hello";
-            break;
-        
-        case 1:
-            return @"Salutations";
-            break;
-            
-        case 2:
-            return @"Bonjour";
-            break;
-            
-        case 3:
-            return @"Greetings";
-            break;
-        
-        case 4:
-            return @"Hi";
-            break;
-            
-        default:
-            return @"Hello";
-            break;
-    }
+    return @[@"Hello",
+             @"Salutations",
+             @"Bonjour",
+             @"Greetings",
+             @"Hi",
+             @"Hello"][rand];
 }
 
 -(NSString*) randWelcomeMessage {
     int rand = arc4random() % 5;
     
-    return @[@"1", @"2", @"3"][rand];
-    switch (rand) {
-        case 0:
-            return @"Get to work.";
-            break;
-            
-        case 1:
-            return @"Here are your tasks.";
-            break;
-            
-        case 2:
-            return @"Today is a good day to finish a task.";
-            break;
-            
-        case 3:
-            return @"Get it done.";
-            break;
-            
-        case 4:
-            return @"Yesterday you said tomorrow.";
-            break;
-            
-        default:
-            return @"Just do it.";
-            break;
-    }
+    return @[@"Get to work.",
+             @"Here are your tasks.",
+             @"Today is a good day to finish a task.",
+             @"Get it done.",
+             @"Yesterday you said tomorrow.",
+             @"Just do it."][rand];
 }
 
 
@@ -321,9 +281,6 @@
         if (![task.isComplete boolValue]) {
             [self.locationManager addTaskLocation:taskRegion];
         }
-        //else {
-          //  [self.locationManager removeTaskLocation:taskRegion];
-        //}
     }
 }
 

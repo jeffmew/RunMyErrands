@@ -12,9 +12,7 @@
 #import <Parse/Parse.h>
 #import <Parse/PFObject+Subclass.h>
 
-@interface Task : PFObject <MKAnnotation,PFSubclassing> {
-//    CLLocationCoordinate2D coordinate;
-}
+@interface Task : PFObject <MKAnnotation,PFSubclassing>
 
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *subtitle;
