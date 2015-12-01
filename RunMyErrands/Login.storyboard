@@ -3,13 +3,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
+        <!--LoginVC-->
         <scene sceneID="zun-Ze-2Lk">
             <objects>
-                <viewController id="Zmf-04-3bh" customClass="LoginViewController" customModule="RunMyErrands" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Zmf-04-3bh" customClass="LoginVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9mn-99-Tvc"/>
                         <viewControllerLayoutGuide type="bottom" id="Ido-8g-Ylm"/>
@@ -25,7 +26,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="facebookLogin:" destination="Zmf-04-3bh" eventType="touchUpInside" id="INM-e7-cpa"/>
+                                    <action selector="facebookLogin:" destination="Zmf-04-3bh" eventType="touchUpInside" id="seC-uq-M8L"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TwitterLogo_#55acee" translatesAutoresizingMaskIntoConstraints="NO" id="0QL-TL-WoA">
@@ -68,9 +69,6 @@
                                         <state key="normal" title="Login">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
-                                        <connections>
-                                            <action selector="login:" destination="Zmf-04-3bh" eventType="touchUpInside" id="rDd-us-LNm"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tXF-AM-PTB">
                                         <rect key="frame" x="0.0" y="269" width="300" height="30"/>
@@ -78,9 +76,6 @@
                                         <state key="normal" title="Sign up">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
-                                        <connections>
-                                            <action selector="signUp:" destination="Zmf-04-3bh" eventType="touchUpInside" id="LY7-Zc-teW"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -122,9 +117,6 @@
                                 <state key="normal" title="Twitter Login">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="twitterLogin:" destination="Zmf-04-3bh" eventType="touchUpInside" id="HpB-wk-sKP"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9I3-Bm-eu4">
                                 <rect key="frame" x="291" y="438" width="19" height="21"/>
@@ -132,20 +124,39 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0xv-3J-fiH">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="CVg-Hv-DTq">
+                                        <rect key="frame" x="290" y="290" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.01040836327" green="0.22929926980000001" blue="0.41199100379999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="CVg-Hv-DTq" firstAttribute="centerX" secondItem="0xv-3J-fiH" secondAttribute="centerX" id="KEe-6x-x15"/>
+                                    <constraint firstItem="CVg-Hv-DTq" firstAttribute="centerY" secondItem="0xv-3J-fiH" secondAttribute="centerY" id="t4J-zs-3GU"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.01040836327" green="0.22929926980000001" blue="0.41199100379999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Yzf-VC-RNE" firstAttribute="leading" secondItem="0QL-TL-WoA" secondAttribute="trailing" constant="-1" id="0fy-Vv-WlW"/>
+                            <constraint firstItem="9I3-Bm-eu4" firstAttribute="top" secondItem="0xv-3J-fiH" secondAttribute="bottom" id="4fr-XQ-w6h"/>
                             <constraint firstItem="Yzf-VC-RNE" firstAttribute="centerY" secondItem="0QL-TL-WoA" secondAttribute="centerY" id="6Lt-n0-TkG"/>
                             <constraint firstItem="Yzf-VC-RNE" firstAttribute="width" secondItem="eKD-Jq-61J" secondAttribute="width" multiplier="0.4" id="8Cm-7v-2cf"/>
                             <constraint firstItem="SQ5-HO-Efq" firstAttribute="top" secondItem="Yzf-VC-RNE" secondAttribute="bottom" constant="18" id="9tc-lO-9j5"/>
+                            <constraint firstItem="0xv-3J-fiH" firstAttribute="top" secondItem="eKD-Jq-61J" secondAttribute="top" id="CZq-kG-Nfr"/>
+                            <constraint firstItem="Ido-8g-Ylm" firstAttribute="top" secondItem="0xv-3J-fiH" secondAttribute="bottom" id="Fe0-uV-hAb"/>
                             <constraint firstItem="Yzf-VC-RNE" firstAttribute="centerX" secondItem="eKD-Jq-61J" secondAttribute="centerX" id="GcV-QX-ASu"/>
+                            <constraint firstItem="0xv-3J-fiH" firstAttribute="leading" secondItem="eKD-Jq-61J" secondAttribute="leadingMargin" id="IEw-ei-xTK"/>
                             <constraint firstItem="SQ5-HO-Efq" firstAttribute="height" secondItem="RwP-u5-dO4" secondAttribute="height" id="IrA-5d-OVc"/>
                             <constraint firstItem="9I3-Bm-eu4" firstAttribute="top" secondItem="3DU-ev-b65" secondAttribute="bottom" constant="40" id="LcD-G3-3hE"/>
                             <constraint firstItem="SQ5-HO-Efq" firstAttribute="width" secondItem="3DU-ev-b65" secondAttribute="width" id="Lqf-kS-mFc"/>
                             <constraint firstItem="3DU-ev-b65" firstAttribute="centerX" secondItem="eKD-Jq-61J" secondAttribute="centerX" id="MHl-lS-mtL"/>
                             <constraint firstItem="SQ5-HO-Efq" firstAttribute="centerY" secondItem="RwP-u5-dO4" secondAttribute="centerY" id="MbE-cl-5PF"/>
                             <constraint firstItem="SQ5-HO-Efq" firstAttribute="width" secondItem="Yzf-VC-RNE" secondAttribute="width" id="NO0-2i-Y2e"/>
+                            <constraint firstAttribute="trailing" secondItem="0xv-3J-fiH" secondAttribute="trailing" id="OG3-cd-4oD"/>
+                            <constraint firstItem="0xv-3J-fiH" firstAttribute="top" secondItem="9mn-99-Tvc" secondAttribute="bottom" id="Orm-cM-oIS"/>
                             <constraint firstItem="9I3-Bm-eu4" firstAttribute="centerX" secondItem="Yzf-VC-RNE" secondAttribute="centerX" id="SG3-Q3-w8z"/>
                             <constraint firstItem="3DU-ev-b65" firstAttribute="width" secondItem="eKD-Jq-61J" secondAttribute="width" multiplier="0.5" id="Umk-eB-crv"/>
                             <constraint firstItem="Yzf-VC-RNE" firstAttribute="width" secondItem="eKD-Jq-61J" secondAttribute="width" multiplier="0.8" id="Vmy-RZ-in6"/>
@@ -155,10 +166,12 @@
                             <constraint firstItem="3DU-ev-b65" firstAttribute="top" secondItem="eKD-Jq-61J" secondAttribute="centerY" multiplier="0.33" id="ddp-Hc-VKE"/>
                             <constraint firstItem="3DU-ev-b65" firstAttribute="width" secondItem="eKD-Jq-61J" secondAttribute="width" id="du1-nT-m8c"/>
                             <constraint firstItem="SQ5-HO-Efq" firstAttribute="leading" secondItem="RwP-u5-dO4" secondAttribute="trailing" constant="-1" id="f5f-oX-3TG"/>
+                            <constraint firstItem="0xv-3J-fiH" firstAttribute="leading" secondItem="eKD-Jq-61J" secondAttribute="leading" id="htb-Dd-2ci"/>
                             <constraint firstItem="SQ5-HO-Efq" firstAttribute="leading" secondItem="RwP-u5-dO4" secondAttribute="trailing" constant="-1" id="kTL-9k-HEE"/>
                             <constraint firstItem="SQ5-HO-Efq" firstAttribute="centerX" secondItem="Yzf-VC-RNE" secondAttribute="centerX" id="kds-HY-cdg"/>
                             <constraint firstItem="Yzf-VC-RNE" firstAttribute="width" secondItem="3DU-ev-b65" secondAttribute="width" id="lVw-UH-MU9"/>
                             <constraint firstItem="Yzf-VC-RNE" firstAttribute="leading" secondItem="0QL-TL-WoA" secondAttribute="trailing" constant="-1" id="vBX-de-9J6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0xv-3J-fiH" secondAttribute="trailing" id="w8i-H3-YmA"/>
                             <constraint firstItem="SQ5-HO-Efq" firstAttribute="centerX" secondItem="RwP-u5-dO4" secondAttribute="centerX" id="ygd-2X-YW6"/>
                             <constraint firstItem="9I3-Bm-eu4" firstAttribute="centerX" secondItem="eKD-Jq-61J" secondAttribute="centerX" id="ylW-i1-gRp"/>
                             <constraint firstItem="Yzf-VC-RNE" firstAttribute="leading" secondItem="0QL-TL-WoA" secondAttribute="trailing" constant="-1" id="zbw-LD-ZJW"/>
@@ -166,12 +179,16 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="IEw-ei-xTK"/>
+                                <exclude reference="Orm-cM-oIS"/>
+                                <exclude reference="w8i-H3-YmA"/>
                                 <exclude reference="du1-nT-m8c"/>
                                 <exclude reference="0fy-Vv-WlW"/>
                                 <exclude reference="Vmy-RZ-in6"/>
                                 <exclude reference="d2S-xE-jhB"/>
                                 <exclude reference="lVw-UH-MU9"/>
                                 <exclude reference="vBX-de-9J6"/>
+                                <exclude reference="4fr-XQ-w6h"/>
                                 <exclude reference="SG3-Q3-w8z"/>
                                 <exclude reference="Lqf-kS-mFc"/>
                                 <exclude reference="f5f-oX-3TG"/>
@@ -181,13 +198,52 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="passwordTextField" destination="YG8-vq-MYB" id="aHj-hw-NBU"/>
-                        <outlet property="usernameTextField" destination="3hY-FF-lzq" id="U3j-sE-k8m"/>
+                        <outlet property="activitySpinner" destination="CVg-Hv-DTq" id="aXx-1l-qyi"/>
+                        <outlet property="transitionView" destination="0xv-3J-fiH" id="QQj-UG-Gf0"/>
+                        <segue destination="MRA-Bf-no6" kind="show" identifier="showErrandList" animates="NO" id="sZy-BU-E7M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Ib-nn-S3q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="633" y="-1370"/>
+            <point key="canvasLocation" x="233" y="-1328"/>
+        </scene>
+        <!--TabBarController-->
+        <scene sceneID="5jf-I3-LJT">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Main" storyboardName="Main" bundleIdentifier="mew.jeff.RunMyErrands" referencedIdentifier="TabBarController" id="MRA-Bf-no6" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NoQ-w5-Jgd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="716.5" y="-1753"/>
+        </scene>
+        <!--Transition View Controller-->
+        <scene sceneID="qHn-Lg-JWy">
+            <objects>
+                <viewController id="TNh-8u-YXz" customClass="TransitionViewController" customModule="RunMyErrands" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0xK-Xx-ahQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="q1X-Aj-Ri2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MTt-m6-nc1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="P9S-Se-4p2">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.01040836327" green="0.22929926980000001" blue="0.41199100379999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="P9S-Se-4p2" firstAttribute="centerX" secondItem="MTt-m6-nc1" secondAttribute="centerX" id="TWI-hA-uyc"/>
+                            <constraint firstItem="P9S-Se-4p2" firstAttribute="centerY" secondItem="MTt-m6-nc1" secondAttribute="centerY" id="j7k-Ch-ad2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activitySpinner" destination="P9S-Se-4p2" id="Njm-R5-sIc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dlX-VZ-fcE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="951" y="-1186"/>
         </scene>
     </scenes>
     <resources>

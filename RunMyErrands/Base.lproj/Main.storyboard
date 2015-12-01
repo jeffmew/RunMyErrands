@@ -539,7 +539,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="LEP-rT-upt">
             <objects>
-                <tabBarController id="veq-YI-bej" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="veq-YI-bej" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="s0v-ji-Zsg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

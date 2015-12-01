@@ -11,6 +11,7 @@
 
 #import <Bolts/BFTask.h>
 
+#import <FBSDKCoreKit/FBSDKUtility.h>
 #import <FBSDKCoreKit/FBSDKAccessToken.h>
 
 #import <FBSDKLoginKit/FBSDKLoginManager.h>

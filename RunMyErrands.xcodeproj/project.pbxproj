@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		523E40FF1BF843A900AFBEB7 /* ErrandListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523E40FE1BF843A900AFBEB7 /* ErrandListViewController.m */; };
 		523E41021BF843D300AFBEB7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523E41011BF843D300AFBEB7 /* DetailViewController.m */; };
+		5252BA561C0D43770003E77D /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5252BA551C0D43770003E77D /* LoginVC.m */; };
 		5257FBBF1BF809CE005CC88D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5257FBBE1BF809CE005CC88D /* main.m */; };
 		5257FBC21BF809CE005CC88D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5257FBC11BF809CE005CC88D /* AppDelegate.m */; };
 		5257FBC81BF809CE005CC88D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5257FBC61BF809CE005CC88D /* Main.storyboard */; };
@@ -22,7 +23,7 @@
 		5298904D1BFBDBDE00B82D76 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5298904C1BFBDBDE00B82D76 /* CoreLocation.framework */; };
 		5298904F1BFBDBE500B82D76 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5298904E1BFBDBE500B82D76 /* MapKit.framework */; };
 		52AA1A091BFD8F7D000FF2F0 /* ErrandsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AA1A081BFD8F7D000FF2F0 /* ErrandsListTableViewCell.swift */; };
-		52ABCF1A1C0CE6E400110C8A /* Login-signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52ABCF191C0CE6E400110C8A /* Login-signup.storyboard */; };
+		52ABCF1A1C0CE6E400110C8A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52ABCF191C0CE6E400110C8A /* Login.storyboard */; };
 		52ABCF1D1C0CF39800110C8A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABCF1C1C0CF39800110C8A /* LoginViewController.swift */; };
 		52CA6F0F1BFF963A003E3437 /* TeamListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CA6F0E1BFF963A003E3437 /* TeamListTableViewController.m */; };
 		52D6CD6E1BF96CE600CBBBAD /* AddNewTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D6CD6D1BF96CE600CBBBAD /* AddNewTaskViewController.m */; };
@@ -59,6 +60,8 @@
 		523E40FE1BF843A900AFBEB7 /* ErrandListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrandListViewController.m; sourceTree = "<group>"; };
 		523E41001BF843D300AFBEB7 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		523E41011BF843D300AFBEB7 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		5252BA541C0D43770003E77D /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
+		5252BA551C0D43770003E77D /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
 		5257FBBA1BF809CE005CC88D /* RunMyErrands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunMyErrands.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5257FBBE1BF809CE005CC88D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5257FBC01BF809CE005CC88D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -83,7 +86,7 @@
 		5298904C1BFBDBDE00B82D76 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5298904E1BFBDBE500B82D76 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		52AA1A081BFD8F7D000FF2F0 /* ErrandsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrandsListTableViewCell.swift; sourceTree = "<group>"; };
-		52ABCF191C0CE6E400110C8A /* Login-signup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Login-signup.storyboard"; sourceTree = "<group>"; };
+		52ABCF191C0CE6E400110C8A /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		52ABCF1C1C0CF39800110C8A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		52CA6F0D1BFF963A003E3437 /* TeamListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamListTableViewController.h; sourceTree = "<group>"; };
 		52CA6F0E1BFF963A003E3437 /* TeamListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamListTableViewController.m; sourceTree = "<group>"; };
@@ -157,7 +160,7 @@
 				5257FBC01BF809CE005CC88D /* AppDelegate.h */,
 				5257FBC11BF809CE005CC88D /* AppDelegate.m */,
 				5257FBC61BF809CE005CC88D /* Main.storyboard */,
-				52ABCF191C0CE6E400110C8A /* Login-signup.storyboard */,
+				52ABCF191C0CE6E400110C8A /* Login.storyboard */,
 				5257FBCC1BF809CE005CC88D /* Assets.xcassets */,
 				5257FBCE1BF809CE005CC88D /* LaunchScreen.storyboard */,
 				5257FBD11BF809CE005CC88D /* Info.plist */,
@@ -217,6 +220,8 @@
 			isa = PBXGroup;
 			children = (
 				52ABCF1C1C0CF39800110C8A /* LoginViewController.swift */,
+				5252BA541C0D43770003E77D /* LoginVC.h */,
+				5252BA551C0D43770003E77D /* LoginVC.m */,
 			);
 			name = LoginFiles;
 			sourceTree = "<group>";
@@ -359,7 +364,7 @@
 			files = (
 				DA8B6FF51BFEAEF600834D78 /* die.png in Resources */,
 				DA8B6FF31BFEAEF600834D78 /* briefcase.png in Resources */,
-				52ABCF1A1C0CE6E400110C8A /* Login-signup.storyboard in Resources */,
+				52ABCF1A1C0CE6E400110C8A /* Login.storyboard in Resources */,
 				DA8B6FF61BFEAEF600834D78 /* running-128.png in Resources */,
 				DA8B6FF41BFEAEF600834D78 /* cart.png in Resources */,
 				5257FBD01BF809CE005CC88D /* LaunchScreen.storyboard in Resources */,
@@ -449,6 +454,7 @@
 				5257FBBF1BF809CE005CC88D /* main.m in Sources */,
 				52CA6F0F1BFF963A003E3437 /* TeamListTableViewController.m in Sources */,
 				52ABCF1D1C0CF39800110C8A /* LoginViewController.swift in Sources */,
+				5252BA561C0D43770003E77D /* LoginVC.m in Sources */,
 				5298904A1BFBD97C00B82D76 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -508,6 +514,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -553,6 +560,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -593,6 +601,7 @@
 			baseConfigurationReference = 85757A77437764711EB09EC4 /* Pods-RunMyErrands.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -613,6 +622,7 @@
 			baseConfigurationReference = 14251E798FFF8903EFF6AB4D /* Pods-RunMyErrands.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -631,6 +641,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				INFOPLIST_FILE = RunMyErrandsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mew.jeff.RunMyErrandsTests;
@@ -643,6 +654,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				INFOPLIST_FILE = RunMyErrandsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mew.jeff.RunMyErrandsTests;
@@ -654,6 +666,7 @@
 		5257FBF11BF809CE005CC88D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				INFOPLIST_FILE = RunMyErrandsUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mew.jeff.RunMyErrandsUITests;
@@ -666,6 +679,7 @@
 		5257FBF21BF809CE005CC88D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				INFOPLIST_FILE = RunMyErrandsUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mew.jeff.RunMyErrandsUITests;
