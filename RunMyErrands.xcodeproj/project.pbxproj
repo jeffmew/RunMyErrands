@@ -22,6 +22,8 @@
 		5298904D1BFBDBDE00B82D76 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5298904C1BFBDBDE00B82D76 /* CoreLocation.framework */; };
 		5298904F1BFBDBE500B82D76 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5298904E1BFBDBE500B82D76 /* MapKit.framework */; };
 		52AA1A091BFD8F7D000FF2F0 /* ErrandsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AA1A081BFD8F7D000FF2F0 /* ErrandsListTableViewCell.swift */; };
+		52ABCF1A1C0CE6E400110C8A /* Login-signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52ABCF191C0CE6E400110C8A /* Login-signup.storyboard */; };
+		52ABCF1D1C0CF39800110C8A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABCF1C1C0CF39800110C8A /* LoginViewController.swift */; };
 		52CA6F0F1BFF963A003E3437 /* TeamListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CA6F0E1BFF963A003E3437 /* TeamListTableViewController.m */; };
 		52D6CD6E1BF96CE600CBBBAD /* AddNewTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D6CD6D1BF96CE600CBBBAD /* AddNewTaskViewController.m */; };
 		52DEDEE21BFE85E2003ED1F3 /* MainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52DEDEE11BFE85E2003ED1F3 /* MainMapViewController.m */; };
@@ -81,6 +83,8 @@
 		5298904C1BFBDBDE00B82D76 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5298904E1BFBDBE500B82D76 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		52AA1A081BFD8F7D000FF2F0 /* ErrandsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrandsListTableViewCell.swift; sourceTree = "<group>"; };
+		52ABCF191C0CE6E400110C8A /* Login-signup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Login-signup.storyboard"; sourceTree = "<group>"; };
+		52ABCF1C1C0CF39800110C8A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		52CA6F0D1BFF963A003E3437 /* TeamListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamListTableViewController.h; sourceTree = "<group>"; };
 		52CA6F0E1BFF963A003E3437 /* TeamListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamListTableViewController.m; sourceTree = "<group>"; };
 		52D6CD6C1BF96CE600CBBBAD /* AddNewTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewTaskViewController.h; sourceTree = "<group>"; };
@@ -149,9 +153,11 @@
 		5257FBBC1BF809CE005CC88D /* RunMyErrands */ = {
 			isa = PBXGroup;
 			children = (
+				52ABCF1B1C0CF36F00110C8A /* LoginFiles */,
 				5257FBC01BF809CE005CC88D /* AppDelegate.h */,
 				5257FBC11BF809CE005CC88D /* AppDelegate.m */,
 				5257FBC61BF809CE005CC88D /* Main.storyboard */,
+				52ABCF191C0CE6E400110C8A /* Login-signup.storyboard */,
 				5257FBCC1BF809CE005CC88D /* Assets.xcassets */,
 				5257FBCE1BF809CE005CC88D /* LaunchScreen.storyboard */,
 				5257FBD11BF809CE005CC88D /* Info.plist */,
@@ -205,6 +211,14 @@
 				5257FBE71BF809CE005CC88D /* Info.plist */,
 			);
 			path = RunMyErrandsUITests;
+			sourceTree = "<group>";
+		};
+		52ABCF1B1C0CF36F00110C8A /* LoginFiles */ = {
+			isa = PBXGroup;
+			children = (
+				52ABCF1C1C0CF39800110C8A /* LoginViewController.swift */,
+			);
+			name = LoginFiles;
 			sourceTree = "<group>";
 		};
 		A0EC8B38240E99938E9C8DF0 /* Pods */ = {
@@ -345,6 +359,7 @@
 			files = (
 				DA8B6FF51BFEAEF600834D78 /* die.png in Resources */,
 				DA8B6FF31BFEAEF600834D78 /* briefcase.png in Resources */,
+				52ABCF1A1C0CE6E400110C8A /* Login-signup.storyboard in Resources */,
 				DA8B6FF61BFEAEF600834D78 /* running-128.png in Resources */,
 				DA8B6FF41BFEAEF600834D78 /* cart.png in Resources */,
 				5257FBD01BF809CE005CC88D /* LaunchScreen.storyboard in Resources */,
@@ -433,6 +448,7 @@
 				523E40FF1BF843A900AFBEB7 /* ErrandListViewController.m in Sources */,
 				5257FBBF1BF809CE005CC88D /* main.m in Sources */,
 				52CA6F0F1BFF963A003E3437 /* TeamListTableViewController.m in Sources */,
+				52ABCF1D1C0CF39800110C8A /* LoginViewController.swift in Sources */,
 				5298904A1BFBD97C00B82D76 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -578,6 +594,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = RunMyErrands/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mew.jeff.RunMyErrands;
@@ -593,6 +614,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = RunMyErrands/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mew.jeff.RunMyErrands;

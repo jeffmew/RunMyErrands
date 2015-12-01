@@ -32,8 +32,8 @@
     self.locationManager = [GeoManager sharedManager];
     [self.locationManager startLocationManager];
     
-    self.tableview.backgroundColor = [UIColor clearColor];
-    self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    self.tableview.backgroundColor = [UIColor clearColor];
+ //   self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     
 //    [PFUser logInWithUsername:@"jeff" password:@"jeff"];
   //  [self setGreeting];
@@ -173,22 +173,22 @@
 #pragma mark - Core Data stack
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
-}
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.taskArray.count;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 20;
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
 }
 
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *headerView = [[UIView alloc] init];
-    headerView.backgroundColor = [UIColor clearColor];
-    return headerView;
-}
+//-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//    return 20;
+//}
+
+//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//    UIView *headerView = [[UIView alloc] init];
+//    headerView.backgroundColor = [UIColor clearColor];
+//    return headerView;
+//}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ErrandsListTableViewCell *cell =(ErrandsListTableViewCell*)[self.tableview dequeueReusableCellWithIdentifier:@"tasklistCell" forIndexPath:indexPath];
@@ -199,7 +199,7 @@
     cell.subtitleLabel.attributedText = nil;
     cell.categoryImage.image = nil;
     
-    Task *taskAtCell = self.taskArray[indexPath.section];
+    Task *taskAtCell = self.taskArray[indexPath.row];
     
     NSString *imageName;
     switch ([taskAtCell.category intValue]) {
@@ -242,7 +242,7 @@
         
     }
     
-    cell.layer.cornerRadius = 6;
+//    cell.layer.cornerRadius = 6;
     cell.categoryImage.image = [UIImage imageNamed:imageName];
     
     return cell;

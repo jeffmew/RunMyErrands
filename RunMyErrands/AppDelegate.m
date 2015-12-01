@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 #import "API_key.h"
+#import "RunMyErrands-Swift.h"
 #import "Task.h"
 
 @interface AppDelegate ()
@@ -29,6 +30,14 @@
     //allow persmission for local notifications
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
     [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    
+     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Login-signup" bundle:[NSBundle mainBundle]];
+     LoginViewController *vc =[storyboard instantiateInitialViewController];
+
+    // Set root view controller and make windows visible
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = vc;
+    [self.window makeKeyAndVisible];
     
     return YES;
 }
