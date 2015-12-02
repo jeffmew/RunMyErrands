@@ -215,36 +215,6 @@
             </objects>
             <point key="canvasLocation" x="716.5" y="-1753"/>
         </scene>
-        <!--Transition View Controller-->
-        <scene sceneID="qHn-Lg-JWy">
-            <objects>
-                <viewController id="TNh-8u-YXz" customClass="TransitionViewController" customModule="RunMyErrands" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0xK-Xx-ahQ"/>
-                        <viewControllerLayoutGuide type="bottom" id="q1X-Aj-Ri2"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="MTt-m6-nc1">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="P9S-Se-4p2">
-                                <rect key="frame" x="290" y="290" width="20" height="20"/>
-                            </activityIndicatorView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.01040836327" green="0.22929926980000001" blue="0.41199100379999998" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="P9S-Se-4p2" firstAttribute="centerX" secondItem="MTt-m6-nc1" secondAttribute="centerX" id="TWI-hA-uyc"/>
-                            <constraint firstItem="P9S-Se-4p2" firstAttribute="centerY" secondItem="MTt-m6-nc1" secondAttribute="centerY" id="j7k-Ch-ad2"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="activitySpinner" destination="P9S-Se-4p2" id="Njm-R5-sIc"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dlX-VZ-fcE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="951" y="-1186"/>
-        </scene>
     </scenes>
     <resources>
         <image name="TwitterLogo_#55acee" width="1687" height="1687"/>
