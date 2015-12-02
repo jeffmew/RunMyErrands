@@ -7,9 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		520B47211C0E7DB7006F1FDA /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520B47201C0E7DB7006F1FDA /* FBSDKCoreKit.framework */; };
+		520B47231C0E7DBF006F1FDA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520B47221C0E7DBF006F1FDA /* FBSDKLoginKit.framework */; };
+		520B47251C0E7E26006F1FDA /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520B47241C0E7E26006F1FDA /* ParseFacebookUtilsV4.framework */; };
+		520B47281C0E7FF3006F1FDA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520B47261C0E7FF3006F1FDA /* Bolts.framework */; };
+		520B47291C0E7FF3006F1FDA /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520B47271C0E7FF3006F1FDA /* Parse.framework */; };
+		520B472B1C0E8026006F1FDA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520B472A1C0E8026006F1FDA /* AudioToolbox.framework */; };
+		520B472D1C0E802D006F1FDA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520B472C1C0E802D006F1FDA /* CFNetwork.framework */; };
+		520B472F1C0E803D006F1FDA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520B472E1C0E803D006F1FDA /* CoreGraphics.framework */; };
+		520B47311C0E8054006F1FDA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520B47301C0E8054006F1FDA /* QuartzCore.framework */; };
+		520B47331C0E805C006F1FDA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520B47321C0E805C006F1FDA /* Security.framework */; };
+		520B47351C0E8067006F1FDA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520B47341C0E8067006F1FDA /* StoreKit.framework */; };
+		520B47371C0E8074006F1FDA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520B47361C0E8074006F1FDA /* SystemConfiguration.framework */; };
+		520B47391C0E8082006F1FDA /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 520B47381C0E8082006F1FDA /* libz.tbd */; };
+		520B473B1C0E808A006F1FDA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 520B473A1C0E808A006F1FDA /* libsqlite3.tbd */; };
+		520B473D1C0F7562006F1FDA /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520B473C1C0F7562006F1FDA /* SignupViewController.swift */; };
 		523E40FF1BF843A900AFBEB7 /* ErrandListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523E40FE1BF843A900AFBEB7 /* ErrandListViewController.m */; };
 		523E41021BF843D300AFBEB7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523E41011BF843D300AFBEB7 /* DetailViewController.m */; };
-		5252BA561C0D43770003E77D /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5252BA551C0D43770003E77D /* LoginVC.m */; };
 		5257FBBF1BF809CE005CC88D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5257FBBE1BF809CE005CC88D /* main.m */; };
 		5257FBC21BF809CE005CC88D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5257FBC11BF809CE005CC88D /* AppDelegate.m */; };
 		5257FBC81BF809CE005CC88D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5257FBC61BF809CE005CC88D /* Main.storyboard */; };
@@ -54,14 +68,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		14251E798FFF8903EFF6AB4D /* Pods-RunMyErrands.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunMyErrands.release.xcconfig"; path = "Pods/Target Support Files/Pods-RunMyErrands/Pods-RunMyErrands.release.xcconfig"; sourceTree = "<group>"; };
 		504342781871F1A0EFAE0716 /* libPods-RunMyErrands.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RunMyErrands.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		520B47201C0E7DB7006F1FDA /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		520B47221C0E7DBF006F1FDA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		520B47241C0E7E26006F1FDA /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
+		520B47261C0E7FF3006F1FDA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		520B47271C0E7FF3006F1FDA /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		520B472A1C0E8026006F1FDA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		520B472C1C0E802D006F1FDA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		520B472E1C0E803D006F1FDA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		520B47301C0E8054006F1FDA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		520B47321C0E805C006F1FDA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		520B47341C0E8067006F1FDA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		520B47361C0E8074006F1FDA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		520B47381C0E8082006F1FDA /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		520B473A1C0E808A006F1FDA /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		520B473C1C0F7562006F1FDA /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		523E40FD1BF843A900AFBEB7 /* ErrandListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrandListViewController.h; sourceTree = "<group>"; };
 		523E40FE1BF843A900AFBEB7 /* ErrandListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrandListViewController.m; sourceTree = "<group>"; };
 		523E41001BF843D300AFBEB7 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		523E41011BF843D300AFBEB7 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		5252BA541C0D43770003E77D /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
-		5252BA551C0D43770003E77D /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
 		5257FBBA1BF809CE005CC88D /* RunMyErrands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunMyErrands.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5257FBBE1BF809CE005CC88D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5257FBC01BF809CE005CC88D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -94,7 +120,6 @@
 		52D6CD6D1BF96CE600CBBBAD /* AddNewTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewTaskViewController.m; sourceTree = "<group>"; };
 		52DEDEE11BFE85E2003ED1F3 /* MainMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMapViewController.m; sourceTree = "<group>"; };
 		52DEDEE31BFE85F3003ED1F3 /* MainMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMapViewController.h; sourceTree = "<group>"; };
-		85757A77437764711EB09EC4 /* Pods-RunMyErrands.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunMyErrands.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RunMyErrands/Pods-RunMyErrands.debug.xcconfig"; sourceTree = "<group>"; };
 		DA216A361BFD7FD200797C24 /* RunMyErrands-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RunMyErrands-Bridging-Header.h"; sourceTree = "<group>"; };
 		DA216A371BFD7FD300797C24 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		DA8B6FEF1BFEAEF600834D78 /* briefcase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = briefcase.png; sourceTree = "<group>"; };
@@ -108,9 +133,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				520B473B1C0E808A006F1FDA /* libsqlite3.tbd in Frameworks */,
+				520B47391C0E8082006F1FDA /* libz.tbd in Frameworks */,
+				520B47371C0E8074006F1FDA /* SystemConfiguration.framework in Frameworks */,
+				520B47351C0E8067006F1FDA /* StoreKit.framework in Frameworks */,
+				520B47331C0E805C006F1FDA /* Security.framework in Frameworks */,
+				520B47311C0E8054006F1FDA /* QuartzCore.framework in Frameworks */,
+				520B472F1C0E803D006F1FDA /* CoreGraphics.framework in Frameworks */,
+				520B472D1C0E802D006F1FDA /* CFNetwork.framework in Frameworks */,
+				520B472B1C0E8026006F1FDA /* AudioToolbox.framework in Frameworks */,
 				5298904F1BFBDBE500B82D76 /* MapKit.framework in Frameworks */,
+				520B47211C0E7DB7006F1FDA /* FBSDKCoreKit.framework in Frameworks */,
+				520B47251C0E7E26006F1FDA /* ParseFacebookUtilsV4.framework in Frameworks */,
+				520B47231C0E7DBF006F1FDA /* FBSDKLoginKit.framework in Frameworks */,
 				5298904D1BFBDBDE00B82D76 /* CoreLocation.framework in Frameworks */,
 				603AB53B5149F09692D9B583 /* libPods-RunMyErrands.a in Frameworks */,
+				520B47291C0E7FF3006F1FDA /* Parse.framework in Frameworks */,
+				520B47281C0E7FF3006F1FDA /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +177,6 @@
 				5257FBD91BF809CE005CC88D /* RunMyErrandsTests */,
 				5257FBE41BF809CE005CC88D /* RunMyErrandsUITests */,
 				5257FBBB1BF809CE005CC88D /* Products */,
-				A0EC8B38240E99938E9C8DF0 /* Pods */,
 				D671CC1A1730522650B8A93F /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -220,24 +258,28 @@
 			isa = PBXGroup;
 			children = (
 				52ABCF1C1C0CF39800110C8A /* LoginViewController.swift */,
-				5252BA541C0D43770003E77D /* LoginVC.h */,
-				5252BA551C0D43770003E77D /* LoginVC.m */,
+				520B473C1C0F7562006F1FDA /* SignupViewController.swift */,
 			);
 			name = LoginFiles;
-			sourceTree = "<group>";
-		};
-		A0EC8B38240E99938E9C8DF0 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				85757A77437764711EB09EC4 /* Pods-RunMyErrands.debug.xcconfig */,
-				14251E798FFF8903EFF6AB4D /* Pods-RunMyErrands.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		D671CC1A1730522650B8A93F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				520B473A1C0E808A006F1FDA /* libsqlite3.tbd */,
+				520B47381C0E8082006F1FDA /* libz.tbd */,
+				520B47361C0E8074006F1FDA /* SystemConfiguration.framework */,
+				520B47341C0E8067006F1FDA /* StoreKit.framework */,
+				520B47321C0E805C006F1FDA /* Security.framework */,
+				520B47301C0E8054006F1FDA /* QuartzCore.framework */,
+				520B472E1C0E803D006F1FDA /* CoreGraphics.framework */,
+				520B472C1C0E802D006F1FDA /* CFNetwork.framework */,
+				520B472A1C0E8026006F1FDA /* AudioToolbox.framework */,
+				520B47261C0E7FF3006F1FDA /* Bolts.framework */,
+				520B47271C0E7FF3006F1FDA /* Parse.framework */,
+				520B47241C0E7E26006F1FDA /* ParseFacebookUtilsV4.framework */,
+				520B47221C0E7DBF006F1FDA /* FBSDKLoginKit.framework */,
+				520B47201C0E7DB7006F1FDA /* FBSDKCoreKit.framework */,
 				5298904E1BFBDBE500B82D76 /* MapKit.framework */,
 				5298904C1BFBDBDE00B82D76 /* CoreLocation.framework */,
 				504342781871F1A0EFAE0716 /* libPods-RunMyErrands.a */,
@@ -263,12 +305,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5257FBEA1BF809CE005CC88D /* Build configuration list for PBXNativeTarget "RunMyErrands" */;
 			buildPhases = (
-				7CF0D999A9BB34B595069F9A /* Check Pods Manifest.lock */,
 				5257FBB61BF809CE005CC88D /* Sources */,
 				5257FBB71BF809CE005CC88D /* Frameworks */,
 				5257FBB81BF809CE005CC88D /* Resources */,
-				C0045B51D241B0317F636BF0 /* Embed Pods Frameworks */,
-				1D52AEB510164D64D5D5DED7 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -389,54 +428,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		1D52AEB510164D64D5D5DED7 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RunMyErrands/Pods-RunMyErrands-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7CF0D999A9BB34B595069F9A /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		C0045B51D241B0317F636BF0 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RunMyErrands/Pods-RunMyErrands-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		5257FBB61BF809CE005CC88D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -450,11 +441,11 @@
 				529890491BFBD97C00B82D76 /* GeoManager.m in Sources */,
 				52AA1A091BFD8F7D000FF2F0 /* ErrandsListTableViewCell.swift in Sources */,
 				5298904B1BFBD97C00B82D76 /* Task.m in Sources */,
+				520B473D1C0F7562006F1FDA /* SignupViewController.swift in Sources */,
 				523E40FF1BF843A900AFBEB7 /* ErrandListViewController.m in Sources */,
 				5257FBBF1BF809CE005CC88D /* main.m in Sources */,
 				52CA6F0F1BFF963A003E3437 /* TeamListTableViewController.m in Sources */,
 				52ABCF1D1C0CF39800110C8A /* LoginViewController.swift in Sources */,
-				5252BA561C0D43770003E77D /* LoginVC.m in Sources */,
 				5298904A1BFBD97C00B82D76 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -598,7 +589,6 @@
 		};
 		5257FBEB1BF809CE005CC88D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 85757A77437764711EB09EC4 /* Pods-RunMyErrands.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
@@ -619,7 +609,6 @@
 		};
 		5257FBEC1BF809CE005CC88D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 14251E798FFF8903EFF6AB4D /* Pods-RunMyErrands.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;

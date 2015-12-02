@@ -13,6 +13,8 @@
 #import <Parse/Parse.h>
 #import "Task.h"
 #import "GeoManager.h"
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+
 
 @interface ErrandListViewController () <UITableViewDataSource,UITableViewDelegate>
 
@@ -30,6 +32,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
+    if ([self.presentingViewController isKindOfClass:[LoginViewController class]]) {
+        LoginViewController *loginVC = (LoginViewController*)self.presentingViewController;
+        [loginVC.activitySpinner stopAnimating];
+        loginVC.transitionView = false;
+    }
     
     self.locationManager = [GeoManager sharedManager];
     [self.locationManager startLocationManager];
@@ -43,25 +50,34 @@
     //[self createNewTeam];
 //    [self loadTaskObjects];
     
-    [PFUser logInWithUsernameInBackground:@"jeff" password:@"jeff" block:^(PFUser *user, NSError *error) {
-        if (error) {
-        } else {
-            //[self addNewTeamMember]
-                    
-            [self setGreeting];
-            [self loadTaskObjects];
-        }
-    }];
+//    [PFUser logInWithUsernameInBackground:@"jeff" password:@"jeff" block:^(PFUser *user, NSError *error) {
+//        if (error) {
+//        } else {
+//            //[self addNewTeamMember]
+//                    
+//            [self setGreeting];
+//            [self loadTaskObjects];
+//        }
+//    }];
 }
 
 -(void) setGreeting {
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
-        self.helloUserLabel.text = [[NSString stringWithFormat:@"%@, %@...", [self randHello], currentUser.username] capitalizedString];
+        self.helloUserLabel.text = [NSString stringWithFormat:@"%@, %@...", [self randHello], [[currentUser valueForKey:@"name"] capitalizedString]];
         self.youHaveTasksLabel.text = [NSString stringWithFormat:@"%@", [self randWelcomeMessage]];
     } else {
     
     }
+}
+
+- (IBAction)logout:(UIButton *)sender {
+    [PFUser logOut];
+    [[FBSDKLoginManager new] logOut];
+   // [self performSegueWithIdentifier:@"showLogin" sender:nil];
+    LoginViewController *loginVC = [[LoginViewController alloc] init];
+    [self presentViewController:loginVC animated:YES completion:^{
+    }];
 }
 
 -(NSString*) randHello {

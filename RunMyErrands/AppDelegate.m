@@ -13,7 +13,6 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 #import "Task.h"
-#import "LoginVC.h"
 
 @interface AppDelegate ()
 
@@ -39,7 +38,7 @@
     
     //Use 'Login-signup' storyboard
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:[NSBundle mainBundle]];
-    LoginVC *vc =[storyboard instantiateInitialViewController];
+    LoginViewController *vc =[storyboard instantiateInitialViewController];
 
     // Set root view controller and make windows visible
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
