@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39ADC9F2247B2C39C364EB20 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63FA6FDCA68AB15C9D6E0BAB /* libPods.a */; };
 		523E40FF1BF843A900AFBEB7 /* ErrandListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523E40FE1BF843A900AFBEB7 /* ErrandListViewController.m */; };
 		523E41021BF843D300AFBEB7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523E41011BF843D300AFBEB7 /* DetailViewController.m */; };
 		5257FBBF1BF809CE005CC88D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5257FBBE1BF809CE005CC88D /* main.m */; };
@@ -26,11 +27,15 @@
 		52D6CD6E1BF96CE600CBBBAD /* AddNewTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D6CD6D1BF96CE600CBBBAD /* AddNewTaskViewController.m */; };
 		52DEDEE21BFE85E2003ED1F3 /* MainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52DEDEE11BFE85E2003ED1F3 /* MainMapViewController.m */; };
 		603AB53B5149F09692D9B583 /* libPods-RunMyErrands.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 504342781871F1A0EFAE0716 /* libPods-RunMyErrands.a */; };
+		DA0E11D01C0D668A00CF4E9A /* MapOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E11CF1C0D668A00CF4E9A /* MapOverViewController.swift */; };
 		DA216A381BFD7FD300797C24 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA216A371BFD7FD300797C24 /* CustomAnnotation.swift */; };
 		DA8B6FF31BFEAEF600834D78 /* briefcase.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8B6FEF1BFEAEF600834D78 /* briefcase.png */; };
 		DA8B6FF41BFEAEF600834D78 /* cart.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8B6FF01BFEAEF600834D78 /* cart.png */; };
 		DA8B6FF51BFEAEF600834D78 /* die.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8B6FF11BFEAEF600834D78 /* die.png */; };
 		DA8B6FF61BFEAEF600834D78 /* running-128.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8B6FF21BFEAEF600834D78 /* running-128.png */; };
+		DAB407531C0ECB610096BBC8 /* DirectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB407521C0ECB610096BBC8 /* DirectionManager.swift */; };
+		DAB407551C100FB10096BBC8 /* CustomInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB407541C100FB10096BBC8 /* CustomInfoWindow.swift */; };
+		DAB407581C10110D0096BBC8 /* CustomInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAB407571C10110D0096BBC8 /* CustomInfoWindow.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,7 +76,6 @@
 		5257FBE11BF809CE005CC88D /* RunMyErrandsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunMyErrandsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5257FBE51BF809CE005CC88D /* RunMyErrandsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RunMyErrandsUITests.m; sourceTree = "<group>"; };
 		5257FBE71BF809CE005CC88D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		529890421BFBD7C000B82D76 /* API_key.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API_key.h; sourceTree = "<group>"; };
 		529890431BFBD97C00B82D76 /* GeoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoManager.h; sourceTree = "<group>"; };
 		529890441BFBD97C00B82D76 /* GeoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoManager.m; sourceTree = "<group>"; };
 		529890451BFBD97C00B82D76 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -87,13 +91,19 @@
 		52D6CD6D1BF96CE600CBBBAD /* AddNewTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewTaskViewController.m; sourceTree = "<group>"; };
 		52DEDEE11BFE85E2003ED1F3 /* MainMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMapViewController.m; sourceTree = "<group>"; };
 		52DEDEE31BFE85F3003ED1F3 /* MainMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMapViewController.h; sourceTree = "<group>"; };
+		63FA6FDCA68AB15C9D6E0BAB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		85757A77437764711EB09EC4 /* Pods-RunMyErrands.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunMyErrands.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RunMyErrands/Pods-RunMyErrands.debug.xcconfig"; sourceTree = "<group>"; };
+		DA0E118B1C0D390E00CF4E9A /* API_key.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API_key.h; sourceTree = "<group>"; };
+		DA0E11CF1C0D668A00CF4E9A /* MapOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapOverViewController.swift; sourceTree = "<group>"; };
 		DA216A361BFD7FD200797C24 /* RunMyErrands-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RunMyErrands-Bridging-Header.h"; sourceTree = "<group>"; };
 		DA216A371BFD7FD300797C24 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		DA8B6FEF1BFEAEF600834D78 /* briefcase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = briefcase.png; sourceTree = "<group>"; };
 		DA8B6FF01BFEAEF600834D78 /* cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cart.png; sourceTree = "<group>"; };
 		DA8B6FF11BFEAEF600834D78 /* die.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = die.png; sourceTree = "<group>"; };
 		DA8B6FF21BFEAEF600834D78 /* running-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "running-128.png"; sourceTree = "<group>"; };
+		DAB407521C0ECB610096BBC8 /* DirectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionManager.swift; sourceTree = "<group>"; };
+		DAB407541C100FB10096BBC8 /* CustomInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInfoWindow.swift; sourceTree = "<group>"; };
+		DAB407571C10110D0096BBC8 /* CustomInfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomInfoWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +114,7 @@
 				5298904F1BFBDBE500B82D76 /* MapKit.framework in Frameworks */,
 				5298904D1BFBDBDE00B82D76 /* CoreLocation.framework in Frameworks */,
 				603AB53B5149F09692D9B583 /* libPods-RunMyErrands.a in Frameworks */,
+				39ADC9F2247B2C39C364EB20 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,23 +170,22 @@
 				523E40FD1BF843A900AFBEB7 /* ErrandListViewController.h */,
 				523E40FE1BF843A900AFBEB7 /* ErrandListViewController.m */,
 				DA216A371BFD7FD300797C24 /* CustomAnnotation.swift */,
-				529890431BFBD97C00B82D76 /* GeoManager.h */,
-				529890441BFBD97C00B82D76 /* GeoManager.m */,
 				52DEDEE31BFE85F3003ED1F3 /* MainMapViewController.h */,
 				52DEDEE11BFE85E2003ED1F3 /* MainMapViewController.m */,
+				DA0E11CF1C0D668A00CF4E9A /* MapOverViewController.swift */,
 				529890451BFBD97C00B82D76 /* MapViewController.h */,
 				529890461BFBD97C00B82D76 /* MapViewController.m */,
 				529890471BFBD97C00B82D76 /* Task.h */,
 				529890481BFBD97C00B82D76 /* Task.m */,
 				523E41001BF843D300AFBEB7 /* DetailViewController.h */,
 				523E41011BF843D300AFBEB7 /* DetailViewController.m */,
+				DA0E118B1C0D390E00CF4E9A /* API_key.h */,
 				52D6CD6C1BF96CE600CBBBAD /* AddNewTaskViewController.h */,
 				52D6CD6D1BF96CE600CBBBAD /* AddNewTaskViewController.m */,
-				529890421BFBD7C000B82D76 /* API_key.h */,
-				DA216A361BFD7FD200797C24 /* RunMyErrands-Bridging-Header.h */,
 				52AA1A081BFD8F7D000FF2F0 /* ErrandsListTableViewCell.swift */,
 				52CA6F0D1BFF963A003E3437 /* TeamListTableViewController.h */,
 				52CA6F0E1BFF963A003E3437 /* TeamListTableViewController.m */,
+				DA216A361BFD7FD200797C24 /* RunMyErrands-Bridging-Header.h */,
 			);
 			path = RunMyErrands;
 			sourceTree = "<group>";
@@ -185,6 +195,7 @@
 			children = (
 				DA8B6FF71BFEAF0000834D78 /* Images */,
 				5257FBBE1BF809CE005CC88D /* main.m */,
+				DAB407561C100FC10096BBC8 /* GeoMapping */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -222,6 +233,7 @@
 				5298904E1BFBDBE500B82D76 /* MapKit.framework */,
 				5298904C1BFBDBDE00B82D76 /* CoreLocation.framework */,
 				504342781871F1A0EFAE0716 /* libPods-RunMyErrands.a */,
+				63FA6FDCA68AB15C9D6E0BAB /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -235,6 +247,18 @@
 				DA8B6FF11BFEAEF600834D78 /* die.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		DAB407561C100FC10096BBC8 /* GeoMapping */ = {
+			isa = PBXGroup;
+			children = (
+				DAB407571C10110D0096BBC8 /* CustomInfoWindow.xib */,
+				DAB407541C100FB10096BBC8 /* CustomInfoWindow.swift */,
+				DAB407521C0ECB610096BBC8 /* DirectionManager.swift */,
+				529890431BFBD97C00B82D76 /* GeoManager.h */,
+				529890441BFBD97C00B82D76 /* GeoManager.m */,
+			);
+			name = GeoMapping;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,6 +371,7 @@
 				DA8B6FF31BFEAEF600834D78 /* briefcase.png in Resources */,
 				DA8B6FF61BFEAEF600834D78 /* running-128.png in Resources */,
 				DA8B6FF41BFEAEF600834D78 /* cart.png in Resources */,
+				DAB407581C10110D0096BBC8 /* CustomInfoWindow.xib in Resources */,
 				5257FBD01BF809CE005CC88D /* LaunchScreen.storyboard in Resources */,
 				5257FBCD1BF809CE005CC88D /* Assets.xcassets in Resources */,
 				5257FBC81BF809CE005CC88D /* Main.storyboard in Resources */,
@@ -412,7 +437,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RunMyErrands/Pods-RunMyErrands-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -425,14 +450,17 @@
 				523E41021BF843D300AFBEB7 /* DetailViewController.m in Sources */,
 				52DEDEE21BFE85E2003ED1F3 /* MainMapViewController.m in Sources */,
 				52D6CD6E1BF96CE600CBBBAD /* AddNewTaskViewController.m in Sources */,
+				DAB407531C0ECB610096BBC8 /* DirectionManager.swift in Sources */,
 				DA216A381BFD7FD300797C24 /* CustomAnnotation.swift in Sources */,
 				5257FBC21BF809CE005CC88D /* AppDelegate.m in Sources */,
 				529890491BFBD97C00B82D76 /* GeoManager.m in Sources */,
 				52AA1A091BFD8F7D000FF2F0 /* ErrandsListTableViewCell.swift in Sources */,
 				5298904B1BFBD97C00B82D76 /* Task.m in Sources */,
+				DA0E11D01C0D668A00CF4E9A /* MapOverViewController.swift in Sources */,
 				523E40FF1BF843A900AFBEB7 /* ErrandListViewController.m in Sources */,
 				5257FBBF1BF809CE005CC88D /* main.m in Sources */,
 				52CA6F0F1BFF963A003E3437 /* TeamListTableViewController.m in Sources */,
+				DAB407551C100FB10096BBC8 /* CustomInfoWindow.swift in Sources */,
 				5298904A1BFBD97C00B82D76 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

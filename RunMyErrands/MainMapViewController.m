@@ -10,12 +10,13 @@
 #import "DetailViewController.h"
 #import "GeoManager.h"
 #import <Parse/Parse.h>
+#import "RunMyErrands-Swift.h"
 
 @interface MainMapViewController () <MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic) GeoManager *locationManager;
 @property (nonatomic) BOOL didLoadLocations;
-
+@property (nonatomic) DirectionManager *directionTask;
 
 @end
 
@@ -178,6 +179,10 @@
         
     }
 }
+
+
+
+
 
 
 @end

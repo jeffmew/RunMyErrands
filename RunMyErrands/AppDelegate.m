@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "API_key.h"
 #import "Task.h"
+@import GoogleMaps;
 
 @interface AppDelegate ()
 
@@ -26,9 +27,13 @@
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
+    [GMSServices provideAPIKey:GOOGLE_MAPS_KEY];
+    
     //allow persmission for local notifications
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
     [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    
+    
     
     return YES;
 }

@@ -6,23 +6,53 @@
 	<dict>
 		<key>Bolts.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Parse.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-RunMyErrands.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-RunMyErrandsTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-RunMyErrandsUITests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>007FD2D68B0ADEBEC3B0D7DE3724B5AD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>03B86D05D5F6AB8AB3E475CA1DEF3F85</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0C4091841D50C7F78B3E75A10E17CF26</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1469924FC52F60B0068FA24EEFCB3EFC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
