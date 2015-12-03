@@ -31,34 +31,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
-    if ([self.presentingViewController isKindOfClass:[LoginViewController class]]) {
-        LoginViewController *loginVC = (LoginViewController*)self.presentingViewController;
-        [loginVC.activitySpinner stopAnimating];
-        loginVC.transitionView = false;
-    }
     
     self.locationManager = [GeoManager sharedManager];
     [self.locationManager startLocationManager];
-    
-//    self.tableview.backgroundColor = [UIColor clearColor];
- //   self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     
 //    [PFUser logInWithUsername:@"jeff" password:@"jeff"];
   //  [self setGreeting];
     
     //[self createNewTeam];
 //    [self loadTaskObjects];
-    
-//    [PFUser logInWithUsernameInBackground:@"jeff" password:@"jeff" block:^(PFUser *user, NSError *error) {
-//        if (error) {
-//        } else {
-//            //[self addNewTeamMember]
-//                    
-//            [self setGreeting];
-//            [self loadTaskObjects];
-//        }
-//    }];
 }
 
 -(void) setGreeting {
@@ -74,10 +55,8 @@
 - (IBAction)logout:(UIButton *)sender {
     [PFUser logOut];
     [[FBSDKLoginManager new] logOut];
-   // [self performSegueWithIdentifier:@"showLogin" sender:nil];
-    LoginViewController *loginVC = [[LoginViewController alloc] init];
-    [self presentViewController:loginVC animated:YES completion:^{
-    }];
+    
+    [self.navigationController.navigationController popToRootViewControllerAnimated:YES];
 }
 
 -(NSString*) randHello {
@@ -188,8 +167,6 @@
     [self performSegueWithIdentifier:@"addNewTask" sender:nil];
 }
 
-#pragma mark - Core Data stack
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.taskArray.count;
 }
@@ -197,16 +174,6 @@
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
-
-//-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    return 20;
-//}
-
-//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    UIView *headerView = [[UIView alloc] init];
-//    headerView.backgroundColor = [UIColor clearColor];
-//    return headerView;
-//}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ErrandsListTableViewCell *cell =(ErrandsListTableViewCell*)[self.tableview dequeueReusableCellWithIdentifier:@"tasklistCell" forIndexPath:indexPath];

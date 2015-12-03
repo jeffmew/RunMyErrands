@@ -22,6 +22,7 @@
 		520B47391C0E8082006F1FDA /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 520B47381C0E8082006F1FDA /* libz.tbd */; };
 		520B473B1C0E808A006F1FDA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 520B473A1C0E808A006F1FDA /* libsqlite3.tbd */; };
 		520B473D1C0F7562006F1FDA /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520B473C1C0F7562006F1FDA /* SignupViewController.swift */; };
+		520B473F1C0FCE51006F1FDA /* CreateNewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520B473E1C0FCE51006F1FDA /* CreateNewGroupViewController.swift */; };
 		523E40FF1BF843A900AFBEB7 /* ErrandListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523E40FE1BF843A900AFBEB7 /* ErrandListViewController.m */; };
 		523E41021BF843D300AFBEB7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523E41011BF843D300AFBEB7 /* DetailViewController.m */; };
 		5257FBBF1BF809CE005CC88D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5257FBBE1BF809CE005CC88D /* main.m */; };
@@ -42,7 +43,6 @@
 		52CA6F0F1BFF963A003E3437 /* TeamListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CA6F0E1BFF963A003E3437 /* TeamListTableViewController.m */; };
 		52D6CD6E1BF96CE600CBBBAD /* AddNewTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D6CD6D1BF96CE600CBBBAD /* AddNewTaskViewController.m */; };
 		52DEDEE21BFE85E2003ED1F3 /* MainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52DEDEE11BFE85E2003ED1F3 /* MainMapViewController.m */; };
-		603AB53B5149F09692D9B583 /* libPods-RunMyErrands.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 504342781871F1A0EFAE0716 /* libPods-RunMyErrands.a */; };
 		DA216A381BFD7FD300797C24 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA216A371BFD7FD300797C24 /* CustomAnnotation.swift */; };
 		DA8B6FF31BFEAEF600834D78 /* briefcase.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8B6FEF1BFEAEF600834D78 /* briefcase.png */; };
 		DA8B6FF41BFEAEF600834D78 /* cart.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8B6FF01BFEAEF600834D78 /* cart.png */; };
@@ -84,6 +84,7 @@
 		520B47381C0E8082006F1FDA /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		520B473A1C0E808A006F1FDA /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		520B473C1C0F7562006F1FDA /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		520B473E1C0FCE51006F1FDA /* CreateNewGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewGroupViewController.swift; sourceTree = "<group>"; };
 		523E40FD1BF843A900AFBEB7 /* ErrandListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrandListViewController.h; sourceTree = "<group>"; };
 		523E40FE1BF843A900AFBEB7 /* ErrandListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrandListViewController.m; sourceTree = "<group>"; };
 		523E41001BF843D300AFBEB7 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -147,7 +148,6 @@
 				520B47251C0E7E26006F1FDA /* ParseFacebookUtilsV4.framework in Frameworks */,
 				520B47231C0E7DBF006F1FDA /* FBSDKLoginKit.framework in Frameworks */,
 				5298904D1BFBDBDE00B82D76 /* CoreLocation.framework in Frameworks */,
-				603AB53B5149F09692D9B583 /* libPods-RunMyErrands.a in Frameworks */,
 				520B47291C0E7FF3006F1FDA /* Parse.framework in Frameworks */,
 				520B47281C0E7FF3006F1FDA /* Bolts.framework in Frameworks */,
 			);
@@ -223,6 +223,7 @@
 				52AA1A081BFD8F7D000FF2F0 /* ErrandsListTableViewCell.swift */,
 				52CA6F0D1BFF963A003E3437 /* TeamListTableViewController.h */,
 				52CA6F0E1BFF963A003E3437 /* TeamListTableViewController.m */,
+				520B473E1C0FCE51006F1FDA /* CreateNewGroupViewController.swift */,
 			);
 			path = RunMyErrands;
 			sourceTree = "<group>";
@@ -433,6 +434,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				520B473F1C0FCE51006F1FDA /* CreateNewGroupViewController.swift in Sources */,
 				523E41021BF843D300AFBEB7 /* DetailViewController.m in Sources */,
 				52DEDEE21BFE85E2003ED1F3 /* MainMapViewController.m in Sources */,
 				52D6CD6E1BF96CE600CBBBAD /* AddNewTaskViewController.m in Sources */,
@@ -599,11 +601,13 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = RunMyErrands/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mew.jeff.RunMyErrands;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "RunMyErrands/RunMyErrands-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -619,10 +623,12 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = RunMyErrands/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mew.jeff.RunMyErrands;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "RunMyErrands/RunMyErrands-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

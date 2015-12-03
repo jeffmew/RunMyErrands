@@ -8,14 +8,9 @@
 import Foundation
 import UIKit
 import ParseFacebookUtilsV4
+import FBSDKCoreKit
 
 class LoginViewController: UIViewController {
-    
-    //func closeTransition()
-    
-    @IBOutlet weak var transitionView: UIView!
-    @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
-    
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -23,11 +18,18 @@ class LoginViewController: UIViewController {
     
     @IBAction func login(sender: UIButton) {
         
-    }
-    
-    
-    @IBAction func signUp(sender: UIButton) {
-        
+        if let username = usernameTextField.text,
+            password = passwordTextField.text {
+                PFUser.logInWithUsernameInBackground(username, password:password) {
+                    (user: PFUser?, error: NSError?) -> Void in
+                    if user != nil {
+                        // Do stuff after successful login.
+                        self.performSegueWithIdentifier("showErrandList", sender: nil)
+                    } else {
+                        // The login failed. Check error to see why.
+                    }
+                }
+        }
     }
     
     @IBAction func twitterLogin(sender: UIButton) {
@@ -37,23 +39,15 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       // self.transitionView.hidden = true
-        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        if (self.transitionView != nil) {
-            self.transitionView.hidden = true
-        }
-
     }
     
     @IBAction func facebookLogin(sender: UIButton) {
-        
+
         let permissions = ["public_profile","user_friends"]
-        self.transitionView.hidden = false
-        self.activitySpinner.startAnimating()
         
         PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions) {
             (user: PFUser?, error: NSError?) -> Void in
@@ -63,12 +57,11 @@ class LoginViewController: UIViewController {
                     self.getNameAndPicture(user)
                 } else {
                     print("User logged in through Facebook!")
+                    
                     self.performSegueWithIdentifier("showErrandList", sender: nil)
                 }
             } else {
                 print("Uh oh. The user cancelled the Facebook login.")
-                self.activitySpinner.stopAnimating()
-                self.transitionView.hidden = true
             }
         }
     }
@@ -119,6 +112,16 @@ class LoginViewController: UIViewController {
                 }
             }
         })
-
     }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        // Hide the keyboard.
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    @IBAction func tapGesture(sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    
 }

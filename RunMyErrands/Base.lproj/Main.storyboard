@@ -667,7 +667,14 @@
                             <outlet property="delegate" destination="8BA-Gn-kSc" id="cK3-TD-M7K"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Team List" id="Xfe-VT-N1r"/>
+                    <navigationItem key="navigationItem" title="Team List" id="Xfe-VT-N1r">
+                        <barButtonItem key="leftBarButtonItem" title="Create Team" id="y8v-WW-8jq">
+                            <connections>
+                                <segue destination="HUk-eN-iB8" kind="presentation" identifier="I" id="A9b-Hp-WuG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Join Team" id="iyt-3s-xkR"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tme-CP-SGV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -691,6 +698,103 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3NT-TE-mDY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="393" y="1202"/>
+        </scene>
+        <!--Create New Group-->
+        <scene sceneID="Z4f-2w-Acm">
+            <objects>
+                <viewController id="HUk-eN-iB8" userLabel="Create New Group" customClass="CreateNewGroupViewController" customModule="RunMyErrands" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4FR-cW-e6m"/>
+                        <viewControllerLayoutGuide type="bottom" id="szy-AH-qVG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r5o-B1-vhg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="The new group name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IyH-5O-Gfx">
+                                <rect key="frame" x="120" y="229" width="360" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Group Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0W-rg-7x4">
+                                <rect key="frame" x="120" y="200" width="103" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create New Group" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zcF-pi-LLu">
+                                <rect key="frame" x="217" y="49" width="167" height="23"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAj-By-L2G" userLabel="CREATE NEW GROUP">
+                                <rect key="frame" x="120" y="510" width="360" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="CANCEL">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancel:" destination="HUk-eN-iB8" eventType="touchUpInside" id="zBA-dc-RzE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YdS-Nu-aQk" userLabel="CREATE NEW GROUP">
+                                <rect key="frame" x="120" y="450" width="360" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="CREATE NEW GROUP">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="createNewGroup:" destination="HUk-eN-iB8" eventType="touchUpInside" id="iOR-Dd-FTC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.01040836327" green="0.22929926980000001" blue="0.41199100379999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="YdS-Nu-aQk" firstAttribute="centerY" secondItem="r5o-B1-vhg" secondAttribute="centerY" multiplier="1.55" id="2Hu-zI-6sa"/>
+                            <constraint firstItem="JAj-By-L2G" firstAttribute="leading" secondItem="r5o-B1-vhg" secondAttribute="leadingMargin" constant="38" id="8sf-Rv-oGn"/>
+                            <constraint firstItem="JAj-By-L2G" firstAttribute="centerY" secondItem="r5o-B1-vhg" secondAttribute="centerY" multiplier="1.75" id="DYp-cE-gLm"/>
+                            <constraint firstItem="YdS-Nu-aQk" firstAttribute="width" secondItem="r5o-B1-vhg" secondAttribute="width" multiplier="0.6" id="KXA-h6-Tga"/>
+                            <constraint firstItem="x0W-rg-7x4" firstAttribute="centerY" secondItem="r5o-B1-vhg" secondAttribute="centerY" multiplier="0.7" id="Lce-9q-vAy"/>
+                            <constraint firstItem="szy-AH-qVG" firstAttribute="top" secondItem="JAj-By-L2G" secondAttribute="bottom" constant="20" id="NIL-6o-B0C"/>
+                            <constraint firstItem="IyH-5O-Gfx" firstAttribute="top" secondItem="x0W-rg-7x4" secondAttribute="bottom" constant="8" id="VM3-3T-MXq"/>
+                            <constraint firstItem="IyH-5O-Gfx" firstAttribute="width" secondItem="r5o-B1-vhg" secondAttribute="width" multiplier="0.6" id="aZv-jH-chk"/>
+                            <constraint firstItem="IyH-5O-Gfx" firstAttribute="centerX" secondItem="r5o-B1-vhg" secondAttribute="centerX" id="ccQ-mQ-ZBm"/>
+                            <constraint firstItem="x0W-rg-7x4" firstAttribute="top" secondItem="4FR-cW-e6m" secondAttribute="bottom" constant="10" id="efI-55-Znu"/>
+                            <constraint firstItem="YdS-Nu-aQk" firstAttribute="centerX" secondItem="r5o-B1-vhg" secondAttribute="centerX" id="ezR-cC-xQN"/>
+                            <constraint firstItem="IyH-5O-Gfx" firstAttribute="leading" secondItem="x0W-rg-7x4" secondAttribute="leading" id="f2w-bq-dLE"/>
+                            <constraint firstItem="zcF-pi-LLu" firstAttribute="centerY" secondItem="r5o-B1-vhg" secondAttribute="centerY" multiplier="0.2" id="mwe-c9-F3d"/>
+                            <constraint firstItem="JAj-By-L2G" firstAttribute="width" secondItem="YdS-Nu-aQk" secondAttribute="width" id="uRz-6w-lPc"/>
+                            <constraint firstItem="zcF-pi-LLu" firstAttribute="centerX" secondItem="IyH-5O-Gfx" secondAttribute="centerX" id="uss-96-cG3"/>
+                            <constraint firstItem="IyH-5O-Gfx" firstAttribute="leading" secondItem="x0W-rg-7x4" secondAttribute="leading" id="x91-1f-ZmQ"/>
+                            <constraint firstItem="JAj-By-L2G" firstAttribute="centerX" secondItem="r5o-B1-vhg" secondAttribute="centerX" id="zZW-MJ-NQV"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="efI-55-Znu"/>
+                                <exclude reference="x91-1f-ZmQ"/>
+                                <exclude reference="8sf-Rv-oGn"/>
+                                <exclude reference="NIL-6o-B0C"/>
+                            </mask>
+                        </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="MEf-Im-fT5" appends="YES" id="whl-gi-EDU"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add New Errand" id="7wA-e3-MmQ"/>
+                    <connections>
+                        <outlet property="newGroupNameTextField" destination="IyH-5O-Gfx" id="BvG-8s-QP4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5gr-Sb-cZB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="MEf-Im-fT5">
+                    <connections>
+                        <outlet property="delegate" destination="HUk-eN-iB8" id="dke-qx-Meo"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1899" y="1202"/>
         </scene>
     </scenes>
     <resources>

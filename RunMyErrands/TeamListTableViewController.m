@@ -1,5 +1,5 @@
 //
-//  TeamListTableViewController.m
+//  GroupListTableViewController.m
 //  RunMyErrands
 //
 //  Created by Jeff Mew on 2015-11-20.
@@ -11,6 +11,7 @@
 
 @interface TeamListTableViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic) NSArray *teamList; //list of PFUsers
+
 @end
 
 @implementation TeamListTableViewController
@@ -51,7 +52,6 @@
                 }];
             }
         }];
-   
     }
 }
 
@@ -88,6 +88,10 @@
     return cell;
 }
 
+- (IBAction)createNewTeam:(UIBarButtonItem *)sender {
+    
+    
+}
 
 /*
 // Override to support conditional editing of the table view.
