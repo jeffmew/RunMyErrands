@@ -10,46 +10,45 @@
 #import <Parse/Parse.h>
 
 @interface TeamListTableViewController () <UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic) NSArray *teamList; //list of PFUsers
-
+@property (nonatomic) NSArray *groups; //list of Groups
+@property (nonatomic) NSMutableDictionary *groupMembers;
 @end
 
 @implementation TeamListTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.groupMembers = [NSMutableDictionary new];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     
+    [self loadGroups];
+}
+
+- (void)loadGroups {
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
-        PFQuery *getTeam = [PFQuery queryWithClassName:@"Team"];
-        [getTeam whereKey:@"team" equalTo:[[PFUser currentUser] objectId]];
-        [getTeam getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
-            if (error) {
-                NSLog(@"Error: %@ %@", error, [error userInfo]);
-            } else {
-                PFObject *team = object;
+        
+        PFRelation *relation  = [currentUser relationForKey:@"memberOfTheseGroups"];
+        [[relation query] findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            if (!error) {
                 
-                NSArray *teamListArray = [team objectForKey:@"team"];
+                self.groups = objects;
                 
-                PFQuery *getTeamList = [PFUser query];
+                for (PFObject *object in self.groups) {
+                    PFRelation *groupMembersRealtion = object[@"groupMembers"];
+                    PFQuery *query = [groupMembersRealtion query];
+                    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
 
-                [getTeamList whereKey:@"objectId" containedIn:teamListArray];
+                        [self.groupMembers setObject:objects forKey:object.objectId];
+                        [self.tableView reloadData];
+                        
+                    }];
+                }
                 
-                [getTeamList findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-                    self.teamList = objects;
-                    [self.tableView reloadData];
-                }];
             }
         }];
     }
@@ -63,12 +62,21 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return self.groups.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.teamList.count;
+    PFObject *group = self.groups[section];
+    NSArray *membersArray = [self.groupMembers objectForKey:group.objectId];
+    return membersArray.count;
 }
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    PFObject *group = self.groups[section];
+    
+    return [NSString stringWithFormat:@"%@ (id: %@)", [group[@"name"] capitalizedString], group.objectId];
+}
+
 
 //-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
 //    return 20;
@@ -81,16 +89,19 @@
 //}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"teamListCell" forIndexPath:indexPath];
-    PFUser *user = self.teamList[indexPath.section];
-    cell.textLabel.text = [user.username capitalizedString];
-    //cell.layer.cornerRadius = 6;
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupListCell" forIndexPath:indexPath];
+    cell.textLabel.text = @"";
+    cell.detailTextLabel.text = @"";
+    
+    PFObject *group = self.groups[indexPath.section];
+    NSArray *membersArray = [self.groupMembers objectForKey:group.objectId];
+    PFUser *user = membersArray[indexPath.row];
+    cell.textLabel.text = [user[@"name"] capitalizedString];
+    if ([user.objectId isEqualToString:group[@"teamLeader"]]) {
+        cell.detailTextLabel.text = @"Lead";
+    }
     return cell;
-}
-
-- (IBAction)createNewTeam:(UIBarButtonItem *)sender {
-    
-    
 }
 
 /*

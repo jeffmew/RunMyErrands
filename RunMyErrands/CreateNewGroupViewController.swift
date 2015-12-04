@@ -24,20 +24,28 @@ class CreateNewGroupViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
- 
     @IBAction func createNewGroup(sender: UIButton) {
         
-        if let newGroupName = self.newGroupNameTextField.text {
+        if let newGroupName = self.newGroupNameTextField.text,
+            let currentUser = PFUser.currentUser() {
+                
             let newGroup = PFObject(className: "Group")
+
             newGroup["name"] = newGroupName
-            let relation = newGroup.relationForKey("member")
-            let currentUser = PFUser.currentUser()
-            newGroup["teamLeader"] = currentUser!.objectId
+            newGroup["teamLeader"] = currentUser.objectId
             
-            relation.addObject(currentUser!)
+            let memberRelation = newGroup.relationForKey("groupMembers")
+            
+            memberRelation.addObject(currentUser)
             
             newGroup.saveInBackgroundWithBlock({ (bool: Bool, error: NSError?) -> Void in
-                print("New Team Created")
+                
+                let groupRelation = currentUser.relationForKey("memberOfTheseGroups")
+                groupRelation.addObject(newGroup)
+                currentUser.saveInBackgroundWithBlock({ (bool:Bool, error:NSError?) -> Void in
+                    //
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                })
             })
         }
     }

@@ -23,6 +23,7 @@
 		520B473B1C0E808A006F1FDA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 520B473A1C0E808A006F1FDA /* libsqlite3.tbd */; };
 		520B473D1C0F7562006F1FDA /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520B473C1C0F7562006F1FDA /* SignupViewController.swift */; };
 		520B473F1C0FCE51006F1FDA /* CreateNewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520B473E1C0FCE51006F1FDA /* CreateNewGroupViewController.swift */; };
+		520B47411C0FEA81006F1FDA /* JoinGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520B47401C0FEA81006F1FDA /* JoinGroupViewController.swift */; };
 		523E40FF1BF843A900AFBEB7 /* ErrandListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523E40FE1BF843A900AFBEB7 /* ErrandListViewController.m */; };
 		523E41021BF843D300AFBEB7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523E41011BF843D300AFBEB7 /* DetailViewController.m */; };
 		5257FBBF1BF809CE005CC88D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5257FBBE1BF809CE005CC88D /* main.m */; };
@@ -85,6 +86,7 @@
 		520B473A1C0E808A006F1FDA /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		520B473C1C0F7562006F1FDA /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		520B473E1C0FCE51006F1FDA /* CreateNewGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewGroupViewController.swift; sourceTree = "<group>"; };
+		520B47401C0FEA81006F1FDA /* JoinGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinGroupViewController.swift; sourceTree = "<group>"; };
 		523E40FD1BF843A900AFBEB7 /* ErrandListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrandListViewController.h; sourceTree = "<group>"; };
 		523E40FE1BF843A900AFBEB7 /* ErrandListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrandListViewController.m; sourceTree = "<group>"; };
 		523E41001BF843D300AFBEB7 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				52CA6F0D1BFF963A003E3437 /* TeamListTableViewController.h */,
 				52CA6F0E1BFF963A003E3437 /* TeamListTableViewController.m */,
 				520B473E1C0FCE51006F1FDA /* CreateNewGroupViewController.swift */,
+				520B47401C0FEA81006F1FDA /* JoinGroupViewController.swift */,
 			);
 			path = RunMyErrands;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				523E41021BF843D300AFBEB7 /* DetailViewController.m in Sources */,
 				52DEDEE21BFE85E2003ED1F3 /* MainMapViewController.m in Sources */,
 				52D6CD6E1BF96CE600CBBBAD /* AddNewTaskViewController.m in Sources */,
+				520B47411C0FEA81006F1FDA /* JoinGroupViewController.swift in Sources */,
 				DA216A381BFD7FD300797C24 /* CustomAnnotation.swift in Sources */,
 				5257FBC21BF809CE005CC88D /* AppDelegate.m in Sources */,
 				529890491BFBD97C00B82D76 /* GeoManager.m in Sources */,

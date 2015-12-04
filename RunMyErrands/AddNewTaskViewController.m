@@ -16,10 +16,14 @@
 @property (weak, nonatomic) IBOutlet UITextField *addressTextField;
 @property (weak, nonatomic) IBOutlet UITextField *locationName;
 @property (weak, nonatomic) IBOutlet UIPickerView *categoryPickerView;
-@property (nonatomic) NSArray *pickerData;
+@property (weak, nonatomic) IBOutlet UIPickerView *groupPickerView;
+@property (nonatomic) NSArray *categoryPickerData;
+@property (nonatomic) NSArray *groupPickerData;
 @property (nonatomic) NSInteger *categoryChoice;
+@property (nonatomic) NSInteger *groupChoice;
 @property (nonatomic) NSString *teamKey;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *groupLabel;
 @property (nonatomic) Task* task;
 @end
 
@@ -28,15 +32,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.pickerData = @[@"General",@"Entertainment",@"Business",@"Food"];
-    self.categoryPickerView.layer.cornerRadius = 6;
+    self.categoryPickerView.delegate = self;
+    self.categoryPickerData = @[@"General",@"Entertainment",@"Business",@"Food"];
+    
+//    self.categoryPickerView.layer.cornerRadius = 6;
     self.task = [Task object];
     self.task.isComplete = @NO;
-    NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:@"Category"];
-    [attributeString addAttribute:NSUnderlineStyleAttributeName
+    NSMutableAttributedString *categoryAttributeString = [[NSMutableAttributedString alloc] initWithString:@"Category"];
+    [categoryAttributeString addAttribute:NSUnderlineStyleAttributeName
                             value:[NSNumber numberWithInt:1]
-                            range:(NSRange){0,[attributeString length]}];
-    self.categoryLabel.attributedText = attributeString;
+                            range:(NSRange){0,[categoryAttributeString length]}];
+    self.categoryLabel.attributedText = categoryAttributeString;
+    
+    NSMutableAttributedString *groupAttributeString = [[NSMutableAttributedString alloc] initWithString:@"Group"];
+    [groupAttributeString addAttribute:NSUnderlineStyleAttributeName
+                            value:[NSNumber numberWithInt:1]
+                            range:(NSRange){0,[groupAttributeString length]}];
+    self.groupLabel.attributedText = groupAttributeString;
 }
 
 
@@ -134,11 +146,11 @@
 }
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return self.pickerData.count;
+    return self.categoryPickerData.count;
 }
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return self.pickerData[row];
+    return self.categoryPickerData[row];
 }
 
 #pragma - AddTaskDelegate Function
@@ -171,7 +183,7 @@
         tView.numberOfLines=3;
     }
     // Fill the label text here
-    tView.text = self.pickerData[row];
+    tView.text = self.categoryPickerData[row];
     return tView;
 }
 

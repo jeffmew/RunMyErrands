@@ -21,7 +21,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQ5-HO-Efq">
                                 <rect key="frame" x="180" y="515" width="240" height="30"/>
                                 <color key="backgroundColor" red="0.17647058823529413" green="0.27058823529411763" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Facebook Login">
+                                <state key="normal" title="FACEBOOK LOGIN">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -65,7 +65,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ziq-mP-hHP">
                                         <rect key="frame" x="0.0" y="222" width="360" height="30"/>
                                         <color key="backgroundColor" red="1" green="0.67730988107285484" blue="0.31478111393226182" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Login">
+                                        <state key="normal" title="LOGIN">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -75,7 +75,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tXF-AM-PTB">
                                         <rect key="frame" x="0.0" y="269" width="360" height="30"/>
                                         <color key="backgroundColor" red="1" green="0.67730988110000001" blue="0.31478111390000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Sign up">
+                                        <state key="normal" title="SIGN UP">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -119,7 +119,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="dpe-66-iSN"/>
                                 </constraints>
-                                <state key="normal" title="Twitter Login">
+                                <state key="normal" title="TWITTER LOGIN">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -243,7 +243,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01A-bh-PMb">
                                         <rect key="frame" x="0.0" y="351" width="360" height="30"/>
                                         <color key="backgroundColor" red="1" green="0.67730988110000001" blue="0.31478111390000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Create New User">
+                                        <state key="normal" title="CREATE NEW USER">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -253,7 +253,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="46l-1h-A2h">
                                         <rect key="frame" x="0.0" y="398" width="360" height="30"/>
                                         <color key="backgroundColor" red="1" green="0.67730988110000001" blue="0.31478111390000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Cancel">
+                                        <state key="normal" title="CANCEL">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -440,6 +440,6 @@
         <image name="runmyerrands" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IfC-nz-rgb"/>
+        <segue reference="sZy-BU-E7M"/>
     </inferredMetricsTieBreakers>
 </document>
