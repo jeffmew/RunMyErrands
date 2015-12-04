@@ -25,9 +25,9 @@ class MapOverViewController: UIViewController, CLLocationManagerDelegate, GMSMap
     
     @IBOutlet weak var directionsLabel: UILabel!
     
-    var markersArray: Array<GMSMarker> = []
+    //  var markersArray: Array<GMSMarker> = []
     
-    var waypointsArray: Array<CLLocationCoordinate2D> = []
+    //var waypointsArray: Array<CLLocationCoordinate2D> = []
     var waypointsArrayString: Array<String> = []
     
     var origin: CLLocationCoordinate2D!
@@ -45,10 +45,12 @@ class MapOverViewController: UIViewController, CLLocationManagerDelegate, GMSMap
     var didFindMyLocation = false
     
     var task: Task!
+    var taskArray: [Task]!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         self.locationManager = GeoManager.sharedManager()
         self.locationManager.startLocationManager()
@@ -59,22 +61,42 @@ class MapOverViewController: UIViewController, CLLocationManagerDelegate, GMSMap
         mapView.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.New, context: nil)
         
         
-        //        //////test code/////
-        //        let posn01 = CLLocationCoordinate2DMake(42.955420, -81.623233)
-        //        let posn02 = CLLocationCoordinate2DMake(42.986950, -81.243177)
-        //        let posn03 = CLLocationCoordinate2DMake(42.996950, -81.253177)
-        //        let posn04 = CLLocationCoordinate2DMake(42.976950, -81.263177)
-        //
-        //        origin = CLLocationCoordinate2DMake(43.653226, -79.383184)
-        //        destination = CLLocationCoordinate2DMake(42.314937, -83.036363)
-        //
-        //        let posn11 = "strathroy"
-        //        let posn12 = "London, ontario"
-        //
-        //        waypointsArrayString += [posn11, posn12]
-        //        waypointsArray += [posn01, posn02, posn03, posn04]
-        //
-        //        /////////////////////////////
+        ////Test Data/////////////////////////////////
+        taskArray = [Task]()
+        
+        let task01:Task = Task.object()
+        task01.title = "Get Crack"
+        task01.subtitle = "become a crack head."
+        task01.category = 1
+        task01.setCoordinate(CLLocationCoordinate2DMake(49.2897225491339, -123.129493072629))
+        
+        let task02:Task = Task.object()
+        task02.title = "Get Weed"
+        task02.subtitle = "become a pot head."
+        task02.category = 2
+        task02.setCoordinate(CLLocationCoordinate2DMake(49.2835425227606, -123.130713142455))
+        
+        let task03:Task = Task.object()
+        task03.title = "Get Booze"
+        task03.subtitle = "become a  drunk."
+        task03.category = 3
+        task03.setCoordinate(CLLocationCoordinate2DMake(49.285996124658, -123.126992583275))
+        
+        let task04:Task = Task.object()
+        task04.title = "Get Smokes"
+        task04.subtitle = "become a smoker."
+        task04.category = 4
+        task04.setCoordinate(CLLocationCoordinate2DMake(49.2833437185792, -123.122600801289))
+        
+        let task05:Task = Task.object()
+        task05.title = "Get LSD"
+        task05.subtitle = "become a hippy."
+        task05.category = 5
+        task05.setCoordinate(CLLocationCoordinate2DMake(49.2777464723823, -123.131323009729))
+        
+        taskArray = [task01, task02, task03, task04, task05]
+        
+        ///////////////////////////////////////////////////////
         
         
         self.createRoute()
@@ -87,7 +109,7 @@ class MapOverViewController: UIViewController, CLLocationManagerDelegate, GMSMap
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if !didFindMyLocation {
             let myLocation: CLLocation = change![NSKeyValueChangeNewKey] as! CLLocation
-            mapView.camera = GMSCameraPosition.cameraWithTarget(myLocation.coordinate, zoom: 12.0)
+            mapView.camera = GMSCameraPosition.cameraWithTarget(myLocation.coordinate, zoom: 14.0)
             mapView.settings.myLocationButton = true
             
             origin = myLocation.coordinate
@@ -96,38 +118,44 @@ class MapOverViewController: UIViewController, CLLocationManagerDelegate, GMSMap
     }
     
     
-    
     func configureMapAndMarkersForRoute() {
-        // self.mapView.camera = GMSCameraPosition.cameraWithTarget(self.directionTask.originCoordinate, zoom: 9.0)
+        self.mapView.camera = GMSCameraPosition.cameraWithTarget(self.directionTask.originCoordinate, zoom: 14.0)
         
         originMarker = GMSMarker(position: self.directionTask.originCoordinate)
         originMarker.map = self.mapView
         originMarker.icon = GMSMarker.markerImageWithColor(UIColor.greenColor())
         originMarker.title = self.directionTask.originAddress
         originMarker.snippet = "Location"
-        //originMarker.infoWindowAnchor = CGPointMake(0.5, 0.5)
         
-        
-        if waypointsArray.count > 0 {
-            for waypoint in waypointsArray {
+        if taskArray.count > 0 {
+            for task in taskArray {
                 
-                let marker = GMSMarker(position: waypoint)
+                let marker = task.makeMarker()
+                marker.userData = task
                 marker.map = mapView
                 marker.icon = GMSMarker.markerImageWithColor(UIColor.redColor())
                 
-                markersArray.append(marker)
+                //markersArray.append(marker)
             }
         }
+        
     }
     
     
     func createRoute() {
         
-        self.directionTask.requestDirections(origin, taskWaypoints: waypointsArray, travelMode: self.travelMode, completionHandler: { (success) -> Void in
+        self.directionTask.requestDirections(origin, taskWaypoints: taskArray, travelMode: self.travelMode, completionHandler: { (success) -> Void in
             if success {
                 self.configureMapAndMarkersForRoute()
                 self.drawRoute()
                 self.displayRouteInfo()
+                
+                if let polyline = self.routePolyline {
+                    self.recreateRoute()
+                }else {
+                    self.createRoute()
+                }
+                self.mapView.camera = GMSCameraPosition.cameraWithTarget(self.directionTask.originCoordinate, zoom: 14.0)
             }
         })
     }
@@ -144,12 +172,11 @@ class MapOverViewController: UIViewController, CLLocationManagerDelegate, GMSMap
     
     
     func mapView(mapView: GMSMapView!, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
-        waypointsArray.append(coordinate)
+        if let task = task {
+            task.setCoordinate(coordinate)
+        }
         
-        task.setCoordinate(coordinate)
-        
-        
-        if let polyline = routePolyline {
+        if let polyline = self.routePolyline {
             self.recreateRoute()
         }else {
             self.createRoute()
@@ -162,14 +189,6 @@ class MapOverViewController: UIViewController, CLLocationManagerDelegate, GMSMap
         routePolyline.map = nil
         originMarker = nil
         routePolyline = nil
-        
-        if markersArray.count > 0 {
-            for marker in markersArray {
-                marker.map = nil
-            }
-            
-            markersArray.removeAll(keepCapacity: false)
-        }
     }
     
     
@@ -177,7 +196,7 @@ class MapOverViewController: UIViewController, CLLocationManagerDelegate, GMSMap
         if let polyline = routePolyline {
             clearRoute()
             
-            self.directionTask.requestDirections(origin, taskWaypoints: waypointsArray, travelMode: self.travelMode, completionHandler: { (success) -> Void in
+            self.directionTask.requestDirections(origin, taskWaypoints: taskArray, travelMode: self.travelMode, completionHandler: { (success) -> Void in
                 if success {
                     self.configureMapAndMarkersForRoute()
                     self.drawRoute()
@@ -186,6 +205,7 @@ class MapOverViewController: UIViewController, CLLocationManagerDelegate, GMSMap
             })
         }
     }
+    
     
     func displayRouteInfo() {
         directionsLabel.text = directionTask.totalDistance + "\n" + directionTask.totalTravelDuration + "\n" + directionTask.totalDuration
@@ -197,19 +217,37 @@ class MapOverViewController: UIViewController, CLLocationManagerDelegate, GMSMap
     func mapView(mapView: GMSMapView!, markerInfoWindow marker: GMSMarker!) -> UIView! {
         let infoWindow = NSBundle.mainBundle().loadNibNamed("CustomInfoWindow", owner: self, options: nil).first! as! CustomInfoWindow
         
-        marker.infoWindowAnchor = CGPointMake(0, -0.05)
+        marker.infoWindowAnchor = CGPointMake(4.2, 0.7)
         infoWindow.title.text = marker.title
         infoWindow.snippit.text = marker.snippet
         
-        //infoWindow.icon = UIImage
-        
-        
+        if marker.userData != nil {
+            
+            let task:Task = marker.userData as! Task
+            let imageName:String = task.imageName(task.category.intValue)
+            infoWindow.icon.image = UIImage(named:imageName)
+        }
         return infoWindow
     }
     
+    
+    //Mark: - Navigation
+    
     func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
-        print("marker \(marker)")
+        
+        performSegueWithIdentifier("GMapDetails", sender: marker.userData as! Task)
     }
+    
+    
+    override func prepareForSegue(segue: (UIStoryboardSegue!), sender: AnyObject!) {
+        
+        if (segue.identifier == "GMapDetails") {
+            let detailVC:DetailViewController = segue!.destinationViewController as! DetailViewController
+            detailVC.task = sender as! Task
+        }
+    }
+    
+    
     
     
     

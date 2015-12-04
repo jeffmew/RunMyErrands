@@ -3,3 +3,5 @@
 //
 #import "GeoManager.h"
 #import "Task.h"
+#import "DetailViewController.h"
+

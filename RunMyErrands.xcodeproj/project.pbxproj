@@ -36,6 +36,8 @@
 		DAB407531C0ECB610096BBC8 /* DirectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB407521C0ECB610096BBC8 /* DirectionManager.swift */; };
 		DAB407551C100FB10096BBC8 /* CustomInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB407541C100FB10096BBC8 /* CustomInfoWindow.swift */; };
 		DAB407581C10110D0096BBC8 /* CustomInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAB407571C10110D0096BBC8 /* CustomInfoWindow.xib */; };
+		DAB4075C1C1120A80096BBC8 /* textBaloon.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB4075B1C1120A80096BBC8 /* textBaloon.png */; };
+		DAB4075E1C1123A40096BBC8 /* textballoon.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB4075D1C1123A40096BBC8 /* textballoon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,8 @@
 		DAB407521C0ECB610096BBC8 /* DirectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionManager.swift; sourceTree = "<group>"; };
 		DAB407541C100FB10096BBC8 /* CustomInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInfoWindow.swift; sourceTree = "<group>"; };
 		DAB407571C10110D0096BBC8 /* CustomInfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomInfoWindow.xib; sourceTree = "<group>"; };
+		DAB4075B1C1120A80096BBC8 /* textBaloon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textBaloon.png; sourceTree = "<group>"; };
+		DAB4075D1C1123A40096BBC8 /* textballoon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textballoon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,12 +171,12 @@
 				5257FBCE1BF809CE005CC88D /* LaunchScreen.storyboard */,
 				5257FBD11BF809CE005CC88D /* Info.plist */,
 				5257FBBD1BF809CE005CC88D /* Supporting Files */,
+				DA0E11CF1C0D668A00CF4E9A /* MapOverViewController.swift */,
 				523E40FD1BF843A900AFBEB7 /* ErrandListViewController.h */,
 				523E40FE1BF843A900AFBEB7 /* ErrandListViewController.m */,
 				DA216A371BFD7FD300797C24 /* CustomAnnotation.swift */,
 				52DEDEE31BFE85F3003ED1F3 /* MainMapViewController.h */,
 				52DEDEE11BFE85E2003ED1F3 /* MainMapViewController.m */,
-				DA0E11CF1C0D668A00CF4E9A /* MapOverViewController.swift */,
 				529890451BFBD97C00B82D76 /* MapViewController.h */,
 				529890461BFBD97C00B82D76 /* MapViewController.m */,
 				529890471BFBD97C00B82D76 /* Task.h */,
@@ -241,6 +245,8 @@
 		DA8B6FF71BFEAF0000834D78 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DAB4075D1C1123A40096BBC8 /* textballoon.png */,
+				DAB4075B1C1120A80096BBC8 /* textBaloon.png */,
 				DA8B6FEF1BFEAEF600834D78 /* briefcase.png */,
 				DA8B6FF21BFEAEF600834D78 /* running-128.png */,
 				DA8B6FF01BFEAEF600834D78 /* cart.png */,
@@ -370,8 +376,10 @@
 				DA8B6FF51BFEAEF600834D78 /* die.png in Resources */,
 				DA8B6FF31BFEAEF600834D78 /* briefcase.png in Resources */,
 				DA8B6FF61BFEAEF600834D78 /* running-128.png in Resources */,
+				DAB4075C1C1120A80096BBC8 /* textBaloon.png in Resources */,
 				DA8B6FF41BFEAEF600834D78 /* cart.png in Resources */,
 				DAB407581C10110D0096BBC8 /* CustomInfoWindow.xib in Resources */,
+				DAB4075E1C1123A40096BBC8 /* textballoon.png in Resources */,
 				5257FBD01BF809CE005CC88D /* LaunchScreen.storyboard in Resources */,
 				5257FBCD1BF809CE005CC88D /* Assets.xcassets in Resources */,
 				5257FBC81BF809CE005CC88D /* Main.storyboard in Resources */,

@@ -414,7 +414,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="skH-RC-Zcv">
-                                <rect key="frame" x="40" y="300" width="520" height="280"/>
+                                <rect key="frame" x="40" y="300" width="520" height="243"/>
                                 <animations/>
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.78000000000000003" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qP-WW-aaU">
@@ -486,7 +486,7 @@
                             <constraint firstItem="TtP-Ta-U3S" firstAttribute="centerX" secondItem="emo-jb-WYZ" secondAttribute="centerX" id="WAE-0z-0BA"/>
                             <constraint firstItem="7qP-WW-aaU" firstAttribute="centerX" secondItem="TtP-Ta-U3S" secondAttribute="centerX" id="WVr-aW-q2n"/>
                             <constraint firstItem="NRA-II-JkY" firstAttribute="centerY" secondItem="7qP-WW-aaU" secondAttribute="centerY" multiplier="0.8" id="X4z-DP-sIC"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="skH-RC-Zcv" secondAttribute="bottom" constant="20" id="YY0-8j-0fD"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="skH-RC-Zcv" secondAttribute="bottom" constant="57" id="YY0-8j-0fD"/>
                             <constraint firstItem="skH-RC-Zcv" firstAttribute="leading" secondItem="emo-jb-WYZ" secondAttribute="leadingMargin" constant="20" id="dmT-Za-OWH"/>
                             <constraint firstItem="TtP-Ta-U3S" firstAttribute="top" secondItem="8ag-Jg-EHL" secondAttribute="bottom" constant="10" id="f0j-hD-xUB"/>
                             <constraint firstItem="rEe-gV-E2O" firstAttribute="centerX" secondItem="7qP-WW-aaU" secondAttribute="centerX" id="f6b-SR-yIQ"/>
@@ -544,14 +544,14 @@
                         <segue destination="xGw-F8-KFP" kind="relationship" relationship="viewControllers" id="jEJ-gr-RQq"/>
                         <segue destination="IK4-3G-G5d" kind="relationship" relationship="viewControllers" id="ljl-R4-GfZ"/>
                         <segue destination="9uB-ap-efH" kind="relationship" relationship="viewControllers" id="pbX-9C-l9S"/>
-                        <segue destination="4CH-xe-m5J" kind="relationship" relationship="viewControllers" id="kFZ-fD-lNr"/>
+                        <segue destination="0Wn-Am-7Lo" kind="relationship" relationship="viewControllers" id="kFZ-fD-lNr"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gBh-2B-JT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-511" y="452"/>
         </scene>
-        <!--Item-->
+        <!--Errand Planner-->
         <scene sceneID="fXu-wr-aJ6">
             <objects>
                 <viewController id="4CH-xe-m5J" customClass="MapOverViewController" customModule="RunMyErrands" customModuleProvider="target" sceneMemberID="viewController">
@@ -567,7 +567,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIu-cl-LLg">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                                        <rect key="frame" x="0.0" y="63" width="600" height="80"/>
                                         <animations/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -583,7 +583,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="CIu-cl-LLg" secondAttribute="trailing" id="0ah-tf-UbN"/>
                                     <constraint firstItem="CIu-cl-LLg" firstAttribute="leading" secondItem="mWQ-RG-dq2" secondAttribute="leading" id="Wlv-aL-UaB"/>
-                                    <constraint firstItem="CIu-cl-LLg" firstAttribute="top" secondItem="mWQ-RG-dq2" secondAttribute="top" id="da2-WD-lhI"/>
+                                    <constraint firstItem="CIu-cl-LLg" firstAttribute="top" secondItem="mWQ-RG-dq2" secondAttribute="top" constant="63" id="da2-WD-lhI"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -596,15 +596,16 @@
                             <constraint firstAttribute="trailing" secondItem="mWQ-RG-dq2" secondAttribute="trailing" id="Tpb-Fy-I96"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="yOb-1P-Oyd"/>
+                    <navigationItem key="navigationItem" title="Errand Planner" id="XDM-nG-IJN"/>
                     <connections>
                         <outlet property="directionsLabel" destination="CIu-cl-LLg" id="0DC-Ow-DQn"/>
                         <outlet property="mapView" destination="mWQ-RG-dq2" id="j9l-fc-0D0"/>
+                        <segue destination="2iD-bb-EcH" kind="show" identifier="GMapDetails" id="RaN-8L-9Av"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gac-Rl-7va" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-408" y="1265"/>
+            <point key="canvasLocation" x="1057" y="1133"/>
         </scene>
         <!--List-->
         <scene sceneID="RtI-lY-0AO">
@@ -721,7 +722,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tme-CP-SGV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1205" y="1202"/>
+            <point key="canvasLocation" x="1057" y="1826"/>
         </scene>
         <!--Team-->
         <scene sceneID="t6Q-67-7Se">
@@ -741,7 +742,27 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3NT-TE-mDY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="393" y="1202"/>
+            <point key="canvasLocation" x="377" y="1826"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="9J9-GD-lA3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Wn-Am-7Lo" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="yOb-1P-Oyd"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vGK-gp-xUJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4CH-xe-m5J" kind="relationship" relationship="rootViewController" id="A90-hr-rXd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ngh-KH-e3i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="377" y="1133"/>
         </scene>
     </scenes>
     <resources>
@@ -750,6 +771,6 @@
         <image name="users" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2IR-W8-EJg"/>
+        <segue reference="RaN-8L-9Av"/>
     </inferredMetricsTieBreakers>
 </document>

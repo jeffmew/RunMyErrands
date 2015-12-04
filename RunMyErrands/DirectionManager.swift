@@ -16,7 +16,7 @@ class DirectionManager: NSObject {
     
     let baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
     var selectedRoute: Dictionary<NSObject, AnyObject>!
-    var waypointOrder: Dictionary<NSObject, AnyObject>!
+    var waypointOrder: Array<Int>!
     var overviewPolyline: Dictionary<NSObject, AnyObject>!
     var originCoordinate: CLLocationCoordinate2D!
     var destinationCoordinate: CLLocationCoordinate2D!
@@ -35,7 +35,7 @@ class DirectionManager: NSObject {
     
     //Request Directions from Google.
     
-    func requestDirections(origin: CLLocationCoordinate2D!, taskWaypoints: Array<CLLocationCoordinate2D>!, travelMode: TravelModes!, completionHandler: (sucess: Bool) ->()) {
+    func requestDirections(origin: CLLocationCoordinate2D!, taskWaypoints: Array<Task>!, travelMode: TravelModes!, completionHandler: (sucess: Bool) ->()) {
         
         if let originLocation = origin {
             let originString = "\(originLocation.latitude),\(originLocation.longitude)"
@@ -46,7 +46,8 @@ class DirectionManager: NSObject {
                 directionsURLString += "&waypoints=optimize:true"
                 
                 for waypoint in routeWaypoints {
-                    let waypointString = "\(waypoint.latitude),\(waypoint.longitude)"
+                    
+                    let waypointString = "\(waypoint.lattitude),\(waypoint.longitude)"
                     
                     directionsURLString += "|" + waypointString
                 }
@@ -114,10 +115,8 @@ class DirectionManager: NSObject {
     //Calculate the duration and distance
     func calculateTotalDistanceAndDuration(directions: Dictionary<NSObject, AnyObject>) {
         
-        
         let legs = self.selectedRoute["legs"] as! Array<Dictionary<NSObject, AnyObject>>
-        
-        //let waypoints = self.waypointOrder["waypoint_order"] as! Array<Dictionary<NSObject, AnyObject>>
+        let waypoints = self.selectedRoute["waypoint_order"] as! Array<Int>
         
         totalDistanceInMeters = 0
         totalTravelDurationInSeconds = 0
@@ -129,8 +128,7 @@ class DirectionManager: NSObject {
             totalTravelDurationInSeconds += (leg["duration"] as! Dictionary<NSObject, AnyObject>)["value"] as! UInt
         }
         
-        //totalErrandsInSeconds = (errandDuration * UInt(waypoints.count))
-        //print("total errands times \(totalErrandsInSeconds)")
+        totalErrandsInSeconds = (errandDuration * UInt(waypoints.count))
         
         let distanceInKilometers: Double = Double(totalDistanceInMeters / 1000)
         totalDistance = "Total Distance: \(distanceInKilometers) Km"
@@ -153,9 +151,9 @@ class DirectionManager: NSObject {
         let hours = travelHours + errandsHours
         let mins =  remainingTravelMins + remainingErrandsMins
         let secs = remainingTravelSecs + remainingErrandsSecs
-    
-        totalDuration = "Total Duration: \(hours) h, \(mins) mins, \(secs) secs"
-
+        
+        totalDuration = "Approx. Total Duration: \(hours) h, \(mins) mins, \(secs) secs"
+        
     }
     
     
