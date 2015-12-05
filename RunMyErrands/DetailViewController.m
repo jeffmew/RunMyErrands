@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.taskNameLabel.text =  self.task.title;
     self.taskDescriptionLabel.text = [NSString stringWithFormat:@"DESCRIPTION: %@", self.task.taskDescription];
     self.locationNameLabel.text = [NSString stringWithFormat:@"WHERE: %@", self.task.subtitle];
@@ -50,6 +50,7 @@
     
     self.mapView.delegate = self;
     [self initiateMap];
+    
 }
 
 - (void)didReceiveMemoryWarning {

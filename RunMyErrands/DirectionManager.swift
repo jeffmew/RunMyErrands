@@ -56,7 +56,7 @@ class DirectionManager: NSObject {
             if let travel = travelMode {
                 var travelModeString = ""
                 
-                switch travelMode.rawValue {
+                switch travel.rawValue {
                 case TravelModes.walking.rawValue:
                     travelModeString = "walking"
                     
@@ -116,7 +116,7 @@ class DirectionManager: NSObject {
     func calculateTotalDistanceAndDuration(directions: Dictionary<NSObject, AnyObject>) {
         
         let legs = self.selectedRoute["legs"] as! Array<Dictionary<NSObject, AnyObject>>
-        let waypoints = self.selectedRoute["waypoint_order"] as! Array<Int>
+        waypointOrder = self.selectedRoute["waypoint_order"] as! Array<Int>
         
         totalDistanceInMeters = 0
         totalTravelDurationInSeconds = 0
@@ -128,7 +128,7 @@ class DirectionManager: NSObject {
             totalTravelDurationInSeconds += (leg["duration"] as! Dictionary<NSObject, AnyObject>)["value"] as! UInt
         }
         
-        totalErrandsInSeconds = (errandDuration * UInt(waypoints.count))
+        totalErrandsInSeconds = (errandDuration * UInt(waypointOrder.count))
         
         let distanceInKilometers: Double = Double(totalDistanceInMeters / 1000)
         totalDistance = "Total Distance: \(distanceInKilometers) Km"
