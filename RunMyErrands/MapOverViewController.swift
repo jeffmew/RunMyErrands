@@ -46,8 +46,8 @@ class MapOverViewController: UIViewController, UITableViewDelegate, UITableViewD
     var task: Task!
     var taskArray: [Task]!
     
-    var orderedTaskArray: [Task] = []
-    
+    var orderedMarkerArray: [GMSMarker] = []
+    var markerArray: [GMSMarker] = []
     
     
     override func viewDidLoad() {
@@ -103,8 +103,10 @@ class MapOverViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.mapView.addSubview(directionsLabel)
         self.mapView.bringSubviewToFront(directionsLabel)
-
+        
         navigationController?.navigationBarHidden = true
+        
+        directionsLabel.hidden = true
         
         
     }
@@ -126,7 +128,7 @@ class MapOverViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func configureMapAndMarkersForRoute() {
-        self.mapView.camera = GMSCameraPosition.cameraWithTarget(self.directionTask.originCoordinate, zoom: 14.0)
+        //self.mapView.camera = GMSCameraPosition.cameraWithTarget(self.directionTask.originCoordinate, zoom: 14.0)
         
         originMarker = GMSMarker(position: self.directionTask.originCoordinate)
         originMarker.map = self.mapView
@@ -141,9 +143,9 @@ class MapOverViewController: UIViewController, UITableViewDelegate, UITableViewD
                 marker.userData = task
                 marker.map = mapView
                 marker.icon = GMSMarker.markerImageWithColor(UIColor.redColor())
+                markerArray += [marker]
             }
         }
-        
     }
     
     
@@ -160,8 +162,8 @@ class MapOverViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }else {
                     self.createRoute()
                 }
-                self.mapView.camera = GMSCameraPosition.cameraWithTarget(self.directionTask.originCoordinate, zoom: 14.0)
-                self.orderedTaskArray = self.reorderWaypoints()
+                //self.mapView.camera = GMSCameraPosition.cameraWithTarget(self.directionTask.originCoordinate, zoom: 14.0)
+                self.orderedMarkerArray = self.reorderWaypoints()
                 self.errandsTableView.reloadData()
             }
         })
@@ -200,21 +202,22 @@ class MapOverViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func recreateRoute() {
-        if let polyline = routePolyline {
-            clearRoute()
-            
-            self.directionTask.requestDirections(origin, taskWaypoints: taskArray, travelMode: self.travelMode, completionHandler: { (success) -> Void in
-                if success {
-                    self.configureMapAndMarkersForRoute()
-                    self.drawRoute()
-                    self.displayRouteInfo()
-                }
-            })
-        }
+        //        if let polyline = routePolyline {
+        //            clearRoute()
+        //
+        //            self.directionTask.requestDirections(origin, taskWaypoints: taskArray, travelMode: self.travelMode, completionHandler: { (success) -> Void in
+        //                if success {
+        //                    self.configureMapAndMarkersForRoute()
+        //                    self.drawRoute()
+        //                    self.displayRouteInfo()
+        //                }
+        //            })
+        //        }
     }
     
     
     func displayRouteInfo() {
+        directionsLabel.hidden = false
         directionsLabel.text = directionTask.totalDistance + "\n" + directionTask.totalTravelDuration + "\n" + directionTask.totalDuration
     }
     
@@ -233,7 +236,17 @@ class MapOverViewController: UIViewController, UITableViewDelegate, UITableViewD
             let task:Task = marker.userData as! Task
             let imageName:String = task.imageName(task.category.intValue)
             infoWindow.icon.image = UIImage(named:imageName)
+            
+            for eachMarker in orderedMarkerArray {
+                eachMarker.icon = GMSMarker.markerImageWithColor(UIColor.redColor())
+            }
+            
+            marker.icon = GMSMarker.markerImageWithColor(UIColor.cyanColor())
+    
         }
+        
+        self.mapView.camera = GMSCameraPosition.cameraWithTarget(marker.position, zoom: 14.0)
+       //self.mapView.camera = GMSCameraPosition.cameraWithLatitude(marker.position.latitude - 0.11, longitude: marker.position.longitude, zoom: 14.0)
         return infoWindow
     }
     
@@ -262,17 +275,20 @@ class MapOverViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return orderedTaskArray.count
+        return orderedMarkerArray.count
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:ErrandsManagerTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! ErrandsManagerTableViewCell
         
-        cell.titleLabel.text = self.orderedTaskArray[indexPath.row].title
-        cell.subtitleLabel.text = self.orderedTaskArray[indexPath.row].subtitle
+        let task:Task = orderedMarkerArray[indexPath.row].userData as! Task
+        print("Task \(task)")
         
-        let imageName = orderedTaskArray[indexPath.row].imageName(orderedTaskArray[indexPath.row].category.intValue)
+        cell.titleLabel.text = task.title
+        cell.subtitleLabel.text = task.subtitle
+        
+        let imageName = task.imageName(task.category.intValue)
         cell.categoryImage?.image = UIImage(named:imageName)
         
         return cell
@@ -281,28 +297,31 @@ class MapOverViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        let marker = orderedMarkerArray[indexPath.row]
         
-        let marker = orderedTaskArray[indexPath.row].makeMarker()
-        
-        print("selected marker \(marker)")
+        for eachMarker in orderedMarkerArray {
+            eachMarker.icon = GMSMarker.markerImageWithColor(UIColor.redColor())
+        }
         
         marker.icon = GMSMarker.markerImageWithColor(UIColor.cyanColor())
-        marker.map = mapView
-        //mapView.selectedMarker(marker)
-        
-   
     }
     
-    func reorderWaypoints() -> [Task] {
+    
+    func reorderWaypoints() -> [GMSMarker] {
         
-        var orderedTaskArray:[Task] = [Task]()
+        var orderedMarkerArray:[GMSMarker] = [GMSMarker]()
         if let waypointOrder = directionTask.waypointOrder {
             for indexNumber in waypointOrder {
-                orderedTaskArray += [taskArray[indexNumber]]
+                orderedMarkerArray += [markerArray[indexNumber]]
             }
         }
-        return orderedTaskArray
+        return orderedMarkerArray
     }
+    
+    
+    
+    
+    
     
     
 }
