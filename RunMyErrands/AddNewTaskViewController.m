@@ -17,10 +17,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *locationName;
 @property (weak, nonatomic) IBOutlet UIPickerView *categoryPickerView;
 @property (weak, nonatomic) IBOutlet UIPickerView *groupPickerView;
+@property (nonatomic) NSArray *groups;
 @property (nonatomic) NSArray *categoryPickerData;
-@property (nonatomic) NSArray *groupPickerData;
-@property (nonatomic) NSInteger *categoryChoice;
-@property (nonatomic) NSInteger *groupChoice;
+@property (nonatomic) NSMutableArray *groupPickerData;
 @property (nonatomic) NSString *teamKey;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *groupLabel;
@@ -32,12 +31,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.categoryPickerView.delegate = self;
-    self.categoryPickerData = @[@"General",@"Entertainment",@"Business",@"Food"];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.allowsSelection = false;
     
-//    self.categoryPickerView.layer.cornerRadius = 6;
+    self.categoryPickerData = @[@"General",@"Entertainment",@"Business",@"Food"];
+    self.groupPickerData = [NSMutableArray new];
+    [self fetchGroupPickerData];
+
     self.task = [Task object];
     self.task.isComplete = @NO;
+    
     NSMutableAttributedString *categoryAttributeString = [[NSMutableAttributedString alloc] initWithString:@"Category"];
     [categoryAttributeString addAttribute:NSUnderlineStyleAttributeName
                             value:[NSNumber numberWithInt:1]
@@ -51,14 +54,34 @@
     self.groupLabel.attributedText = groupAttributeString;
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+}
+
+-(void)fetchGroupPickerData {
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser) {
+        
+        PFRelation *relation  = [currentUser relationForKey:@"memberOfTheseGroups"];
+        [[relation query] findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            if (!error) {
+                self.groups = objects;
+                
+                for (PFObject *object in objects) {
+                    [self.groupPickerData addObject: object[@"name"]];
+                }
+                [self.groupPickerView reloadAllComponents];
+            }
+        }];
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-
-- (IBAction)okButtonPressed:(UIButton *)sender {
+- (IBAction)saveButtonPressed:(UIButton *)sender {
     __block NSString *alertControllerTitle;
     __block NSString *alertControllerMessage;
     
@@ -91,22 +114,22 @@
     [self.task saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             // The object has been saved.
-            PFQuery *teams = [PFQuery queryWithClassName:@"Team"];
-            [teams whereKey:@"team" equalTo:[[PFUser currentUser] objectId]];
-            
-            [teams getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
-                
-                NSArray *tasks = object[@"tasks"];
-                tasks = [tasks arrayByAddingObjectsFromArray:@[self.task.objectId]];
-                
-                object[@"tasks"] = tasks;
-                [object saveInBackground];
-                [self.navigationController popViewControllerAnimated:YES];
+            PFObject *group = self.groups[[self.groupPickerView selectedRowInComponent:0]];
+            PFRelation *groupErrandsRelation = [group relationForKey:@"errands"];
+
+            [groupErrandsRelation addObject:self.task];
+            [group saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                if (!succeeded) {
+                    NSLog(@"Error: %@", error);
+                } else {
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
             }];
+
         } else {
             // There was a problem, check error.description
             NSString *alertControllerTitle = @"Error";
-            NSString *alertControllerMessage = @"Oops There Was a Problem in Adding The Task";
+            NSString *alertControllerMessage = @"Oops There Was a Problem in Adding The Errand";
             [self presentAlertController:alertControllerTitle aMessage:alertControllerMessage];
         }
     }];
@@ -126,18 +149,11 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
-- (IBAction)cancelButtonPressed:(UIButton *)sender {
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-}
-
 #pragma - UITapGestureRecognizer Delegate Functions
 
 - (IBAction)tapDetected:(UITapGestureRecognizer *)sender {
     [self.view endEditing:YES];
 }
-
 
 #pragma - UIPickerView Delegate Functions
 
@@ -146,11 +162,35 @@
 }
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return self.categoryPickerData.count;
+    if (pickerView.tag == 1) {
+        return self.categoryPickerData.count;
+    } else if (pickerView.tag == 2) {
+        return self.groupPickerData.count;
+    } else {
+        return 0;
+    }
 }
 
--(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return self.categoryPickerData[row];
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
+{
+    UILabel* tView = (UILabel*)view;
+    if (!tView)
+    {
+        tView = [[UILabel alloc] init];
+        [tView setFont:[UIFont fontWithName:@"Helvetica Neue" size:17.0]];
+        [tView setTextColor:[UIColor whiteColor]];
+        tView.textAlignment = NSTextAlignmentCenter;
+        //tView.numberOfLines=3;
+    }
+    
+    // Fill the label text here
+    if (pickerView.tag == 1) {
+        tView.text = [self.categoryPickerData[row] capitalizedString];
+    } else if (pickerView.tag == 2) {
+        tView.text = [self.groupPickerData[row] capitalizedString];
+    }
+    
+    return tView;
 }
 
 #pragma - AddTaskDelegate Function
@@ -168,23 +208,6 @@
         mapVC.taskArray = self.taskArray;
         mapVC.task = self.task;
     }
-}
-
-- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
-{
-    UILabel* tView = (UILabel*)view;
-    if (!tView)
-    {
-        tView = [[UILabel alloc] init];
-        [tView setFont:[UIFont fontWithName:@"Helvetica Neue" size:17.0]];
-        [tView setTextColor:[UIColor whiteColor]];
-        tView.textAlignment = NSTextAlignmentCenter;
-        //[tView setTextAlignment:UITextAlignmentLeft];
-        tView.numberOfLines=3;
-    }
-    // Fill the label text here
-    tView.text = self.categoryPickerData[row];
-    return tView;
 }
 
 #pragma mark - Geo

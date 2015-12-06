@@ -18,6 +18,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.tableView.allowsSelection = false;
+    self.tableView.tableFooterView = [[UIView alloc] init];
+    
     self.groupMembers = [NSMutableDictionary new];
 
 }
@@ -48,7 +52,6 @@
                         
                     }];
                 }
-                
             }
         }];
     }

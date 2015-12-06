@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *youHaveTasksLabel;
 @property (nonatomic) NSArray *taskArray;
 @property (nonatomic) GeoManager *locationManager;
+@property (nonatomic) ErrandManager *errandManager;
 @end
 
 
@@ -31,15 +32,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tableview.tableFooterView = [[UIView alloc] init];
     
     self.locationManager = [GeoManager sharedManager];
     [self.locationManager startLocationManager];
-    
-//    [PFUser logInWithUsername:@"jeff" password:@"jeff"];
-  //  [self setGreeting];
-    
-    //[self createNewTeam];
-//    [self loadTaskObjects];
+
+    self.errandManager = [ErrandManager new];
+    [self.errandManager fetchData:self.tableview];
+
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self setGreeting];
+    [self.errandManager fetchData:self.tableview];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 -(void) setGreeting {
@@ -80,99 +91,18 @@
              @"Just do it."][rand];
 }
 
-
--(void) addNewTeamMember {
-    PFQuery *query = [PFQuery queryWithClassName:@"Team"];
-    
-//    query.limit = 1;
-    [query getObjectInBackgroundWithId:@"KXHjYWYANj" block:^(PFObject * _Nullable team, NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        } else {
-            //messages found
-            NSArray *updatedTeam = team[@"team"];
-            updatedTeam = [updatedTeam arrayByAddingObjectsFromArray:@[[PFUser currentUser].objectId]];
-            team[@"team"] = updatedTeam;
-            [team saveInBackground];
-        }
-    }];	
-}
-
-
-- (void) createNewTeam {
-    PFObject *newTeam = [PFObject objectWithClassName:@"Team"];
-    newTeam[@"name"] = @"Team RME";
-    newTeam[@"teamLead"] = [PFUser currentUser].objectId;
-    newTeam[@"team"] = @[[PFUser currentUser].objectId];
-    newTeam[@"tasks"] = @[];
-    
-    [newTeam saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            // The object has been saved.
-        } else {
-            // There was a problem, check error.description
-        }
-    }];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:YES];
-    [self setGreeting];
-    [self loadTaskObjects];
-}
-
--(void) loadTaskObjects {
-    PFUser *currentUser = [PFUser currentUser];
-    if (currentUser) {
-        PFQuery *query = [PFQuery queryWithClassName:@"Team"];
-        [query whereKey:@"team" equalTo:[[PFUser currentUser] objectId]];
-        
-        [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
-            
-            if (error) {
-                NSLog(@"Error: %@ %@", error, [error userInfo]);
-            } else {
-                
-                NSArray *tasks = object[@"tasks"];
-                
-                PFQuery *taskQuery = [PFQuery queryWithClassName:@"Task"];
-                [taskQuery whereKey:@"objectId" containedIn:tasks];
-                [taskQuery addAscendingOrder:@"isComplete"];
-                [taskQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-                    
-                    if (error) {
-                        NSLog(@"Error: %@ %@", error, [error userInfo]);
-                    } else {
-                        self.taskArray = objects;
-                        
-                        for (Task *taskFromArray in self.taskArray) {
-                            [taskFromArray updateCoordinate];
-                        }
-                        
-                        [self.tableview reloadData];
-                        [self trackGeoRegions];
-                    }
-                }];
-            }
-        }];
-    }
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (IBAction)addButton:(UIBarButtonItem *)sender {
     [self performSegueWithIdentifier:@"addNewTask" sender:nil];
 }
 
+#pragma mark - TableView Delegates
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.taskArray.count;
+    return [self.errandManager fetchNumberOfRowsInSection:section];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return [self.errandManager fetchNumberOfGroups];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -184,7 +114,7 @@
     cell.subtitleLabel.attributedText = nil;
     cell.categoryImage.image = nil;
     
-    Task *taskAtCell = self.taskArray[indexPath.row];
+    Task *taskAtCell = [self.errandManager fetchErrand:indexPath];
     
     NSString *imageName;
     switch ([taskAtCell.category intValue]) {
@@ -227,10 +157,13 @@
         
     }
     
-//    cell.layer.cornerRadius = 6;
     cell.categoryImage.image = [UIImage imageNamed:imageName];
     
     return cell;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [self.errandManager fetchTitleForHeaderInSection:section];
 }
 
 #pragma mark - Navigation
@@ -246,7 +179,7 @@
     } else if ([[segue identifier] isEqualToString:@"showDetail"]) {
         DetailViewController *detailVC = (DetailViewController*)[segue destinationViewController];
         NSIndexPath *indexPath = [self.tableview indexPathForSelectedRow];
-        Task *selectedTask = self.taskArray[indexPath.section];
+        Task *selectedTask = [self.errandManager fetchErrand:indexPath]; //self.taskArray[indexPath.section];
         detailVC.task = selectedTask;
     }
 }

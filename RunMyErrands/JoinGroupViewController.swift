@@ -23,7 +23,6 @@ class JoinGroupViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     @IBAction func joinGroup(sender: UIButton) {
         if let groupID = groupIDTextField.text {
@@ -36,11 +35,11 @@ class JoinGroupViewController: UIViewController {
                     //object is a 'Group'
                     if let currentUser = PFUser.currentUser(),
                         let object = object {
-                        
+
                         let memberRelation = object.relationForKey("groupMembers")
                         memberRelation.addObject(currentUser)
                             object.saveInBackgroundWithBlock({ (bool: Bool, error: NSError?) -> Void in
-                            
+
                                 let groupRelation = currentUser.relationForKey("memberOfTheseGroups")
                                 groupRelation.addObject(object)
                                 currentUser.saveInBackgroundWithBlock({ (bool:Bool, error: NSError?) -> Void in
