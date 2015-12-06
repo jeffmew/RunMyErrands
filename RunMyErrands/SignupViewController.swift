@@ -16,10 +16,9 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -44,6 +43,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     @IBAction func createNewUser(sender: UIButton) {
         if usernameTextField.text != "" && passwordTextField.text != ""  {
             let user  = PFUser()
+            
             user.username = usernameTextField.text
             user.password = passwordTextField.text
             user["name"] = usernameTextField.text
@@ -62,7 +62,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
 
     func saveImage(user: PFUser) {
-        
+
             if let image = self.profileImage.image,
                 let imageData = UIImageJPEGRepresentation(image, 0.25),
                 let imageFile = PFFile(name:"profile.jpg", data:imageData) {
@@ -85,7 +85,9 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     }
     
     @IBAction func cancel(sender: UIButton) {
+        
         self.navigationController?.popToRootViewControllerAnimated(true)
+        
     }
     
     // MARK: UITextFieldDelegate

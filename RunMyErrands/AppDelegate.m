@@ -13,6 +13,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 #import "Task.h"
+//#import <ParseTwitterUtils/ParseTwitterUtils.h>
 
 @interface AppDelegate ()
 
@@ -26,11 +27,14 @@
     [Task registerSubclass];
     [Parse setApplicationId:PARSE_APP_ID
                   clientKey:PARSE_CLIENT_KEY];
-    
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
+    //Facebook
     [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
     
+    //Twitter
+    //[PFTwitterUtils initializeWithConsumerKey:TWITTER_CONSUMER_KEY
+    //                           consumerSecret:TWITTER_CONSUMER_SECRET];
     
     //allow persmission for local notifications
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];

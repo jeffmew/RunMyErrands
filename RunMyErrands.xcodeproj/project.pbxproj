@@ -33,6 +33,9 @@
 		5257FBD01BF809CE005CC88D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5257FBCE1BF809CE005CC88D /* LaunchScreen.storyboard */; };
 		5257FBDB1BF809CE005CC88D /* RunMyErrandsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5257FBDA1BF809CE005CC88D /* RunMyErrandsTests.m */; };
 		5257FBE61BF809CE005CC88D /* RunMyErrandsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5257FBE51BF809CE005CC88D /* RunMyErrandsUITests.m */; };
+		5270A7E91C14072700F8A814 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5270A7E81C14072700F8A814 /* Social.framework */; };
+		5270A7EB1C14074D00F8A814 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5270A7EA1C14074D00F8A814 /* Accounts.framework */; };
+		5270A7ED1C14092000F8A814 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5270A7EC1C14092000F8A814 /* Twitter.framework */; };
 		529890491BFBD97C00B82D76 /* GeoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 529890441BFBD97C00B82D76 /* GeoManager.m */; };
 		5298904A1BFBD97C00B82D76 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 529890461BFBD97C00B82D76 /* MapViewController.m */; };
 		5298904B1BFBD97C00B82D76 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 529890481BFBD97C00B82D76 /* Task.m */; };
@@ -106,6 +109,9 @@
 		5257FBE11BF809CE005CC88D /* RunMyErrandsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunMyErrandsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5257FBE51BF809CE005CC88D /* RunMyErrandsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RunMyErrandsUITests.m; sourceTree = "<group>"; };
 		5257FBE71BF809CE005CC88D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5270A7E81C14072700F8A814 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		5270A7EA1C14074D00F8A814 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		5270A7EC1C14092000F8A814 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		529890421BFBD7C000B82D76 /* API_key.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API_key.h; sourceTree = "<group>"; };
 		529890431BFBD97C00B82D76 /* GeoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoManager.h; sourceTree = "<group>"; };
 		529890441BFBD97C00B82D76 /* GeoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoManager.m; sourceTree = "<group>"; };
@@ -138,6 +144,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5270A7ED1C14092000F8A814 /* Twitter.framework in Frameworks */,
+				5270A7EB1C14074D00F8A814 /* Accounts.framework in Frameworks */,
+				5270A7E91C14072700F8A814 /* Social.framework in Frameworks */,
 				520B473B1C0E808A006F1FDA /* libsqlite3.tbd in Frameworks */,
 				520B47391C0E8082006F1FDA /* libz.tbd in Frameworks */,
 				520B47371C0E8074006F1FDA /* SystemConfiguration.framework in Frameworks */,
@@ -273,6 +282,9 @@
 		D671CC1A1730522650B8A93F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5270A7EC1C14092000F8A814 /* Twitter.framework */,
+				5270A7EA1C14074D00F8A814 /* Accounts.framework */,
+				5270A7E81C14072700F8A814 /* Social.framework */,
 				520B473A1C0E808A006F1FDA /* libsqlite3.tbd */,
 				520B47381C0E8082006F1FDA /* libz.tbd */,
 				520B47361C0E8074006F1FDA /* SystemConfiguration.framework */,
