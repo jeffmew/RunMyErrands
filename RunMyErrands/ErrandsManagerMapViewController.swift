@@ -50,7 +50,9 @@ class ErrandsManagerMapViewController: UIViewController, UITableViewDelegate, UI
     var markerArray: [GMSMarker] = []
     
     var errandsManager: ErrandManager!
-
+    
+    
+    //Mark: Load ViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,53 +71,14 @@ class ErrandsManagerMapViewController: UIViewController, UITableViewDelegate, UI
         
         mapView.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.New, context: nil)
         
-        
-//        ////Test Data/////////////////////////////////
-//        taskArray = [Task]()
-//        
-//        let task01:Task = Task.object()
-//        task01.title = "Get Crack"
-//        task01.subtitle = "become a crack head."
-//        task01.category = 1
-//        task01.setCoordinate(CLLocationCoordinate2DMake(49.2897225491339, -123.129493072629))
-//        
-//        let task02:Task = Task.object()
-//        task02.title = "Get Weed"
-//        task02.subtitle = "become a pot head."
-//        task02.category = 2
-//        task02.setCoordinate(CLLocationCoordinate2DMake(49.2835425227606, -123.130713142455))
-//        
-//        let task03:Task = Task.object()
-//        task03.title = "Get Booze"
-//        task03.subtitle = "become a  drunk."
-//        task03.category = 3
-//        task03.setCoordinate(CLLocationCoordinate2DMake(49.285996124658, -123.126992583275))
-//        
-//        let task04:Task = Task.object()
-//        task04.title = "Get Smokes"
-//        task04.subtitle = "become a smoker."
-//        task04.category = 4
-//        task04.setCoordinate(CLLocationCoordinate2DMake(49.2833437185792, -123.122600801289))
-//        
-//        let task05:Task = Task.object()
-//        task05.title = "Get LSD"
-//        task05.subtitle = "become a hippy."
-//        task05.category = 5
-//        task05.setCoordinate(CLLocationCoordinate2DMake(49.2777464723823, -123.131323009729))
-//        
-//        taskArray = [task01, task02, task03, task04, task05]
-//        
-//        ///////////////////////////////////////////////////////
-        
         self.mapView.addSubview(directionsLabel)
         self.mapView.bringSubviewToFront(directionsLabel)
         
         navigationController?.navigationBarHidden = true
         
         directionsLabel.hidden = true
-        
-        
     }
+    
     
     //Update map with users current location;
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
@@ -162,12 +125,7 @@ class ErrandsManagerMapViewController: UIViewController, UITableViewDelegate, UI
                 self.configureMapAndMarkersForRoute()
                 self.drawRoute()
                 self.displayRouteInfo()
-                
-                if let polyline = self.routePolyline {
-                    self.recreateRoute()
-                }else {
-                    self.createRoute()
-                }
+                            
                 self.orderedMarkerArray = self.reorderWaypoints()
                 self.errandsTableView.reloadData()
             }
@@ -185,39 +143,11 @@ class ErrandsManagerMapViewController: UIViewController, UITableViewDelegate, UI
     }
     
     
-//    func mapView(mapView: GMSMapView!, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
-//        if let task = task {
-//            task.setCoordinate(coordinate)
-//        }
-//        
-//        if let polyline = self.routePolyline {
-//            self.recreateRoute()
-//        }else {
-//            self.createRoute()
-//        }
-//    }
-    
-    
     func clearRoute() {
         originMarker.map = nil
         routePolyline.map = nil
         originMarker = nil
         routePolyline = nil
-    }
-    
-    
-    func recreateRoute() {
-        //        if let polyline = routePolyline {
-        //            clearRoute()
-        //
-        //            self.directionTask.requestDirections(origin, taskWaypoints: taskArray, travelMode: self.travelMode, completionHandler: { (success) -> Void in
-        //                if success {
-        //                    self.configureMapAndMarkersForRoute()
-        //                    self.drawRoute()
-        //                    self.displayRouteInfo()
-        //                }
-        //            })
-        //        }
     }
     
     
@@ -247,14 +177,14 @@ class ErrandsManagerMapViewController: UIViewController, UITableViewDelegate, UI
             }
             
             marker.icon = GMSMarker.markerImageWithColor(UIColor.cyanColor())
-    
+            
         }
-
+        
         //mapView.animateWithCameraUpdate(GMSCameraUpdate.setTarget(marker.position))
         
-    
+        
         // camera = GMSCameraPosition.cameraWithTarget(marker.position, zoom: 14.0)
-       //mapView.camera = GMSCameraPosition.cameraWithLatitude(marker.position.latitude - 1.11, longitude: marker.position.longitude - 1.1, zoom: 14.0)
+        //mapView.camera = GMSCameraPosition.cameraWithLatitude(marker.position.latitude - 1.11, longitude: marker.position.longitude - 1.1, zoom: 14.0)
         
         
         return infoWindow
@@ -339,10 +269,10 @@ class ErrandsManagerMapViewController: UIViewController, UITableViewDelegate, UI
         errandsManager.fetchDataNew { (sucess) -> () in
             if sucess {
                 
-                let numberOfGroups = self.errandsManager.fetchNumberOfGroups()
+                self.taskArray.removeAll()
                 
+                let numberOfGroups = self.errandsManager.fetchNumberOfGroups()
                 for var index in 0..<numberOfGroups {
-                    
                     if let groupTaskArray = self.errandsManager.fetchErrandsForGroup(index) {
                         
                         for task in groupTaskArray {
@@ -350,11 +280,11 @@ class ErrandsManagerMapViewController: UIViewController, UITableViewDelegate, UI
                         }
                     }
                 }
+                self.createRoute()
             }
-            self.createRoute()
         }
     }
-
+    
     
     
     
