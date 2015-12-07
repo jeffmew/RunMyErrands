@@ -80,13 +80,19 @@ class ErrandsManagerMapViewController: UIViewController, UITableViewDelegate, UI
     }
     
     
+//    override func viewWillAppear(animated: Bool) {
+//        addMarkersToMap()
+//    }
+    
+    
+    
     //Update map with users current location;
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if !didFindMyLocation {
             let myLocation: CLLocation = change![NSKeyValueChangeNewKey] as! CLLocation
             mapView.camera = GMSCameraPosition.cameraWithTarget(myLocation.coordinate, zoom: 14.0)
             mapView.settings.myLocationButton = true
-            mapView.animateToViewingAngle(45)
+            //mapView.animateToViewingAngle(45)
             origin = myLocation.coordinate
             didFindMyLocation = true
             //createRoute()
@@ -125,7 +131,7 @@ class ErrandsManagerMapViewController: UIViewController, UITableViewDelegate, UI
                 self.configureMapAndMarkersForRoute()
                 self.drawRoute()
                 self.displayRouteInfo()
-                            
+                
                 self.orderedMarkerArray = self.reorderWaypoints()
                 self.errandsTableView.reloadData()
             }
@@ -276,7 +282,9 @@ class ErrandsManagerMapViewController: UIViewController, UITableViewDelegate, UI
                     if let groupTaskArray = self.errandsManager.fetchErrandsForGroup(index) {
                         
                         for task in groupTaskArray {
-                            self.taskArray += [task]
+                            if task.isComplete == false {
+                                self.taskArray += [task]
+                            }
                         }
                     }
                 }

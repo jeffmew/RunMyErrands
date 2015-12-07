@@ -11,10 +11,6 @@
             <rect key="frame" x="0.0" y="0.0" width="304" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="textballoon" translatesAutoresizingMaskIntoConstraints="NO" id="gHM-wZ-mmS">
-                    <rect key="frame" x="0.0" y="0.0" width="304" height="64"/>
-                    <animations/>
-                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uny-ld-Fsz">
                     <rect key="frame" x="46" y="5" width="246" height="19"/>
                     <animations/>
@@ -51,6 +47,5 @@
     </objects>
     <resources>
         <image name="running-128.png" width="128" height="128"/>
-        <image name="textballoon" width="300" height="218"/>
     </resources>
 </document>

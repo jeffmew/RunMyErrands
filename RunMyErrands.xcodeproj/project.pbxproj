@@ -47,6 +47,7 @@
 		52CA6F0F1BFF963A003E3437 /* TeamListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CA6F0E1BFF963A003E3437 /* TeamListTableViewController.m */; };
 		52CE28701C125F6100046BF2 /* ErrandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CE286F1C125F6100046BF2 /* ErrandManager.swift */; };
 		52D6CD6E1BF96CE600CBBBAD /* AddNewTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D6CD6D1BF96CE600CBBBAD /* AddNewTaskViewController.m */; };
+		DA0D86021C15605600402054 /* Callout_rounded_rectangle_center.png in Resources */ = {isa = PBXBuildFile; fileRef = DA0D86011C15605600402054 /* Callout_rounded_rectangle_center.png */; };
 		DA34E8461C15035A006C7B05 /* ErrandsManagerMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34E8451C15035A006C7B05 /* ErrandsManagerMapViewController.swift */; };
 		DA34E8481C15037D006C7B05 /* DirectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34E8471C15037D006C7B05 /* DirectionManager.swift */; };
 		DA34E84A1C15048D006C7B05 /* CustomInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA34E8491C15048D006C7B05 /* CustomInfoWindow.xib */; };
@@ -134,6 +135,7 @@
 		52D6CD6C1BF96CE600CBBBAD /* AddNewTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewTaskViewController.h; sourceTree = "<group>"; };
 		52D6CD6D1BF96CE600CBBBAD /* AddNewTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewTaskViewController.m; sourceTree = "<group>"; };
 		98ED86A0F03E7320C46D3917 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA0D86011C15605600402054 /* Callout_rounded_rectangle_center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Callout_rounded_rectangle_center.png; sourceTree = "<group>"; };
 		DA216A361BFD7FD200797C24 /* RunMyErrands-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RunMyErrands-Bridging-Header.h"; sourceTree = "<group>"; };
 		DA34E8401C14FC93006C7B05 /* API_key.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API_key.h; sourceTree = "<group>"; };
 		DA34E8451C15035A006C7B05 /* ErrandsManagerMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrandsManagerMapViewController.swift; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				DA8B6FEF1BFEAEF600834D78 /* briefcase.png */,
+				DA0D86011C15605600402054 /* Callout_rounded_rectangle_center.png */,
 				DA8B6FF21BFEAEF600834D78 /* running-128.png */,
 				DA8B6FF01BFEAEF600834D78 /* cart.png */,
 				DA8B6FF11BFEAEF600834D78 /* die.png */,
@@ -484,6 +487,7 @@
 				52ABCF1A1C0CE6E400110C8A /* Login.storyboard in Resources */,
 				DA8B6FF61BFEAEF600834D78 /* running-128.png in Resources */,
 				DA8B6FF41BFEAEF600834D78 /* cart.png in Resources */,
+				DA0D86021C15605600402054 /* Callout_rounded_rectangle_center.png in Resources */,
 				5257FBD01BF809CE005CC88D /* LaunchScreen.storyboard in Resources */,
 				5257FBCD1BF809CE005CC88D /* Assets.xcassets in Resources */,
 				5257FBC81BF809CE005CC88D /* Main.storyboard in Resources */,

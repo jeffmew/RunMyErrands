@@ -38,7 +38,9 @@ class ErrandsMapOverviewViewController: UIViewController, CLLocationManagerDeleg
         addMarkersToMap()
         populateTaskArray()
     }
-
+    
+    
+    
     
     //Update map with users current location;
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
@@ -64,11 +66,13 @@ class ErrandsMapOverviewViewController: UIViewController, CLLocationManagerDeleg
                         
                         for task in taskArray {
                             
-                            let marker = task.makeMarker()
-                            marker.userData = task
-                            marker.map = self.mapView
-                            marker.icon = GMSMarker.markerImageWithColor(UIColor.redColor())
-                            //self.taskArray += [task]
+                            if task.isComplete == false {
+                                
+                                let marker = task.makeMarker()
+                                marker.userData = task
+                                marker.map = self.mapView
+                                marker.icon = GMSMarker.markerImageWithColor(UIColor.redColor())
+                            }
                         }
                     }
                 }
@@ -120,7 +124,7 @@ class ErrandsMapOverviewViewController: UIViewController, CLLocationManagerDeleg
             self.trackGeoRegions()
         }
     }
-
+    
     
     
     
