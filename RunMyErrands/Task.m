@@ -78,6 +78,35 @@
     return annotationView;
 }
 
+
+-(GMSMarker*) makeMarker {
+    
+    GMSMarker *marker = [GMSMarker markerWithPosition:[self coordinate]];
+    marker.title = self.title;
+    marker.snippet = self.subtitle;
+    //marker.userData = self.category;
+    
+    return marker;
+}
+
+
+-(NSString*)imageName:(int)catagoryNumber {
+    
+    switch (catagoryNumber) {
+        case 0:
+            return @"runmyerrands";
+        case 1:
+            return @"die";
+        case 2:
+            return @"briefcase";
+        case 3:
+            return @"cart";
+        default:
+            return @"runmyerrands";
+    }
+}
+
+
 -(MKAnnotationView*)annoDetailView {
     
     MKPinAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:self reuseIdentifier:@"CustomDetailAnno"];

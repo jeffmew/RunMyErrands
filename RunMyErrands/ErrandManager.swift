@@ -41,12 +41,12 @@ import Parse
                     let errandsForGroupRelation = group.relationForKey("errands")
                     errandsForGroupRelation.query().findObjectsInBackgroundWithBlock({ (errands:[PFObject]?, error:NSError?) -> Void in
                         let errandsArray = errands as! [Task]
-
+                        
                         self.errandsDictionary.setValue(errandsArray, forKey: group.objectId!)
                         tableView.reloadData()
                     })
                 }
-
+                
             }
         }
     }
@@ -76,7 +76,7 @@ import Parse
     
     func fetchErrand(indexPath: NSIndexPath) -> Task? {
         if let errands = fetchErrandsForGroup(indexPath.section) {
-            return errands[indexPath.row] 
+            return errands[indexPath.row]
         } else {
             return nil
         }
@@ -92,5 +92,57 @@ import Parse
             return nil
         }
     }
+    
+    
+    func fetchDataNew(completionHandler: (sucess: Bool) ->() ) {
+        let relation = self.user.relationForKey("memberOfTheseGroups")
+        
+        relation.query().orderByAscending("name").findObjectsInBackgroundWithBlock { (objects:[PFObject]?, error: NSError?) -> Void in
+            
+            if let objects = objects {
+                
+                for group in objects {
+                    print(group["name"])
+                    
+                    //self.groupNameToObjectIDDictionary.setValue(group.objectId, forKey: group["name"] as! String)
+                    //self.groupNames.insert(group["name"] as! String, atIndex: self.groupNames.endIndex)
+                    self.objectIDtoNameDictionary.setValue(group["name"] as! String, forKey: group.objectId!)
+                    
+                    let errandsForGroupRelation = group.relationForKey("errands")
+                    errandsForGroupRelation.query().findObjectsInBackgroundWithBlock({ (errands:[PFObject]?, error:NSError?) -> Void in
+                        let errandsArray = errands as! [Task]
+                        
+                        self.errandsDictionary.setValue(errandsArray, forKey: group.objectId!)
+                        completionHandler(sucess: true)
+                    })
+                }
+                
+            } else {
+                
+                completionHandler(sucess: true)
+            }
+        }
+    }
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

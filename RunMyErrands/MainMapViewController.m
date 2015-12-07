@@ -84,10 +84,6 @@
 }
 
 
-- (IBAction)dropPinGesture:(UILongPressGestureRecognizer *)sender {
-    //remove connection from storyboard.
-}
-
 #pragma mark - Geo
 
 -(void)trackGeoRegions {
@@ -108,13 +104,7 @@
 }
 
 
--(void)mapViewDidFinishRenderingMap:(MKMapView *)mapView fullyRendered:(BOOL)fullyRendered {
-    
-}
 
--(void)mapViewDidFinishLoadingMap:(nonnull MKMapView *)mapView{
-    
-}
 
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {

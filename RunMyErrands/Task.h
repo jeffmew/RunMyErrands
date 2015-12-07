@@ -11,6 +11,7 @@
 #import <MapKit/MapKit.h>
 #import <Parse/Parse.h>
 #import <Parse/PFObject+Subclass.h>
+@import GoogleMaps;
 
 @interface Task : PFObject <MKAnnotation,PFSubclassing>
 
@@ -32,4 +33,6 @@
 -(MKAnnotationView*)annoView;
 -(MKAnnotationView*)annoDetailView;
 
+-(GMSMarker*) makeMarker;
+-(NSString*)imageName:(int)catagoryNumber;
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2AC4C1E9615497F582A7E517 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98ED86A0F03E7320C46D3917 /* libPods.a */; };
 		520B47211C0E7DB7006F1FDA /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520B47201C0E7DB7006F1FDA /* FBSDKCoreKit.framework */; };
 		520B47231C0E7DBF006F1FDA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520B47221C0E7DBF006F1FDA /* FBSDKLoginKit.framework */; };
 		520B47251C0E7E26006F1FDA /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520B47241C0E7E26006F1FDA /* ParseFacebookUtilsV4.framework */; };
@@ -48,7 +49,12 @@
 		52CE28701C125F6100046BF2 /* ErrandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CE286F1C125F6100046BF2 /* ErrandManager.swift */; };
 		52D6CD6E1BF96CE600CBBBAD /* AddNewTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D6CD6D1BF96CE600CBBBAD /* AddNewTaskViewController.m */; };
 		52DEDEE21BFE85E2003ED1F3 /* MainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52DEDEE11BFE85E2003ED1F3 /* MainMapViewController.m */; };
-		DA216A381BFD7FD300797C24 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA216A371BFD7FD300797C24 /* CustomAnnotation.swift */; };
+		DA34E8461C15035A006C7B05 /* MapOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34E8451C15035A006C7B05 /* MapOverViewController.swift */; };
+		DA34E8481C15037D006C7B05 /* DirectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34E8471C15037D006C7B05 /* DirectionManager.swift */; };
+		DA34E84A1C15048D006C7B05 /* CustomInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA34E8491C15048D006C7B05 /* CustomInfoWindow.xib */; };
+		DA34E84C1C1504CC006C7B05 /* CustomInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34E84B1C1504CC006C7B05 /* CustomInfoWindow.swift */; };
+		DA34E84E1C150581006C7B05 /* ErrandsManagerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34E84D1C150581006C7B05 /* ErrandsManagerTableViewCell.swift */; };
+		DA34E8501C150EFA006C7B05 /* ErrandsMapOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34E84F1C150EFA006C7B05 /* ErrandsMapOverviewViewController.swift */; };
 		DA8B6FF31BFEAEF600834D78 /* briefcase.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8B6FEF1BFEAEF600834D78 /* briefcase.png */; };
 		DA8B6FF41BFEAEF600834D78 /* cart.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8B6FF01BFEAEF600834D78 /* cart.png */; };
 		DA8B6FF51BFEAEF600834D78 /* die.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8B6FF11BFEAEF600834D78 /* die.png */; };
@@ -73,6 +79,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		370358A6CB9E12705AE1B3CD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		48F94D27776E71DB6E115CCB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		504342781871F1A0EFAE0716 /* libPods-RunMyErrands.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RunMyErrands.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		520B47201C0E7DB7006F1FDA /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		520B47221C0E7DBF006F1FDA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -112,7 +120,6 @@
 		5270A7E81C14072700F8A814 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		5270A7EA1C14074D00F8A814 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		5270A7EC1C14092000F8A814 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
-		529890421BFBD7C000B82D76 /* API_key.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API_key.h; sourceTree = "<group>"; };
 		529890431BFBD97C00B82D76 /* GeoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoManager.h; sourceTree = "<group>"; };
 		529890441BFBD97C00B82D76 /* GeoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoManager.m; sourceTree = "<group>"; };
 		529890451BFBD97C00B82D76 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -131,8 +138,15 @@
 		52D6CD6D1BF96CE600CBBBAD /* AddNewTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewTaskViewController.m; sourceTree = "<group>"; };
 		52DEDEE11BFE85E2003ED1F3 /* MainMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMapViewController.m; sourceTree = "<group>"; };
 		52DEDEE31BFE85F3003ED1F3 /* MainMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMapViewController.h; sourceTree = "<group>"; };
+		98ED86A0F03E7320C46D3917 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA216A361BFD7FD200797C24 /* RunMyErrands-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RunMyErrands-Bridging-Header.h"; sourceTree = "<group>"; };
-		DA216A371BFD7FD300797C24 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		DA34E8401C14FC93006C7B05 /* API_key.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API_key.h; sourceTree = "<group>"; };
+		DA34E8451C15035A006C7B05 /* MapOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapOverViewController.swift; sourceTree = "<group>"; };
+		DA34E8471C15037D006C7B05 /* DirectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionManager.swift; sourceTree = "<group>"; };
+		DA34E8491C15048D006C7B05 /* CustomInfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomInfoWindow.xib; sourceTree = "<group>"; };
+		DA34E84B1C1504CC006C7B05 /* CustomInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInfoWindow.swift; sourceTree = "<group>"; };
+		DA34E84D1C150581006C7B05 /* ErrandsManagerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrandsManagerTableViewCell.swift; sourceTree = "<group>"; };
+		DA34E84F1C150EFA006C7B05 /* ErrandsMapOverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrandsMapOverviewViewController.swift; sourceTree = "<group>"; };
 		DA8B6FEF1BFEAEF600834D78 /* briefcase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = briefcase.png; sourceTree = "<group>"; };
 		DA8B6FF01BFEAEF600834D78 /* cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cart.png; sourceTree = "<group>"; };
 		DA8B6FF11BFEAEF600834D78 /* die.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = die.png; sourceTree = "<group>"; };
@@ -163,6 +177,7 @@
 				5298904D1BFBDBDE00B82D76 /* CoreLocation.framework in Frameworks */,
 				520B47291C0E7FF3006F1FDA /* Parse.framework in Frameworks */,
 				520B47281C0E7FF3006F1FDA /* Bolts.framework in Frameworks */,
+				2AC4C1E9615497F582A7E517 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +206,7 @@
 				5257FBE41BF809CE005CC88D /* RunMyErrandsUITests */,
 				5257FBBB1BF809CE005CC88D /* Products */,
 				D671CC1A1730522650B8A93F /* Frameworks */,
+				70FB2850ABE1E8224CF69491 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -207,38 +223,21 @@
 		5257FBBC1BF809CE005CC88D /* RunMyErrands */ = {
 			isa = PBXGroup;
 			children = (
-				52ABCF1B1C0CF36F00110C8A /* LoginFiles */,
 				5257FBC01BF809CE005CC88D /* AppDelegate.h */,
 				5257FBC11BF809CE005CC88D /* AppDelegate.m */,
 				5257FBC61BF809CE005CC88D /* Main.storyboard */,
 				52ABCF191C0CE6E400110C8A /* Login.storyboard */,
+				DA34E8441C15026C006C7B05 /* TableViewCells */,
+				DA34E8431C15024E006C7B05 /* Models */,
+				52ABCF1B1C0CF36F00110C8A /* LoginFiles */,
+				DA34E8411C1501EF006C7B05 /* GeoMapping */,
+				DA34E8421C1501FC006C7B05 /* ViewControllers */,
 				5257FBCC1BF809CE005CC88D /* Assets.xcassets */,
 				5257FBCE1BF809CE005CC88D /* LaunchScreen.storyboard */,
 				5257FBD11BF809CE005CC88D /* Info.plist */,
 				5257FBBD1BF809CE005CC88D /* Supporting Files */,
-				523E40FD1BF843A900AFBEB7 /* ErrandListViewController.h */,
-				523E40FE1BF843A900AFBEB7 /* ErrandListViewController.m */,
-				52CE286F1C125F6100046BF2 /* ErrandManager.swift */,
-				DA216A371BFD7FD300797C24 /* CustomAnnotation.swift */,
-				529890431BFBD97C00B82D76 /* GeoManager.h */,
-				529890441BFBD97C00B82D76 /* GeoManager.m */,
-				52DEDEE31BFE85F3003ED1F3 /* MainMapViewController.h */,
-				52DEDEE11BFE85E2003ED1F3 /* MainMapViewController.m */,
-				529890451BFBD97C00B82D76 /* MapViewController.h */,
-				529890461BFBD97C00B82D76 /* MapViewController.m */,
-				529890471BFBD97C00B82D76 /* Task.h */,
-				529890481BFBD97C00B82D76 /* Task.m */,
-				523E41001BF843D300AFBEB7 /* DetailViewController.h */,
-				523E41011BF843D300AFBEB7 /* DetailViewController.m */,
-				52D6CD6C1BF96CE600CBBBAD /* AddNewTaskViewController.h */,
-				52D6CD6D1BF96CE600CBBBAD /* AddNewTaskViewController.m */,
-				529890421BFBD7C000B82D76 /* API_key.h */,
+				DA34E8401C14FC93006C7B05 /* API_key.h */,
 				DA216A361BFD7FD200797C24 /* RunMyErrands-Bridging-Header.h */,
-				52AA1A081BFD8F7D000FF2F0 /* ErrandsListTableViewCell.swift */,
-				52CA6F0D1BFF963A003E3437 /* TeamListTableViewController.h */,
-				52CA6F0E1BFF963A003E3437 /* TeamListTableViewController.m */,
-				520B473E1C0FCE51006F1FDA /* CreateNewGroupViewController.swift */,
-				520B47401C0FEA81006F1FDA /* JoinGroupViewController.swift */,
 			);
 			path = RunMyErrands;
 			sourceTree = "<group>";
@@ -279,6 +278,15 @@
 			name = LoginFiles;
 			sourceTree = "<group>";
 		};
+		70FB2850ABE1E8224CF69491 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				370358A6CB9E12705AE1B3CD /* Pods.debug.xcconfig */,
+				48F94D27776E71DB6E115CCB /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D671CC1A1730522650B8A93F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,8 +310,63 @@
 				5298904E1BFBDBE500B82D76 /* MapKit.framework */,
 				5298904C1BFBDBDE00B82D76 /* CoreLocation.framework */,
 				504342781871F1A0EFAE0716 /* libPods-RunMyErrands.a */,
+				98ED86A0F03E7320C46D3917 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA34E8411C1501EF006C7B05 /* GeoMapping */ = {
+			isa = PBXGroup;
+			children = (
+				DA34E8491C15048D006C7B05 /* CustomInfoWindow.xib */,
+				DA34E84B1C1504CC006C7B05 /* CustomInfoWindow.swift */,
+				DA34E8471C15037D006C7B05 /* DirectionManager.swift */,
+				529890431BFBD97C00B82D76 /* GeoManager.h */,
+				529890441BFBD97C00B82D76 /* GeoManager.m */,
+			);
+			name = GeoMapping;
+			sourceTree = "<group>";
+		};
+		DA34E8421C1501FC006C7B05 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DA34E8451C15035A006C7B05 /* MapOverViewController.swift */,
+				DA34E84F1C150EFA006C7B05 /* ErrandsMapOverviewViewController.swift */,
+				520B473E1C0FCE51006F1FDA /* CreateNewGroupViewController.swift */,
+				520B47401C0FEA81006F1FDA /* JoinGroupViewController.swift */,
+				523E40FD1BF843A900AFBEB7 /* ErrandListViewController.h */,
+				523E40FE1BF843A900AFBEB7 /* ErrandListViewController.m */,
+				52DEDEE31BFE85F3003ED1F3 /* MainMapViewController.h */,
+				52DEDEE11BFE85E2003ED1F3 /* MainMapViewController.m */,
+				529890451BFBD97C00B82D76 /* MapViewController.h */,
+				529890461BFBD97C00B82D76 /* MapViewController.m */,
+				523E41001BF843D300AFBEB7 /* DetailViewController.h */,
+				523E41011BF843D300AFBEB7 /* DetailViewController.m */,
+				52D6CD6C1BF96CE600CBBBAD /* AddNewTaskViewController.h */,
+				52D6CD6D1BF96CE600CBBBAD /* AddNewTaskViewController.m */,
+				52CA6F0D1BFF963A003E3437 /* TeamListTableViewController.h */,
+				52CA6F0E1BFF963A003E3437 /* TeamListTableViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		DA34E8431C15024E006C7B05 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				52CE286F1C125F6100046BF2 /* ErrandManager.swift */,
+				529890471BFBD97C00B82D76 /* Task.h */,
+				529890481BFBD97C00B82D76 /* Task.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		DA34E8441C15026C006C7B05 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				52AA1A081BFD8F7D000FF2F0 /* ErrandsListTableViewCell.swift */,
+				DA34E84D1C150581006C7B05 /* ErrandsManagerTableViewCell.swift */,
+			);
+			name = TableViewCells;
 			sourceTree = "<group>";
 		};
 		DA8B6FF71BFEAF0000834D78 /* Images */ = {
@@ -324,9 +387,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5257FBEA1BF809CE005CC88D /* Build configuration list for PBXNativeTarget "RunMyErrands" */;
 			buildPhases = (
+				D95D213C2308D44FDCC8573F /* Check Pods Manifest.lock */,
 				5257FBB61BF809CE005CC88D /* Sources */,
 				5257FBB71BF809CE005CC88D /* Frameworks */,
 				5257FBB81BF809CE005CC88D /* Resources */,
+				ABCA538DB7FDD6F33807E232 /* Embed Pods Frameworks */,
+				7532F5BC6E824ECC5667C01B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -428,6 +494,7 @@
 				5257FBD01BF809CE005CC88D /* LaunchScreen.storyboard in Resources */,
 				5257FBCD1BF809CE005CC88D /* Assets.xcassets in Resources */,
 				5257FBC81BF809CE005CC88D /* Main.storyboard in Resources */,
+				DA34E84A1C15048D006C7B05 /* CustomInfoWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +514,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7532F5BC6E824ECC5667C01B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ABCA538DB7FDD6F33807E232 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D95D213C2308D44FDCC8573F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5257FBB61BF809CE005CC88D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -455,11 +570,14 @@
 				520B473F1C0FCE51006F1FDA /* CreateNewGroupViewController.swift in Sources */,
 				523E41021BF843D300AFBEB7 /* DetailViewController.m in Sources */,
 				52CE28701C125F6100046BF2 /* ErrandManager.swift in Sources */,
+				DA34E84C1C1504CC006C7B05 /* CustomInfoWindow.swift in Sources */,
 				52DEDEE21BFE85E2003ED1F3 /* MainMapViewController.m in Sources */,
 				52D6CD6E1BF96CE600CBBBAD /* AddNewTaskViewController.m in Sources */,
+				DA34E8481C15037D006C7B05 /* DirectionManager.swift in Sources */,
 				520B47411C0FEA81006F1FDA /* JoinGroupViewController.swift in Sources */,
-				DA216A381BFD7FD300797C24 /* CustomAnnotation.swift in Sources */,
 				5257FBC21BF809CE005CC88D /* AppDelegate.m in Sources */,
+				DA34E8461C15035A006C7B05 /* MapOverViewController.swift in Sources */,
+				DA34E8501C150EFA006C7B05 /* ErrandsMapOverviewViewController.swift in Sources */,
 				529890491BFBD97C00B82D76 /* GeoManager.m in Sources */,
 				52AA1A091BFD8F7D000FF2F0 /* ErrandsListTableViewCell.swift in Sources */,
 				5298904B1BFBD97C00B82D76 /* Task.m in Sources */,
@@ -469,6 +587,7 @@
 				52CA6F0F1BFF963A003E3437 /* TeamListTableViewController.m in Sources */,
 				52ABCF1D1C0CF39800110C8A /* LoginViewController.swift in Sources */,
 				5298904A1BFBD97C00B82D76 /* MapViewController.m in Sources */,
+				DA34E84E1C150581006C7B05 /* ErrandsManagerTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,6 +730,7 @@
 		};
 		5257FBEB1BF809CE005CC88D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 370358A6CB9E12705AE1B3CD /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
@@ -633,6 +753,7 @@
 		};
 		5257FBEC1BF809CE005CC88D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48F94D27776E71DB6E115CCB /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;

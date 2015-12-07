@@ -36,6 +36,10 @@
     //[PFTwitterUtils initializeWithConsumerKey:TWITTER_CONSUMER_KEY
     //                           consumerSecret:TWITTER_CONSUMER_SECRET];
     
+    //Google Maps
+    [GMSServices provideAPIKey:GOOGLE_MAPS_KEY];
+    
+    
     //allow persmission for local notifications
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
     [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
@@ -43,7 +47,7 @@
     //Use 'Login-signup' storyboard
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:[NSBundle mainBundle]];
     LoginViewController *vc =[storyboard instantiateInitialViewController];
-
+    
     // Set root view controller and make windows visible
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = vc;
@@ -89,20 +93,20 @@
 
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
     
-        UIAlertController * alert=   [UIAlertController
-                                      alertControllerWithTitle:@"You are in the Area"
-                                      message:[NSString stringWithFormat:@"%@",notification.alertBody]
-                                      preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
-                                                       handler:^(UIAlertAction * action) {
-                                                           [alert dismissViewControllerAnimated:YES completion:nil];
-                                                       }];
-        
-        [alert addAction:cancel];
-        
-        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
-        
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"You are in the Area"
+                                  message:[NSString stringWithFormat:@"%@",notification.alertBody]
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * action) {
+                                                       [alert dismissViewControllerAnimated:YES completion:nil];
+                                                   }];
+    
+    [alert addAction:cancel];
+    
+    [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+    
     
     
     //    UINavigationController *navVC = (UINavigationController*) self.window.rootViewController;

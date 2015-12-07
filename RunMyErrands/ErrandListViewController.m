@@ -38,14 +38,28 @@
     [self.locationManager startLocationManager];
 
     self.errandManager = [ErrandManager new];
-    [self.errandManager fetchData:self.tableview];
-
+    //[self.errandManager fetchData:self.tableview];
+    [self.errandManager fetchDataNew:^(BOOL sucess) {
+        if (sucess) {
+            [self.tableview reloadData];
+        }
+    }];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     [self setGreeting];
-    [self.errandManager fetchData:self.tableview];
+    //[self.errandManager fetchData:self.tableview];
+    [self.errandManager fetchDataNew:^(BOOL sucess) {
+        if (sucess) {
+            [self.tableview reloadData];
+        }
+    }];
+
+    
+    PFUser *user = [PFUser currentUser];
+    NSLog(@"%@", user.username);
 }
 
 - (void)didReceiveMemoryWarning {
