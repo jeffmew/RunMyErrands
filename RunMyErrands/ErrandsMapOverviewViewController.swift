@@ -33,13 +33,12 @@ class ErrandsMapOverviewViewController: UIViewController, CLLocationManagerDeleg
         
         self.errandsManager = ErrandManager()
         
-        
         mapView.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.New, context: nil)
         
         addMarkersToMap()
         populateTaskArray()
     }
-    
+
     
     //Update map with users current location;
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
@@ -48,10 +47,8 @@ class ErrandsMapOverviewViewController: UIViewController, CLLocationManagerDeleg
             mapView.camera = GMSCameraPosition.cameraWithTarget(myLocation.coordinate, zoom: 14.0)
             mapView.settings.myLocationButton = true
             didFindMyLocation = true
-            
         }
     }
-    
     
     
     func addMarkersToMap() {

@@ -82,6 +82,7 @@ class DirectionManager: NSObject {
                 let dictionary = (try? NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as? [String : AnyObject]
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    print("dict \(dictionary)")
                     self.processDirections(dictionary!)
                     self.calculateTotalDistanceAndDuration(dictionary!)
                     completionHandler(sucess: true)

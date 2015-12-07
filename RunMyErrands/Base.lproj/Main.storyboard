@@ -248,7 +248,13 @@
         <!--Pick a Location-->
         <scene sceneID="Azb-PP-5Vg">
             <objects>
-                <viewController id="JJb-YA-mfc" customClass="MapViewController" sceneMemberID="viewController">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="ZgO-Uk-UnF">
+                    <connections>
+                        <action selector="dropPinGesture:" destination="JJb-YA-mfc" id="wBM-Eg-hMG"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wqY-04-POT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="JJb-YA-mfc" customClass="AddTaskOnMapViewController" customModule="RunMyErrands" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tMj-AY-vfW"/>
                         <viewControllerLayoutGuide type="bottom" id="4A3-Cv-rKb"/>
@@ -257,35 +263,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="TZL-7k-776">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jy1-8o-VVH" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <animations/>
-                                <connections>
-                                    <outlet property="delegate" destination="JJb-YA-mfc" id="sxU-Jr-Dee"/>
-                                    <outletCollection property="gestureRecognizers" destination="ZgO-Uk-UnF" appends="YES" id="K0f-wx-spK"/>
-                                </connections>
-                            </mapView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="TZL-7k-776" firstAttribute="leading" secondItem="SE3-eH-cna" secondAttribute="leading" id="3fK-bK-0zf"/>
-                            <constraint firstItem="TZL-7k-776" firstAttribute="top" secondItem="SE3-eH-cna" secondAttribute="top" id="8jC-nl-NKQ"/>
-                            <constraint firstAttribute="trailing" secondItem="TZL-7k-776" secondAttribute="trailing" id="JHg-sk-geE"/>
-                            <constraint firstItem="4A3-Cv-rKb" firstAttribute="top" secondItem="TZL-7k-776" secondAttribute="bottom" id="OdW-ZF-GHb"/>
+                            <constraint firstItem="jy1-8o-VVH" firstAttribute="leading" secondItem="SE3-eH-cna" secondAttribute="leading" id="1Ev-RC-nFB"/>
+                            <constraint firstAttribute="trailing" secondItem="jy1-8o-VVH" secondAttribute="trailing" id="65d-gF-Mam"/>
+                            <constraint firstItem="4A3-Cv-rKb" firstAttribute="top" secondItem="jy1-8o-VVH" secondAttribute="bottom" id="gBK-HS-WoW"/>
+                            <constraint firstItem="jy1-8o-VVH" firstAttribute="top" secondItem="tMj-AY-vfW" secondAttribute="bottom" id="mKQ-0o-bE4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pick a Location" id="Nfd-BH-VgR"/>
                     <connections>
-                        <outlet property="mapView" destination="TZL-7k-776" id="BCO-7l-Ah1"/>
+                        <outlet property="mapView" destination="jy1-8o-VVH" id="0J0-UW-HSv"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wqY-04-POT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="ZgO-Uk-UnF">
-                    <connections>
-                        <action selector="dropPinGesture:" destination="JJb-YA-mfc" id="wBM-Eg-hMG"/>
-                    </connections>
-                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2538" y="-258"/>
         </scene>
@@ -1013,10 +1010,10 @@
             </objects>
             <point key="canvasLocation" x="2711" y="1978"/>
         </scene>
-        <!--Map Over View Controller-->
+        <!--Errands Manager Map View Controller-->
         <scene sceneID="pUh-8j-pYX">
             <objects>
-                <viewController id="zb2-gY-qQB" customClass="MapOverViewController" customModule="RunMyErrands" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zb2-gY-qQB" customClass="ErrandsManagerMapViewController" customModule="RunMyErrands" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="v0W-zc-Upo"/>
                         <viewControllerLayoutGuide type="bottom" id="xM1-oz-iqX"/>

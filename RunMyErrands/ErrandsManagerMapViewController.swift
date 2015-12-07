@@ -17,7 +17,7 @@ enum TravelModes: Int {
 }
 
 
-class MapOverViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, GMSMapViewDelegate{
+class ErrandsManagerMapViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, GMSMapViewDelegate{
     
     
     //Mark: Properties
@@ -44,21 +44,20 @@ class MapOverViewController: UIViewController, UITableViewDelegate, UITableViewD
     var didFindMyLocation = false
     
     var task: Task!
-    var taskArray: [Task]!
+    var taskArray:[Task] = []
     
     var orderedMarkerArray: [GMSMarker] = []
     var markerArray: [GMSMarker] = []
     
+    var errandsManager: ErrandManager!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mapView.frame = mapView.bounds
         
-        //mapView.cameraForBounds(mapView.bounds, insets: <#T##UIEdgeInsets#>)
-        
-        
-        
+        self.errandsManager = ErrandManager()
         
         self.locationManager = GeoManager.sharedManager()
         self.locationManager.startLocationManager()
@@ -71,42 +70,42 @@ class MapOverViewController: UIViewController, UITableViewDelegate, UITableViewD
         mapView.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.New, context: nil)
         
         
-        ////Test Data/////////////////////////////////
-        taskArray = [Task]()
-        
-        let task01:Task = Task.object()
-        task01.title = "Get Crack"
-        task01.subtitle = "become a crack head."
-        task01.category = 1
-        task01.setCoordinate(CLLocationCoordinate2DMake(49.2897225491339, -123.129493072629))
-        
-        let task02:Task = Task.object()
-        task02.title = "Get Weed"
-        task02.subtitle = "become a pot head."
-        task02.category = 2
-        task02.setCoordinate(CLLocationCoordinate2DMake(49.2835425227606, -123.130713142455))
-        
-        let task03:Task = Task.object()
-        task03.title = "Get Booze"
-        task03.subtitle = "become a  drunk."
-        task03.category = 3
-        task03.setCoordinate(CLLocationCoordinate2DMake(49.285996124658, -123.126992583275))
-        
-        let task04:Task = Task.object()
-        task04.title = "Get Smokes"
-        task04.subtitle = "become a smoker."
-        task04.category = 4
-        task04.setCoordinate(CLLocationCoordinate2DMake(49.2833437185792, -123.122600801289))
-        
-        let task05:Task = Task.object()
-        task05.title = "Get LSD"
-        task05.subtitle = "become a hippy."
-        task05.category = 5
-        task05.setCoordinate(CLLocationCoordinate2DMake(49.2777464723823, -123.131323009729))
-        
-        taskArray = [task01, task02, task03, task04, task05]
-        
-        ///////////////////////////////////////////////////////
+//        ////Test Data/////////////////////////////////
+//        taskArray = [Task]()
+//        
+//        let task01:Task = Task.object()
+//        task01.title = "Get Crack"
+//        task01.subtitle = "become a crack head."
+//        task01.category = 1
+//        task01.setCoordinate(CLLocationCoordinate2DMake(49.2897225491339, -123.129493072629))
+//        
+//        let task02:Task = Task.object()
+//        task02.title = "Get Weed"
+//        task02.subtitle = "become a pot head."
+//        task02.category = 2
+//        task02.setCoordinate(CLLocationCoordinate2DMake(49.2835425227606, -123.130713142455))
+//        
+//        let task03:Task = Task.object()
+//        task03.title = "Get Booze"
+//        task03.subtitle = "become a  drunk."
+//        task03.category = 3
+//        task03.setCoordinate(CLLocationCoordinate2DMake(49.285996124658, -123.126992583275))
+//        
+//        let task04:Task = Task.object()
+//        task04.title = "Get Smokes"
+//        task04.subtitle = "become a smoker."
+//        task04.category = 4
+//        task04.setCoordinate(CLLocationCoordinate2DMake(49.2833437185792, -123.122600801289))
+//        
+//        let task05:Task = Task.object()
+//        task05.title = "Get LSD"
+//        task05.subtitle = "become a hippy."
+//        task05.category = 5
+//        task05.setCoordinate(CLLocationCoordinate2DMake(49.2777464723823, -123.131323009729))
+//        
+//        taskArray = [task01, task02, task03, task04, task05]
+//        
+//        ///////////////////////////////////////////////////////
         
         self.mapView.addSubview(directionsLabel)
         self.mapView.bringSubviewToFront(directionsLabel)
@@ -127,8 +126,8 @@ class MapOverViewController: UIViewController, UITableViewDelegate, UITableViewD
             mapView.animateToViewingAngle(45)
             origin = myLocation.coordinate
             didFindMyLocation = true
-            createRoute()
-            
+            //createRoute()
+            self.populateTaskArray()
             
         }
     }
@@ -169,7 +168,6 @@ class MapOverViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }else {
                     self.createRoute()
                 }
-                //self.mapView.camera = GMSCameraPosition.cameraWithTarget(self.directionTask.originCoordinate, zoom: 14.0)
                 self.orderedMarkerArray = self.reorderWaypoints()
                 self.errandsTableView.reloadData()
             }
@@ -187,17 +185,17 @@ class MapOverViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     
-    func mapView(mapView: GMSMapView!, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
-        if let task = task {
-            task.setCoordinate(coordinate)
-        }
-        
-        if let polyline = self.routePolyline {
-            self.recreateRoute()
-        }else {
-            self.createRoute()
-        }
-    }
+//    func mapView(mapView: GMSMapView!, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
+//        if let task = task {
+//            task.setCoordinate(coordinate)
+//        }
+//        
+//        if let polyline = self.routePolyline {
+//            self.recreateRoute()
+//        }else {
+//            self.createRoute()
+//        }
+//    }
     
     
     func clearRoute() {
@@ -336,7 +334,27 @@ class MapOverViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     
-    
+    func populateTaskArray() {
+        
+        errandsManager.fetchDataNew { (sucess) -> () in
+            if sucess {
+                
+                let numberOfGroups = self.errandsManager.fetchNumberOfGroups()
+                
+                for var index in 0..<numberOfGroups {
+                    
+                    if let groupTaskArray = self.errandsManager.fetchErrandsForGroup(index) {
+                        
+                        for task in groupTaskArray {
+                            self.taskArray += [task]
+                        }
+                    }
+                }
+            }
+            self.createRoute()
+        }
+    }
+
     
     
     

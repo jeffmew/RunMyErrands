@@ -9,6 +9,7 @@
 #import "AddNewTaskViewController.h"
 #import <Parse/Parse.h>
 #import "Task.h"
+#import "RunMyErrands-Swift.h"
 
 @interface AddNewTaskViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *taskNameTextField;
@@ -204,7 +205,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([[segue identifier] isEqualToString:@"mapSegue"]) {
-        MapViewController *mapVC = (MapViewController*)[segue destinationViewController];
+        AddTaskOnMapViewController *mapVC = (AddTaskOnMapViewController *)[segue destinationViewController];
         mapVC.taskArray = self.taskArray;
         mapVC.task = self.task;
     }
